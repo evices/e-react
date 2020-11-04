@@ -1,6 +1,7 @@
 let initialState={
     Posts:[],
-    ActivePosts:[]
+    ActivePosts:[],
+    choosedPost:null
 }
 export default (state=initialState, action) => {
   switch (action.type) {
@@ -11,6 +12,8 @@ export default (state=initialState, action) => {
         return {...state,ActivePosts:state.Posts.filter(post=>{
             return post.category === action.payload
         })}
+    case 'getSinglePost':
+      return {...state,choosedPost:action.payload}
     default:
         return state
   }
@@ -22,10 +25,22 @@ export const getAllApiPosts = () => (dispatch) => {
     dispatch(getPost(data.body));
   });
 };
-export const getPost = (posts) => {
+export const getSingleApiPost =(id)=> (dispatch)=>{
+  return superagent.get(`${url}/post/${id}`).then((data) => {
+    dispatch(getPosts(data.body));
+  });
+}
+export const getPosts = (posts) => {
   return {
     type: "getPosts",
     payload: posts,
+  };
+};
+
+export const getSinglePost = (post) => {
+  return {
+    type: "getSinglePost",
+    payload: post,
   };
 };
 

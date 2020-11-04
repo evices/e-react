@@ -20,7 +20,7 @@ function post(props) {
             <button>
               <Link
                 to={{
-                  pathname: `/post/${post._id}`,
+                  pathname: `/single/${post._id}`,
                 }}
               >
                 Show more ...
