@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import { connect } from "redux";
+import { getAllApiPosts } from "../../store/posts";
+import { Link } from "react-router-dom";
+
 function post(props) {
   useEffect(() => {
     //   load all posts at loading the page
