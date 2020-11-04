@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Login from '../auth/login';
+import { If, Then, Else } from 'react-if';
+import { connect } from 'react-redux';
+import { logout } from "../../store/auth";
 
-export default () => {
+
+const Header = (props) => {
+    console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
+    const user = JSON.parse(localStorage.getItem("user"));
+    // console.log('userlocal',user)
 
+    useEffect(() => {
+        setModalShow(false);
+      }, [props.isLoggedIn])
+
+    
     return (
         <header>
-            <div className="sl-main-header">
+                        <div className="sl-main-header">
                 <strong className="sl-main-header__logo">
                     <a href="/">
                         <img src="/images/loader.png" alt="Logo" />
@@ -19,7 +31,7 @@ export default () => {
                                 <input
                                     className="form-control sl-form-control"
                                     type="text"
-                                    placeholder="ابحث"/>
+                                    placeholder="ابحث" />
                             </div>
                             <div className="sl-form-group sl-main-form__input3">
                                 <div className="sl-select">
@@ -53,44 +65,77 @@ export default () => {
                                 <i className="ti-search" />
                             </a>
                         </div>
-                        <div className="sl-user sl-userdropdown">
-                            <a onClick={() => {setModalShow(true); console.log(modalShow)}} data-toggle="modal" data-target="#loginpopup">
-                                <img
-                                    src='../../images/insight/user-img.jpg'
-                                    alt="Image Description"
-                                />
-                                <span className="sl-user__description">
-                                    <em className="d-block">مرحبا!</em>Waleed
+
+                        <If condition={props.isLoggedIn}>
+                            <Then>
+                                <div className="sl-user sl-userdropdown">
+                                    {/* <a onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" data-target="#loginpopup"> */}
+                                    <img
+                                        src='../../images/insight/user-img.jpg'
+                                        alt="Image Description"
+                                    />
+                                    <span className="sl-user__description">
+                                        <em className="d-block">مرحبا!</em>{props.user ? props.user.user.username : ''}
                                 </span>
-                                <i className="ti-angle-down" />
-                            </a>
-                            <Login
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
-                            />           
-                            <ul className="sl-usermenu">
-                                <li>
-                                    <a href="dashboard-profile-settings.html">
-                                        <i className="ti-user" />
-                                        <span>الملف الشخصي</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html">
-                                    <i className="ti-key" />
-                                    <span>تسجيل الخروج</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                                    <i className="ti-angle-down" />
+                                    
+
+
+                                    <ul className="sl-usermenu">
+                                        <li>
+                                            <a href="dashboard-profile-settings.html">
+                                                <i className="ti-user" />
+                                                <span>الملف الشخصي</span>
+                                            </a>
+                                        </li>
+                                        <li>
+
+                                            <a  onClick={() => {console.log('insidelogout'); props.logout() }}>
+                                                <i className="ti-key" />
+                                                <span>تسجيل الخروج</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </Then>
+
+                            <Else>
+                                <a onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" data-target="#loginpopup">
+                                تسجيل دخول  
+                                                    
+                                </a>
+
+                                <Login
+                                        show={modalShow}
+                                        onHide={() => setModalShow(false)}
+                                    />
+                                    
+                            </Else>
+
+                        </If>
                         <div className="sl-main-upperBackbtn">
                             <a href="javascript:void(0);">
                                 <i className="ti-close" />
                             </a>
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </header>
     );
 };
+
+const mapStateToProps = (state) => ({
+
+    isLoggedIn: state.auth.isLoggedIn,
+    user : state.auth.user
+});
+
+const mapDispatchToProps = {
+    logout
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

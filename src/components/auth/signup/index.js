@@ -1,9 +1,25 @@
 import React from 'react';
+import { useState } from 'react';
+import { register } from "../../../store/auth";
+import { connect } from 'react-redux';
 
-export default () => (
-    <main class="sl-main sl-register-main">
-        <div class="sl-registerfixed">
-            <div class="container">
+const SignUp = (props) => {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState(' ');
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('index.log', username, email, password)
+        props.register(username, email, password)
+    }
+
+    return (
+        <main class="sl-main sl-register-main">
+            <div class="sl-registerfixed">
+                <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="sl-register-holder">
@@ -35,132 +51,61 @@ export default () => (
                                             </li>
                                         </ul>
                                         <div class="tab-content sl-signup" id="pills-tabContent">
-                                            <div class="tab-pane fade" id="signupcustomer" role="tabpanel"
-                                                aria-labelledby="sl-signupcustomer">
-                                                <form class="sl-formtheme sl-signupform">
-                                                    <fieldset>
-                                                        <div class="sl-signupform-wrap">
-                                                            <div class="form-group form-group-half form-group-icon">
-                                                                <i class="ti-info-alt toltip-content tipso_style"
-                                                                    data-tipso="name"></i>
-                                                                <input type="text" name="name" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="اسم المستخدم" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half form-group-icon">
-                                                                <i class="ti-info-alt toltip-content tipso_style"
-                                                                    data-tipso="name"></i>
-                                                                <input type="text" name="nickname" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="اسم مستعار" required="" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input type="text" name="email" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="البريد الالكتروني" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="text" name="name" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="الاسم الاول" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="text" name="name" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="اسم العائلة" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <div class="sl-select">
-                                                                    <select>
-                                                                        <option value="" hidden="">الجنس</option>
-                                                                        <option value="Male">ذكر</option>
-                                                                        <option value="Female">انثى</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="number" name="Phone" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="رقم الهاتف" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="password" name="password" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="كلمة المرور" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="password" name="password" value=""
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="اعادة كلمة المرور" required="" />
-                                                            </div>
-                                                            <div class="form-group sl-btnarea">
-                                                                <div class="sl-checkbox">
-                                                                    <input id="terms" type="checkbox" name="category" />
-                                                                    <label for="terms">
-                                                                        <span>اوافق على <a href="javascript:void(0);">شروط الخدمة</a></span>
-                                                                    </label>
-                                                                </div>
-                                                                <button type="submit" class="btn sl-btn">تسجيل</button>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
                                             <div class="tab-pane fade active show" id="signupprovider" role="tabpanel"
                                                 aria-labelledby="sl-signupprovider">
-                                                <form class="sl-formtheme sl-signupform">
+                                                <form class="sl-formtheme sl-signupform" onSubmit={handleSubmit}>
                                                     <fieldset>
                                                         <div class="sl-signupform-wrap">
                                                             <div class="form-group form-group-half form-group-icon">
                                                                 <i class="ti-info-alt toltip-content tipso_style"
                                                                     data-tipso="name"></i>
-                                                                <input type="text" name="name" value=""
+                                                                <input type="text" name="name"
                                                                     class="form-control sl-form-control"
-                                                                    placeholder="اسم المستخدم" required="" />
+                                                                    placeholder="اسم المستخدم" required="" onChange={(e) => setUsername(e.target.value)} />
                                                             </div>
                                                             <div class="form-group form-group-half form-group-icon">
                                                                 <i class="ti-info-alt toltip-content tipso_style"
                                                                     data-tipso="name"></i>
-                                                                <input type="text" name="nickname" value=""
+                                                                <input type="text" name="nickname"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="اسم مستعار" required="" />
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" name="email" value=""
+                                                                <input type="text" name="email"
                                                                     class="form-control sl-form-control"
-                                                                    placeholder="البريد الالكتروني" required="" />
+                                                                    placeholder="البريد الالكتروني" required="" onChange={(e) => setEmail(e.target.value)}/>
                                                             </div>
                                                             <div class="form-group form-group-half">
-                                                                <input type="text" name="name" value=""
+                                                                <input type="text" name="name"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="الاسم الاول" required="" />
                                                             </div>
                                                             <div class="form-group form-group-half">
-                                                                <input type="text" name="name" value=""
+                                                                <input type="text" name="name"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="اسم العائلة" required="" />
                                                             </div>
                                                             <div class="form-group form-group-half">
                                                                 <div class="sl-select">
                                                                     <select>
-                                                                        <option value="" hidden="">الجنس</option>
+                                                                        <option hidden="">الجنس</option>
                                                                         <option value="Male">ذكر</option>
                                                                         <option value="Female">انثى</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group form-group-half">
-                                                                <input type="number" name="Phone" value=""
+                                                                <input type="number" name="Phone"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="رقم الهاتف" required="" />
                                                             </div>
                                                             <div class="form-group form-group-half">
-                                                                <input type="password" name="password" value=""
+                                                                <input type="password" name="password"
                                                                     class="form-control sl-form-control"
-                                                                    placeholder="كلمة المرور" required="" />
+                                                                    placeholder="كلمة المرور" required="" onChange={(e) => setPassword(e.target.value)}/>
                                                             </div>
                                                             <div class="form-group form-group-half">
-                                                                <input type="password" name="password" value=""
+                                                                <input type="password" name="password"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="اعادة كلمة المرور" required="" />
                                                             </div>
@@ -184,7 +129,7 @@ export default () => (
                                         <div class="sl-loginicon">
                                             <ul>
                                                 <li><a href="javascript:void(0);" class="sl-googlebox"><i
-                                                            class="fab fa-google"></i>التسجيل جوجل</a></li>
+                                                    class="fab fa-google"></i>التسجيل جوجل</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -201,7 +146,7 @@ export default () => (
                                         <figcaption>
                                             <strong class="sl-registerlogo">
                                                 <a href="index.html"><img src="images/loader.png"
-                                                        alt="Images Description" /></a>
+                                                    alt="Images Description" /></a>
                                             </strong>
                                             <div class="sl-registertitle">
                                                 <h4>نحن نتوسع يوما بعد يوم</h4>
@@ -216,7 +161,22 @@ export default () => (
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
-    </main>
-);
+        </main>
+    )
+
+
+};
+
+
+
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = {
+    register
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
