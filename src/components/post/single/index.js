@@ -1,12 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { getSingleApiPost } from "../../../store/posts";
 
-function postDetails(props) {
-    useEffect(()=>{
-        props.getSinglePost(window.location.pathname.split("/")[2])
-    },[])
-
-
+function PostDetails(props) {
+  useEffect(() => {
+    props.getSinglePost(window.location.pathname.split("/")[2]);
+  }, []);
   return (
     <div>
       <h6>{props.post.category}</h6>
@@ -17,11 +16,11 @@ function postDetails(props) {
     </div>
   );
 }
-const mapStateToProps=(state)=>({
-    post:state.choosedPost
-})
-const mapDispatchToState=(dispatch)=>({
-    getSinglePost: (id)=>dispatch(getSingleApiPost(id)) 
-})
+const mapStateToProps = (state) => ({
+  post: state.posts.choosedPost,
+});
+const mapDispatchToState = (dispatch) => ({
+  getSinglePost: (id) => dispatch(getSingleApiPost(id)),
+});
 
-export default connect(mapStateToProps,mapDispatchToState)(postDetails)
+export default connect(mapStateToProps, mapDispatchToState)(PostDetails);
