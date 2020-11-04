@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
+import Header from './components/common/header';
+import Footer from './components/common/footer';
+import Home from './components/home';
+import SinglePost from './components/post/single';
+import AboutPage from './components/about';
+import ContactPage from './components/contact';
+import Signup from './components/auth/signup';
+import Posts from './components/post';
+import PageNotFound from './components/404';
+
+import './components/common/assets/Fontawesome-all.css';
+import './components/common/assets/themify-icons.css';
+import './components/common/assets/linearicons.css';
 import './App.css';
 
+const Main = withRouter(( { location} ) => {
+  return (
+    <React.Fragment>
+      {
+        location.pathname !== '/signup' && <Header />
+      }
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/posts' component={Posts} />
+        <Route exact path='/single/:id' component={SinglePost} />
+        <Route exact path='/about' component={AboutPage} />
+        <Route exact path='/contact' component={ContactPage} />
+        <Route exact path='/signup' component={Signup} />
+        <Route component={PageNotFound} />
+      </Switch>
+      {
+        location.pathname !== '/signup' && <Footer />
+      }
+    </React.Fragment>
+  )
+});
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Main />
+    </BrowserRouter>
   );
 }
 
