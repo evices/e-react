@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { getSingleApiPost } from "../../../store/posts";
 
-function postDetails(props) {
-    useEffect(()=>{
-        props.getSinglePost(window.location.pathname.split("/")[2])
-    },[])
+function PostDetails(props) {
 
+    const getSingleApiPost = props.getSingleApiPost(props.match.params.id);
+  
 
   return (
     <div>
@@ -13,15 +13,16 @@ function postDetails(props) {
       <h3>{props.post.title}</h3>
       <p>{props.post.description}</p>
       <h5>{props.post.username}</h5>
+      {console.log(props)}
       <button>schedule appointment</button>
     </div>
   );
 }
 const mapStateToProps=(state)=>({
-    post:state.choosedPost
+    post:state.posts.Posts
 })
 const mapDispatchToState=(dispatch)=>({
-    getSinglePost: (id)=>dispatch(getSingleApiPost(id)) 
+  getSingleApiPost: (id)=>dispatch(getSingleApiPost(id)) 
 })
 
-export default connect(mapStateToProps,mapDispatchToState)(postDetails)
+export default connect(mapStateToProps,mapDispatchToState)(PostDetails)

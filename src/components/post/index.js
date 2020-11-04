@@ -1,15 +1,19 @@
-import { useEffect } from "react";
-import { connect } from "redux";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { getAllApiPosts } from "../../store/posts";
 import { Link } from "react-router-dom";
 
-function post(props) {
+function Post(props) {
+
+  const getAllApiPosts = props.getAllApiPosts;
+  
   useEffect(() => {
-    //   load all posts at loading the page
-    props.getAllApiPosts();
-  }, []);
+    getAllApiPosts();
+  }, [getAllApiPosts]);
+
   return (
     <div className="postContainer">
+      {console.log(props)}
       {props.posts.map((post) => {
         return (
           <div>
@@ -32,10 +36,11 @@ function post(props) {
     </div>
   );
 }
-const mapStateToProps = (state) => ({
-  posts: state.Posts,
+
+const mapStateToProps = store => ({
+  posts: store.posts.Posts,
 });
-const mapDispatchToProps = (dispatch) => ({
-  getAllApiPosts: () => dispatch(getAllApiPosts()),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(post);
+
+const mapDispatchToProps = { getAllApiPosts };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
