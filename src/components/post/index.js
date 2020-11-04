@@ -4,7 +4,7 @@ function post(props) {
   useEffect(() => {
     //   load all posts at loading the page
     props.getAllApiPosts();
-  },[]);
+  }, []);
   return (
     <div className="postContainer">
       {props.posts.map((post) => {
@@ -14,8 +14,14 @@ function post(props) {
             <h3>{post.title}</h3>
             <p>{post.description}</p>
             <h5>{post.username}</h5>
-            <button onClick={() => props.showPostDetails(post._id)}>
-              Show more ...
+            <button>
+              <Link
+                to={{
+                  pathname: `/post/${post._id}`,
+                }}
+              >
+                Show more ...
+              </Link>
             </button>
           </div>
         );
@@ -24,10 +30,9 @@ function post(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  posts: state.posts,
+  posts: state.Posts,
 });
 const mapDispatchToProps = (dispatch) => ({
-  showPostDetails: () => dispatch(showPostDetails(id)),
   getAllApiPosts: () => dispatch(getAllApiPosts()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(post);
