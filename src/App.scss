@@ -1873,6 +1873,7 @@ header {
 
 .sl-main-header {
   background-color: #07689f;
+  height: 85px;
 }
 
 .sl-main-header__logo {
@@ -1894,8 +1895,8 @@ header {
 }
 
 .sl-main-header__upper {
-  min-height: 80px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 30px;
+  border-bottom: 0px solid rgba(255, 255, 255, 0.1);
   padding: 0 20px;
   flex-wrap: wrap;
   z-index: 9;
@@ -3923,4 +3924,12 @@ textarea[name = 'comment'] {
   margin-right: 1%;
   width: 9%;
   bottom: 17px;
+}
+
+.sl-main-header__upper a {
+  color: #fff;
+
+  &:hover {
+    color: #d9ecf2;
+  }
 }
