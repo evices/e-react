@@ -8,6 +8,7 @@ import AboutPage from './components/about';
 import ContactPage from './components/contact';
 import Signup from './components/auth/signup';
 import Posts from './components/post';
+import Categories from './components/category';//////
 import PageNotFound from './components/404';
 
 import './components/common/assets/Fontawesome-all.css';
@@ -28,6 +29,9 @@ const Main = withRouter(( { location} ) => {
         </Route>
         <Route exact path='/single/:id' >
           <SinglePost/>
+        </Route>
+        <Route exact path='/categories'>
+          <Categories/>
         </Route>
         <Route exact path='/about' component={AboutPage} />
         <Route exact path='/contact' component={ContactPage} />
