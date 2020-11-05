@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 let initialState = {
   Posts: [
     {
@@ -52,7 +54,7 @@ export const getSingleApiPost = (id) => (dispatch) => {
 
 export const addReservation = (_id, reservationData) => {
   const config = {
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTEzNmFlYmQ1MDRjNGM4ZmI2YjI2YiIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjYXBhYmlsaXRpZXMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSIsImRlbGV0ZSJdLCJleHBpcmVzSW4iOjkwMDAwMCwiaWF0IjoxNjA0NTM2NzkyfQ.3N8RqiTqT9BZAcKG_zdHunY7igP7u5sHFJEaqJWt37w` }
+    headers: { Authorization: `Bearer ${user.token}` }
 };
   let data = { 
     "$push": {

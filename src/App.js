@@ -14,7 +14,7 @@ import PageNotFound from './components/404';
 import './components/common/assets/Fontawesome-all.css';
 import './components/common/assets/themify-icons.css';
 import './components/common/assets/linearicons.css';
-import './App.css';
+import './App.scss';
 
 const Main = withRouter(( { location} ) => {
   return (
