@@ -23,8 +23,12 @@ const Main = withRouter(( { location} ) => {
       }
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/posts' component={Posts} />
-        <Route exact path='/single/:id' component={SinglePost} />
+        <Route exact path='/posts'>
+          <Posts/>
+        </Route>
+        <Route exact path='/single/:id' >
+          <SinglePost/>
+        </Route>
         <Route exact path='/about' component={AboutPage} />
         <Route exact path='/contact' component={ContactPage} />
         <Route exact path='/signup' component={Signup} />

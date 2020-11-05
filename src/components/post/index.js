@@ -4,19 +4,17 @@ import { getAllApiPosts } from "../../store/posts";
 import { Link } from "react-router-dom";
 
 function Post(props) {
-
-  const getAllApiPosts = props.getAllApiPosts;
-  
   useEffect(() => {
-    getAllApiPosts();
-  }, [getAllApiPosts]);
+    //   load all posts at loading the page
+    props.getAllApiPosts();
 
+  }, []);
+  console.log(props.posts.Posts);
   return (
     <div className="postContainer">
-      {console.log(props)}
-      {props.posts.map((post) => {
+      {props.posts.Posts.map((post,i) => {
         return (
-          <div>
+          <div key={i}>
             <h6>{post.category}</h6>
             <h3>{post.title}</h3>
             <p>{post.description}</p>
@@ -36,11 +34,10 @@ function Post(props) {
     </div>
   );
 }
-
-const mapStateToProps = store => ({
-  posts: store.posts.Posts,
+const mapStateToProps = (state) => ({
+  posts: state.posts,
 });
-
-const mapDispatchToProps = { getAllApiPosts };
-
+const mapDispatchToProps = (dispatch) => ({
+  getAllApiPosts: () => dispatch(getAllApiPosts()),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

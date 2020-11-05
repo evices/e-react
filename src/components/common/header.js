@@ -9,7 +9,7 @@ export default () => {
             <div className="sl-main-header">
                 <strong className="sl-main-header__logo">
                     <a href="/">
-                        <img src="/images/loader.png" alt="Logo" />
+                        <img src="/logo.png" alt="Logo" />
                     </a>
                 </strong>
                 <div className="sl-main-header__content">
