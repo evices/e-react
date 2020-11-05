@@ -1,4 +1,5 @@
 import axios from "axios";
+
 let initialState = {
   Posts: [
     {
@@ -48,6 +49,31 @@ export const getSingleApiPost = (id) => (dispatch) => {
     dispatch(getSinglePost(data.data[0]));
   });
 };
+
+export const addReservation = (_id, reservationData) => {
+  const config = {
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTEzNmFlYmQ1MDRjNGM4ZmI2YjI2YiIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjYXBhYmlsaXRpZXMiOlsicmVhZCIsImNyZWF0ZSIsInVwZGF0ZSIsImRlbGV0ZSJdLCJleHBpcmVzSW4iOjkwMDAwMCwiaWF0IjoxNjA0NTM2NzkyfQ.3N8RqiTqT9BZAcKG_zdHunY7igP7u5sHFJEaqJWt37w` }
+};
+  let data = { 
+    "$push": {
+      "comments": {
+        "comments": reservationData.comments,
+        "rate": reservationData.rate,
+        "username": reservationData.username 
+      }
+    }
+  };
+
+  console.log(data);
+  return axios
+  .patch(
+    `${url}/post/${_id}`,  
+    data,
+    config)
+  .catch( error => console.log(error.response.data));
+}
+
+
 export const getPosts = (posts) => {
   return {
     type: "getPosts",
