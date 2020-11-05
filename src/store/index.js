@@ -3,9 +3,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import auth from "./auth";
 import posts from "./posts"
+import categories  from "./categories"
 
 
-let reducers = combineReducers({auth,posts});
+let reducers = combineReducers({auth,posts,categories});
 
 const store = () => {
     return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
