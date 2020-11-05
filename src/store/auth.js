@@ -1,5 +1,6 @@
 import AuthService from "./server";
-// import { If } from 'react-if';
+import React from 'react';
+import { If } from 'react-if';
 
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -49,7 +50,7 @@ export default function (state = initialState, action) {
 
 
 export const register = (username, email, password) => (dispatch) => {
-    console.log('user',username,email,password)
+    console.log('user', username, email, password)
 
     return AuthService.register(username, email, password).then(
         (response) => {
@@ -87,7 +88,7 @@ export const register = (username, email, password) => (dispatch) => {
 };
 
 export const login = (username, password) => (dispatch) => {
-    console.log('user',username,password)
+    console.log('user', username, password)
     return AuthService.login(username, password).then(
         (data) => {
             dispatch({
@@ -127,12 +128,4 @@ export const logout = () => (dispatch) => {
     });
 };
 
-// export const Auth =()=>(prpos){
-//let ok=(state.isLoggedIn) &&  (this.props.capability?state.user.user.capabilities.includes(this.props.capability):true);
-// return (
-//     <If condition={ok}>
-//       <div>{this.props.children}</div>
-//     </If>
-//   )  
-// }
 
