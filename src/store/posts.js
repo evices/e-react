@@ -73,6 +73,7 @@ export const addReservation = (_id, reservationData) => {
   .catch( error => console.log(error.response.data));
 }
 
+
 export const getPosts = (posts) => {
   return {
     type: "getPosts",
