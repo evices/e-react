@@ -11,6 +11,8 @@ import Posts from './components/post';
 import Categories from './components/category';//////
 import PageNotFound from './components/404';
 
+import Profile from './components/profile';
+
 import './components/common/assets/Fontawesome-all.css';
 import './components/common/assets/themify-icons.css';
 import './components/common/assets/linearicons.css';
@@ -36,6 +38,7 @@ const Main = withRouter(( { location} ) => {
         <Route exact path='/about' component={AboutPage} />
         <Route exact path='/contact' component={ContactPage} />
         <Route exact path='/signup' component={Signup} />
+        <Route exact path='/profile' component={Profile} />
         <Route component={PageNotFound} />
       </Switch>
       {

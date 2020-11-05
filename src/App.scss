@@ -1094,7 +1094,7 @@ html {
 }
 
 body {
-  color: #07689f;
+  color: #4c4c4c;
   box-sizing: border-box;
   font-family: "Tajawal";
 }
@@ -1289,7 +1289,7 @@ p,
 .sl-btn {
   justify-content: center;
   font: 600 14px "Tajawal";
-  color: #07689f!important;
+  color: #4c4c4c!important;
   border: 2px solid #ffca28!important;
   border-radius: 6px;
   height: 44px;
@@ -1299,7 +1299,7 @@ p,
 
 .sl-btn:hover {
   background-color: #ffca28;
-  color: #07689f;
+  color: #4c4c4c;
 }
 
 .sl-btn:focus {
@@ -1307,7 +1307,7 @@ p,
 }
 
 .sl-btn a {
-  color: #07689f;
+  color: #4c4c4c;
 }
 
 .sl-btn-active {
@@ -1357,12 +1357,12 @@ p,
 }
 
 .sl-advance-icon i {
-  background-color: #07689f;
+  background-color: #4c4c4c;
   width: 17px;
   display: block;
   margin: 7px 0 0;
   position: relative;
-  border: 0.5px solid #07689f;
+  border: 0.5px solid #4c4c4c;
 }
 
 .sl-advance-icon i:nth-child(1) {
@@ -1391,7 +1391,7 @@ p,
   position: absolute;
   border-radius: 50%;
   margin: -2px -2px 0 0;
-  border: 1px solid #07689f;
+  border: 1px solid #4c4c4c;
   background: #ffca28;
 }
 
@@ -1479,7 +1479,7 @@ p,
 
 .sl-prepend + .sl-append i {
   font-size: 18px;
-  color: #07689f;
+  color: #4c4c4c;
 }
 
 .sl-append {
@@ -1856,7 +1856,7 @@ p,
 }
 
 .sl-owl-nav .owl-nav i {
-  color: #07689f;
+  color: #4c4c4c;
   border: 1px solid #ddd;
   border-radius: 50%;
   padding: 12px;
@@ -1872,7 +1872,7 @@ header {
 }
 
 .sl-main-header {
-  background-color: #07689f;
+  background-color: #4c4c4c;
   height: 85px;
 }
 
@@ -2042,7 +2042,7 @@ button.sl-btn:focus {
 }
 
 .sl-usermenu li:hover > a {
-  background: #07689f;
+  background: #4c4c4c;
 }
 
 .sl-usermenu li a {
@@ -2090,7 +2090,7 @@ button.sl-btn:focus {
 }
 
 .sl-footerCenter {
-  background-color: #07689f;
+  background-color: #4c4c4c;
 }
 
 .sl-footerCenter h6 {
@@ -2157,7 +2157,7 @@ button.sl-btn:focus {
 }
 
 .sl-footerLower {
-  background-color: #07689f;
+  background-color: #4c4c4c;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 15px 0;
   min-height: 60px;
@@ -2268,11 +2268,11 @@ button.sl-btn:focus {
   bottom: -35px;
   font-size: 20px;
   margin-top: 16px;
-  color: #07689f;
+  color: #4c4c4c;
 }
 
 .sl-category__icon:hover {
-  color: #07689f;
+  color: #4c4c4c;
 }
 
 .sl-community {
@@ -2324,7 +2324,7 @@ button.sl-btn:focus {
 
 .sl-slider figure {
   position: relative;
-  background: #07689f;
+  background: #4c4c4c;
   border-radius: 6px 6px 0 0;
   width: 100%;
 }
@@ -2406,7 +2406,7 @@ button.sl-btn:focus {
 }
 
 .sl-slider h5 a {
-  color: #07689f;
+  color: #4c4c4c;
 }
 
 .sl-slider em {
@@ -2568,7 +2568,7 @@ main {
 }
 
 .sl-img:hover figure {
-  background-color: #07689f;
+  background-color: #4c4c4c;
 }
 
 .sl-img:hover figure a > img {
@@ -3873,7 +3873,11 @@ body, p, .sl-form-control input::placeholder {
 }
 
 .checked {
-  color: orange;
+  color: orange!important;
+}
+
+.fa-star {
+  color: #4c4c4c;
 }
 
 div.stars {
