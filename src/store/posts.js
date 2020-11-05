@@ -57,7 +57,25 @@ export const getSingleApiPost = (id) => (dispatch) => {
     dispatch(getSinglePost(data.data[0]));
   });
 };
-
+export const makeReservation = (post, user) => (dispatch) => {
+  const config = {
+    headers: { Authorization: `Bearer ${user.token}` }
+};
+  let data = {
+      "user_id": user.user._id,
+      "provider_id": post.providerId,
+      "post_id":post._id,
+      'book_date':"11/11/2020"
+  }
+console.log('data>>',data);
+  return axios
+    .post(`${url}/reservation`, data, config)
+    .then(res=>{
+      console.log('>>>>>>>',res.data)
+      // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
+    })
+    .catch((error) => console.log(error.response));
+};
 export const addReservation = (_id, reservationData) => {
   const config = {
     headers: { Authorization: `Bearer ${user.token}` }

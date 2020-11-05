@@ -52,6 +52,7 @@ function PostDetails(props) {
                     <a onClick={() => {setModalShow(true); console.log(modalShow)}} class="btn sl-btn" data-toggle="modal"
                         data-target="#appointmentPopup">حجز</a>
                         <Modal
+                            post={props.post}
                             show={modalShow}
                             onHide={() => setModalShow(false)}
                         />                        
