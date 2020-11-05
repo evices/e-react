@@ -70,10 +70,10 @@ const Header = (props) => {
                             <Then>
                                 <div className="sl-user sl-userdropdown">
                                     {/* <a onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" data-target="#loginpopup"> */}
-                                    <img
+                                    {/* <img
                                         src='../../images/insight/user-img.jpg'
                                         alt="Image Description"
-                                    />
+                                    /> */}
                                     <span className="sl-user__description">
                                         <em className="d-block">مرحبا!</em>{props.user ? props.user.user.username : ''}
                                 </span>
@@ -90,7 +90,7 @@ const Header = (props) => {
                                         </li>
                                         <li>
 
-                                            <a  onClick={() => {console.log('insidelogout'); props.logout() }}>
+                                            <a href="/" onClick={() => {console.log('insidelogout'); props.logout() }}>
                                                 <i className="ti-key" />
                                                 <span>تسجيل الخروج</span>
                                             </a>
@@ -100,7 +100,7 @@ const Header = (props) => {
                             </Then>
 
                             <Else>
-                                <a onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" data-target="#loginpopup">
+                                <a href="#" onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" data-target="#loginpopup">
                                 تسجيل دخول  
                                                     
                                 </a>

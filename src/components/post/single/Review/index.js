@@ -35,6 +35,7 @@ console.log('props',props)
             <div class="sl-posts">
 
                 {comments.map((post, i) => {
+                    let d = new Date(post.created_date);
                     return (
                         <div class="sl-post">
                             <div class="sl-post__content">
@@ -49,7 +50,7 @@ console.log('props',props)
                                         <span class="fa fa-star"></span>
                                     ))}
                                     <h5>{post.username}</h5>
-                                    <p>منذ ١٠ دقائق</p>
+                                    <p>{d.toLocaleDateString()}</p>
                                 </div>
                             </div>
                             <div class="sl-post__description">

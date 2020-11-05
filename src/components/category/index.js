@@ -14,14 +14,32 @@ function Categories(props) {
   console.log('Categories component',props.categories.Categories);
   return (
     <>
+      <section className="sl-main-section">
+        <div className="container">
+          <div className="sl-category sl-row">
+
     {props.categories.Categories.map((category,idx)=>{
         return(
-            <div key={idx}>
-                <h3>{category}</h3>
-
+            <div className="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
+              <div className="sl-category__service">
+              <img
+                  src={'images/index/category/img-0' + idx++ +'.jpg'}
+                  alt="image Description"
+              />
+              <div className="sl-category__description">
+                  <h5>{category}</h5>
+                  <span>4,982 خدمة</span>
+              </div>
+              <a href="javascript:void(0);" className="sl-category__icon">
+                  <i className="ti-arrow-right" />
+              </a>
             </div>
+        </div>
         )
     })}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
