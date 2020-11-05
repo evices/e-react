@@ -1,3 +1,4 @@
+import { act } from "@testing-library/react";
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -34,6 +35,11 @@ export default (state = initialState, action) => {
     case "getSinglePost":
       console.log(action, "<<<<<<<<<<");
       return { ...state, choosedPost: action.payload };
+
+    case 'getPostsUserName':
+      console.log('action postUserName', action);
+      return { ...state, Posts: action.payload };
+
     default:
       return state;
   }
@@ -73,22 +79,26 @@ console.log('data>>',data);
 export const addReservation = (_id, reservationData) => {
   const config = {
     headers: { Authorization: `Bearer ${user.token}` }
-};
-  let data = { 
+  };
+  let data = {
     "$push": {
       "comments": {
         "comments": reservationData.comments,
         "rate": reservationData.rate,
-        "username": reservationData.username 
+        "username": reservationData.username
       }
     }
   };
 
   console.log(data);
   return axios
-    .patch(`${url}/post/${_id}`, data, config)
-    .catch((error) => console.log(error.response.data));
-};
+    .patch(
+      `${url}/post/${_id}`,
+      data,
+      config)
+    .catch(error => console.log(error.response.data));
+}
+
 
 export const getPosts = (posts) => {
   return {
@@ -103,3 +113,21 @@ export const getSinglePost = (post) => {
     payload: post,
   };
 };
+
+export const getPostsByUserName = () => (dispatch) => {
+  let username = user.user.username;
+
+  return axios.get(`${url}/post`).then((data) => {
+    console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
+
+    let modify = data.data.result.filter(post => {
+      return post.username == username
+    })
+    console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>");
+    dispatch({
+      type: "getPostsUserName",
+      payload: modify,
+    });
+    // dispatch(getSinglePost(data.data[0]));
+  });
+}
