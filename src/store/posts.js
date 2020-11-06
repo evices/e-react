@@ -1,3 +1,4 @@
+import { act } from "@testing-library/react";
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -32,8 +33,13 @@ export default (state = initialState, action) => {
         }),
       };
     case "getSinglePost":
-      console.log(action,"<<<<<<<<<<");
+      console.log(action, "<<<<<<<<<<");
       return { ...state, choosedPost: action.payload };
+
+    case 'getPostsUserName':
+      console.log('action postUserName', action);
+      return { ...state, Posts: action.payload };
+
     default:
       return state;
   }
@@ -51,28 +57,46 @@ export const getSingleApiPost = (id) => (dispatch) => {
     dispatch(getSinglePost(data.data[0]));
   });
 };
-
-export const addReservation = (_id, reservationData) => {
+export const makeReservation = (post, user) => (dispatch) => {
   const config = {
     headers: { Authorization: `Bearer ${user.token}` }
 };
-  let data = { 
+  let data = {
+      "user_id": user.user._id,
+      "provider_id": post.providerId,
+      "post_id":post._id,
+      'book_date':"11/11/2020"
+  }
+console.log('data>>',data);
+  return axios
+    .post(`${url}/reservation`, data, config)
+    .then(res=>{
+      console.log('>>>>>>>',res.data)
+      // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
+    })
+    .catch((error) => console.log(error.response));
+};
+export const addReservation = (_id, reservationData) => {
+  const config = {
+    headers: { Authorization: `Bearer ${user.token}` }
+  };
+  let data = {
     "$push": {
       "comments": {
         "comments": reservationData.comments,
         "rate": reservationData.rate,
-        "username": reservationData.username 
+        "username": reservationData.username
       }
     }
   };
 
   console.log(data);
   return axios
-  .patch(
-    `${url}/post/${_id}`,  
-    data,
-    config)
-  .catch( error => console.log(error.response.data));
+    .patch(
+      `${url}/post/${_id}`,
+      data,
+      config)
+    .catch(error => console.log(error.response.data));
 }
 
 
@@ -89,3 +113,21 @@ export const getSinglePost = (post) => {
     payload: post,
   };
 };
+
+export const getPostsByUserName = () => (dispatch) => {
+  let username = user.user.username;
+
+  return axios.get(`${url}/post`).then((data) => {
+    console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
+
+    let modify = data.data.result.filter(post => {
+      return post.username == username
+    })
+    console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>");
+    dispatch({
+      type: "getPostsUserName",
+      payload: modify,
+    });
+    // dispatch(getSinglePost(data.data[0]));
+  });
+}

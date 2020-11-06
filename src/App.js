@@ -17,8 +17,9 @@ import './components/common/assets/Fontawesome-all.css';
 import './components/common/assets/themify-icons.css';
 import './components/common/assets/linearicons.css';
 import './App.scss';
+import PostsUser from './components/profile/post';
 
-const Main = withRouter(( { location} ) => {
+const Main = withRouter(({ location }) => {
   return (
     <React.Fragment>
       {
@@ -27,31 +28,32 @@ const Main = withRouter(( { location} ) => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/posts'>
-          <Posts/>
-        </Route>
-        <Route exact path='/single/:id' >
-          <SinglePost/>
-        </Route>
-        <Route exact path='/categories'>
-          <Categories/>
-        </Route>
-        <Route exact path='/about' component={AboutPage} />
-        <Route exact path='/contact' component={ContactPage} />
-        <Route exact path='/signup' component={Signup} />
-        <Route exact path='/profile' component={Profile} />
-        <Route component={PageNotFound} />
+            <Posts />
+          </Route>
+          <Route exact path='/single/:id' >
+            <SinglePost />
+          </Route>
+          <Route exact path='/categories'>
+            <Categories />
+          </Route>
+          <Route exact path='/about' component={AboutPage} />
+          <Route exact path='/contact' component={ContactPage} />
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path='/postsuser' component={PostsUser} />
+          <Route exact path='/profile' component={Profile} />
+          <Route component={PageNotFound} />
       </Switch>
-      {
-        location.pathname !== '/signup' && <Footer />
-      }
+        {
+          location.pathname !== '/signup' && <Footer />
+        }
     </React.Fragment>
   )
 });
 function App() {
   return (
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
   );
 }
 

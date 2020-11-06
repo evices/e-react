@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Review from '../Review';
-import Modal from '../Modal';
+// import Review from '../Review';
+import Modal from '../post/single/Modal';
 
 import { connect } from "react-redux";
-import { getSingleApiPost } from "../../../../store/posts";
-import _ from "lodash";
+import { getPostsByUserName } from "../../store/posts";
+// import _ from "lodash";
 
-function PostDetails(props) {
-  useEffect(() => {
-    props.getSinglePost(window.location.pathname.split("/")[2]);
-  }, []);
+function PostsUser(props) {
+    console.log(props)
+      useEffect(() => {
+        props.getPostsByUserName();
+      }, []);
 
-  const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <div>
@@ -25,18 +26,19 @@ function PostDetails(props) {
                         <a href="javascript:void(0);" class="sl-bg-red-orange">مميز</a>
                         <a href="javascript:void(0);" class="sl-bg-green">موثوق</a>
                     </div>
-                    <h5>{props.post.username}</h5>
-                    <h3>{props.post.title}</h3>
+
+                    {/* <h5>{props.post.username}</h5>
+                    <h3>{props.post.title}</h3> */}
                     <div class="sl-appointment__feature">
-                        <div class="sl-featureRating">
+                        {/* <div class="sl-featureRating">
                         {_.times(props.post.rateAVG, (i) => (
                             <span class="fa fa-star checked"></span>
                         ))}
                         {_.times(5 - props.post.rateAVG, (i) => (
                             <span class="fa fa-star"></span>
-                        ))}
-                            <em>({props.post.comments ? props.post.comments.length : 0}) تقييم</em>
-                        </div>
+                        ))} */}
+                        {/* <em>({props.post.comments ? props.post.comments.length : 0}) تقييم</em> */}
+                        {/* </div> */}
                     </div>
                     <div class="sl-detail">
                         <div class="sl-detail__date">
@@ -49,13 +51,12 @@ function PostDetails(props) {
                 </div>
                 <div class="sl-appointment__note">
 
-                    <a onClick={() => {setModalShow(true); console.log(modalShow)}} class="btn sl-btn" data-toggle="modal"
+                    <a onClick={() => { setModalShow(true); console.log(modalShow) }} class="btn sl-btn" data-toggle="modal"
                         data-target="#appointmentPopup">حجز</a>
-                        <Modal
-                            post={props.post}
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                        />                        
+                    <Modal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
                 </div>
             </div>
             <div class="sl-main-section">
@@ -75,7 +76,7 @@ function PostDetails(props) {
                                                     <address>فلسطين غزة</address>
                                                 </li>
                                                 <li><i class="ti-mobile sl-mobile-icon"></i><a
-                                                        href="javascript:void(0);">0599950093</a></li>
+                                                    href="javascript:void(0);">0599950093</a></li>
                                             </ul>
                                             <a href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
                                                 data-target="#contactpopup">Chat</a>
@@ -91,13 +92,14 @@ function PostDetails(props) {
                                 <h4>تفاصيل الخدمة</h4>
                             </div>
                             <div class="sl-aboutFreelance__description">
+
                                 <p>{props.post.description}</p>
                             </div>
                         </div>
 
                         <hr></hr>
-                        {console.log(props.post)}
-                        <Review postId={props.post._id} comments={props.post.comments}/>
+                        {console.log(props.post)} 
+                        {/* <Review postId={props.post._id} comments={props.post.comments}/> */}
 
                     </div>
                 </div>
@@ -106,10 +108,10 @@ function PostDetails(props) {
     );
 }
 const mapStateToProps = (state) => ({
-  post: state.posts.choosedPost,
+    post: state.posts,
 });
 const mapDispatchToState = (dispatch) => ({
-  getSinglePost: (id) => dispatch(getSingleApiPost(id)),
+    getPostsByUserName: () => dispatch(getPostsByUserName()),
 });
 
-export default connect(mapStateToProps, mapDispatchToState)(PostDetails);
+export default connect(mapStateToProps, mapDispatchToState)(PostsUser);
