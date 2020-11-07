@@ -80,7 +80,8 @@ function Model(props) {
             </div>
           </fieldset>
         </form>
-        <div>
+        <div className='sugesstion'>
+          { sugesstion.length > 0 ? <p>لا يمكنك الحجز خلال التاريخ المحدد<br /> مقترحات</p> : ''}
           <ul>
           {
             sugesstion.map((item, i) => {

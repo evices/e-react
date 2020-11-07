@@ -2365,7 +2365,7 @@ button.sl-btn:focus {
   border-radius: 50%;
   padding: 4px;
   background: #fff;
-  width: auto;
+  width: 50px;
 }
 
 .sl-slider__content {
@@ -3979,6 +3979,58 @@ textarea[name = 'comment'] {
 
       &.active {
         background-color: #bbbfca;
+      }
+    }
+  }
+}
+
+.sugesstion {
+  padding: 10px;
+  margin-top: 20px;
+
+  p {
+    text-align: center;
+    font-size: 18px;
+    background-color: #797a7e;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px;
+    font-weight: 600!important;
+    margin: 0
+  }
+
+  ul {
+
+    li {
+      background-color: #d8d3cd;
+      border-bottom: #dfd3c3s;
+
+      &:nth-child(odd) {
+        background-color: #f7f2e7;
+        line-height: 40px;
+        padding: 0;
+      }
+
+      a {
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        color: #596e79;
+      }
+    }
+  }
+}
+
+.sl-serviceProvider {
+
+  &__content {
+    .post-item {
+      margin-bottom: 30px;
+      text-align: right;
+
+      .post-img{
+        height: 200px;
       }
     }
   }
