@@ -3937,3 +3937,49 @@ textarea[name = 'comment'] {
     color: #d9ecf2;
   }
 }
+
+.date-div {
+  display: flex;
+
+  p{
+    margin-left: 20px!important;
+  }
+
+  input[type=text] {
+    border: 1px solid #ccc!important;
+    border-radius: 5px;
+
+    &:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+  }
+}
+.reservation-address {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 0!important;
+
+  ul {
+    text-align: right;
+    padding: 0;
+    margin: 0!important;
+
+    li {
+      line-height: 35px;
+      padding-right: 10px;
+      background-color: #e8e8e8;
+
+      &:nth-child(odd) {
+        background-color: #f4f4f2;
+      }
+
+      &.active {
+        background-color: #bbbfca;
+      }
+    }
+  }
+}

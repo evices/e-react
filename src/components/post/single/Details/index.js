@@ -12,7 +12,7 @@ function PostDetails(props) {
   }, []);
 
   const [modalShow, setModalShow] = React.useState(false);
-
+  const postedBy = props.post.postedBy || [];
     return (
         <div>
             <div class="sl-appointment">
@@ -25,7 +25,7 @@ function PostDetails(props) {
                         <a href="javascript:void(0);" class="sl-bg-red-orange">مميز</a>
                         <a href="javascript:void(0);" class="sl-bg-green">موثوق</a>
                     </div>
-                    <h5>{props.post.username}</h5>
+                    <h5>{postedBy.fullname}</h5>
                     <h3>{props.post.title}</h3>
                     <div class="sl-appointment__feature">
                         <div class="sl-featureRating">
@@ -40,7 +40,7 @@ function PostDetails(props) {
                     </div>
                     <div class="sl-detail">
                         <div class="sl-detail__date">
-                            <em><i class="ti-calendar"></i> تاريخ الانشاء: Jun 27, 2010</em>
+                            <em><i class="ti-calendar"></i> تاريخ الانشاء: {props.post.created_at}</em>
                         </div>
                         <div class="sl-detail__view">
                             <em><i class="ti-eye"></i> شاهدها 15,063</em>
@@ -75,7 +75,7 @@ function PostDetails(props) {
                                                     <address>فلسطين غزة</address>
                                                 </li>
                                                 <li><i class="ti-mobile sl-mobile-icon"></i><a
-                                                        href="javascript:void(0);">0599950093</a></li>
+                                                        href="javascript:void(0);">{postedBy.phone}</a></li>
                                             </ul>
                                             <a href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
                                                 data-target="#contactpopup">Chat</a>

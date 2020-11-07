@@ -9,7 +9,6 @@ const Header = (props) => {
     console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
     const user = JSON.parse(localStorage.getItem("user"));
-    // console.log('userlocal',user)
 
     useEffect(() => {
         setModalShow(false);

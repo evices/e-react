@@ -1,17 +1,17 @@
-import { act } from "@testing-library/react";
+import {
+  act
+} from "@testing-library/react";
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
 let initialState = {
-  Posts: [
-    {
-      category: "loading",
-      title: "load",
-      description: "load",
-      username: "load",
-    },
-  ],
+  Posts: [{
+    category: "loading",
+    title: "load",
+    description: "load",
+    username: "load",
+  }, ],
   ActivePosts: [],
   choosedPost: {
     category: "loading",
@@ -23,8 +23,10 @@ let initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "getPosts":
-      return { ...state, Posts: action.payload.result };
-    // assume receives category in the payload when choosing the category in the main page of the app
+      return {
+        ...state, Posts: action.payload.result
+      };
+      // assume receives category in the payload when choosing the category in the main page of the app
     case "filterPosts":
       return {
         ...state,
@@ -34,11 +36,15 @@ export default (state = initialState, action) => {
       };
     case "getSinglePost":
       console.log(action, "<<<<<<<<<<");
-      return { ...state, choosedPost: action.payload };
+      return {
+        ...state, choosedPost: action.payload
+      };
 
     case 'getPostsUserName':
       console.log('action postUserName', action);
-      return { ...state, Posts: action.payload };
+      return {
+        ...state, Posts: action.payload
+      };
 
     default:
       return state;
@@ -51,34 +57,46 @@ export const getAllApiPosts = () => (dispatch) => {
     dispatch(getPosts(data.data));
   });
 };
+
 export const getSingleApiPost = (id) => (dispatch) => {
   return axios.get(`${url}/post/${id}`).then((data) => {
     console.log(data, ">>>>>>>>>>>>>>>>>>>>>>>>");
     dispatch(getSinglePost(data.data[0]));
   });
 };
-export const makeReservation = (post, user) => (dispatch) => {
+
+export const makeReservation = (post, user, date, address) => (dispatch) => {
   const config = {
-    headers: { Authorization: `Bearer ${user.token}` }
-};
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
   let data = {
-      "user_id": user.user._id,
-      "provider_id": post.providerId,
-      "post_id":post._id,
-      'book_date':"11/11/2020"
+    "user_id": user.user._id,
+    "provider_id": post.providerId,
+    "post_id": post._id,
+    'book_date': date,
+    'address': address,
+    "client": user.user._id,
+    "provider": post.providerId,
+    "post": post._id,
   }
-console.log('data>>',data);
+  console.log('data>>', data);
   return axios
     .post(`${url}/reservation`, data, config)
-    .then(res=>{
-      console.log('>>>>>>>',res.data)
+    .then(res => {
+      // console.log('>>>>>>>', res.data)
+      return res.data;
       // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
     })
     .catch((error) => console.log(error.response));
 };
+
 export const addReservation = (_id, reservationData) => {
   const config = {
-    headers: { Authorization: `Bearer ${user.token}` }
+  headers: {
+    Authorization: `Bearer ${user.token}`
+  }
   };
   let data = {
     "$push": {
