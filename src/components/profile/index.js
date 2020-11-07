@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, Row, Col, Nav } from 'react-bootstrap';
-
+import Reservation from './reservation'
 import UserPost from './post';
 
 import './style.scss';
@@ -144,6 +144,8 @@ const Profile = props => {
                     </Tab.Container>
                 </div>
             </div>
+            <Reservation/>
+
         </main>
     );
 };
