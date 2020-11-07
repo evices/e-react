@@ -52,7 +52,7 @@ const LogIn= (props) => {
             <div class="sl-loginicon">
                 <ul>
                     {/* <li><a href="javascript:void(0);" class="sl-facebookbox"><i class="fab fa-facebook-f"></i>Via facebook</a></li> */}
-                    <li><a href="javascript:void(0);" class="sl-googlebox"><i class="fab fa-google"></i>التسجيل بواسطة جوجل</a></li>
+                    <li><a href="http://localhost:3002/google" class="sl-googlebox"><i class="fab fa-google"></i>التسجيل بواسطة جوجل</a></li>
                 </ul>
             </div>
         </Modal.Body>

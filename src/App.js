@@ -11,11 +11,13 @@ import Posts from './components/post';
 import Categories from './components/category';//////
 import PageNotFound from './components/404';
 
+import Profile from './components/profile';
+
 import './components/common/assets/Fontawesome-all.css';
 import './components/common/assets/themify-icons.css';
 import './components/common/assets/linearicons.css';
 import './App.scss';
-import PostsUser from './components/postsUsername';
+import PostsUser from './components/profile/post';
 
 const Main = withRouter(({ location }) => {
   return (
@@ -38,7 +40,7 @@ const Main = withRouter(({ location }) => {
           <Route exact path='/contact' component={ContactPage} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/postsuser' component={PostsUser} />
-
+          <Route exact path='/profile' component={Profile} />
           <Route component={PageNotFound} />
       </Switch>
         {

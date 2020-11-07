@@ -4,29 +4,43 @@ import { addReservation } from "../../../../store/posts";
 import { Auth } from '../../../../store/checkAuth'
 import Button from 'react-bootstrap/Button';
 import { If, Then, Else } from 'react-if';
-
+import { getSingleApiPost } from "../../../../store/posts";
 
 import _ from "lodash";
 
 const Reviewe = (props) => {
 
+    const [comment, setComment] = useState('');
+    const comments = props.comments || [];
+
+    useEffect(() => {
+        props.getSinglePost(window.location.pathname.split("/")[2]);
+    }, [comment]);
+    
     const [rate, setRate] = useState(0);
-console.log('props',props)
+    console.log('props',props);
+
+    const handleChange = (e) => {
+        setComment(e.target.value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         let rData = {
-            "username": "Waleed",
+            "username": props.user.username,
             "comments": e.target['comment'].value,
             "rate": rate
         };
 
         console.log(rate);
         console.log('Console when ttry to add comment');
-        addReservation(props.postId, rData);
-    }
-    //    addReservation(props.postId, rData);
+        addReservation(props.postId, rData).then((res) => {
+            setComment(''); 
+        });
 
-    const comments = props.comments || [];
+        
+    }
+
     return (
         <div class="sl-customerReviews">
             <div class="sl-title">
@@ -61,8 +75,7 @@ console.log('props',props)
                 })}
             </div>
 
-{/* {console.log(<Auth capability="create" />)} */}
-         <If condition={props.isLoggedIn}>
+        <If condition={props.isLoggedIn}>
                 <Then>
                     <Auth capability="create">
                         <form onSubmit={handleSubmit}>
@@ -76,7 +89,7 @@ console.log('props',props)
                             <label class="star star-2" for="star-2"></label>
                             <input class="star star-1" id="star-1" type="radio" name="star" onClick={() => { setRate(1) }} />
                             <label class="star star-1" for="star-1"></label>
-                            <textarea name="comment"></textarea>
+                            <textarea value={comment} onChange={handleChange} name="comment"></textarea>
                             <Button type="submit" className="comment-button" variant="info">ارسال</Button>
                         </form>
                     </Auth>
@@ -89,14 +102,13 @@ console.log('props',props)
 const mapStateToProps = (state) => ({
     post: state.posts.choosedPost,
     isLoggedIn: state.auth.isLoggedIn,
-    auth:state.checkAuth
-
+    auth:state.checkAuth,
+    user: state.auth.user.user
 });
 const mapDispatchToState = (dispatch) => ({
     addReservation: (_id, reservationData) => dispatch(addReservation(_id, reservationData)),
     Auth:()=>dispatch( Auth()),
+    getSinglePost: (id) => dispatch(getSingleApiPost(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToState)(Reviewe);
-
-// export default Reviewe;
