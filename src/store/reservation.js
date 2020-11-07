@@ -19,6 +19,9 @@ let initialState = {
         ],
         fullname: "Loading ...",
       },
+      post:{
+        title:"loading ..."
+      }
     },
   ],
 };

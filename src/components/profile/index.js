@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Tabs, Tab, Row, Col, Nav } from 'react-bootstrap';
 import Reservation from './reservation'
 import UserPost from './post';
-
+import { Auth } from "../../store/checkAuth";
 import './style.scss';
 
 const Profile = props => {
@@ -131,6 +131,9 @@ const Profile = props => {
                                                                 </div>
                                                             </div>
                                                         </li>
+                                                        <Auth capability="update">
+                                                          <Reservation/>
+                                                        </Auth>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -144,7 +147,8 @@ const Profile = props => {
                     </Tab.Container>
                 </div>
             </div>
-            <Reservation/>
+
+            
 
         </main>
     );
