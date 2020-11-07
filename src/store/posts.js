@@ -11,7 +11,7 @@ let initialState = {
     title: "load",
     description: "load",
     username: "load",
-  }, ],
+  },],
   ActivePosts: [],
   choosedPost: {
     category: "loading",
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
       return {
         ...state, Posts: action.payload.result
       };
-      // assume receives category in the payload when choosing the category in the main page of the app
+    // assume receives category in the payload when choosing the category in the main page of the app
     case "filterPosts":
       return {
         ...state,
@@ -94,9 +94,9 @@ export const makeReservation = (post, user, date, address) => (dispatch) => {
 
 export const addReservation = (_id, reservationData) => {
   const config = {
-  headers: {
-    Authorization: `Bearer ${user.token}`
-  }
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
   };
   let data = {
     "$push": {
@@ -148,4 +148,36 @@ export const getPostsByUserName = () => (dispatch) => {
     });
     // dispatch(getSinglePost(data.data[0]));
   });
+}
+
+
+export const addPost = (title, description, category)=>{
+  console.log('inside',title, description, category)
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  };
+  let data = {
+    "username": user.user.username,
+    "porviderId": user.user._id,
+    "title": title,
+    "description": description,
+    "category": category,
+    "postedBy": user.user._id
+  };
+
+  console.log(data);
+  return axios.post(`${url}/post`,data,config).then(res => {
+        console.log('res', res);
+       
+        // dispatch({
+        //   // type: "getPostsUserName",
+        //   // payload: modify,
+        // });
+        return res
+
+// getAllApiPosts();
+      })
+    .catch(error => console.log(error.response));
 }
