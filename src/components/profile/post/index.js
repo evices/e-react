@@ -16,9 +16,9 @@ const PostByUser = props => {
     const [modalShow, setModalShow] = React.useState(false);
     const user = JSON.parse(localStorage.getItem("user"));
     
-    useEffect(() => {
-        setModalShow(false);
-      }, [props.isLoggedIn])
+    // useEffect(() => {
+    //     setModalShow(false);
+    //   }, [props.isLoggedIn])
 
 
     console.log(props.post.Posts);
