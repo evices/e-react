@@ -10,7 +10,7 @@ const PostByUser = props => {
     console.log(props)
     useEffect(() => {
         props.getPostsByUserName();
-    }, [props.post.Posts]);
+    }, []);
 
     console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
