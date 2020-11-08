@@ -131,7 +131,13 @@ const SignUp = (props) => {
                         </div>
                     </div>
                 </div>
+                <div class="backstretch">
+                      <div class="backstretch-item"><img alt="" src="images/main-bg.jpg" />
+                    </div>
+                </div>
             </div>
+                  
+
         </main>
     )
 
