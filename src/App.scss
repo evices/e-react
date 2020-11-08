@@ -3368,7 +3368,7 @@ textarea.sl-form-control,
   background: #fff;
 }
 .sl-registersignarea {
-  padding: 24px 30px 30px;
+  padding: 24px 30px 50px;
 }
 .sl-registersignarea__title h3 {
   font-size: 18px;
@@ -3529,9 +3529,12 @@ textarea.sl-form-control,
   padding: 0 85px;
 }
 .sl-registerarea__footer {
-  padding: 18px 30px;
+  padding: 25px 30px;
   border-top: 1px solid #eee;
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 48.7%;
 }
 .sl-registerarea__footer p {
   font-size: 13px;
@@ -3549,7 +3552,7 @@ textarea.sl-form-control,
 .sl-registercontent__img > img {
   width: 100%;
   height: 100%;
-  max-height: 752px;
+  max-height: 640px;
   object-fit: cover;
   object-position: center;
   opacity: 0.3;
@@ -4032,6 +4035,48 @@ textarea[name = 'comment'] {
       .post-img{
         height: 200px;
       }
+    }
+  }
+}
+.sl-newAppointments {
+  &__items {
+    position: relative;
+
+    .reservation-btn {
+      position: absolute;
+      top: calc(50% - 50px);
+      left: 50px;
+
+      .btn {
+        width: 50%;
+        display: block;
+        margin-bottom: 5px;
+
+        &:hover {
+          background-color: #006a71;
+          color: #fff!important;
+          border: #96bb7c solid 1px!important;
+        }
+
+        &:nth-child(2) {
+          &:hover {
+            background-color: #e8505b;
+            color: #fff!important;
+            border: 1px solid #ff847c!important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sl-dashboardbox {
+  &__title {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+
     }
   }
 }

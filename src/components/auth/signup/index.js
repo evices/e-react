@@ -28,28 +28,6 @@ const SignUp = (props) => {
                                         <div class="sl-registersignarea__title">
                                             <h3>سجل اليوم مجانا</h3>
                                         </div>
-                                        <ul class="nav sl-registertabs" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="sl-signupcustomer" data-toggle="tab"
-                                                    eventKey="first" role="tab" aria-selected="false">
-                                                    <span><i class="fa fa-check"></i></span>
-                                                    <h4><em>التسجيل</em> مستخدم زبون
-                                                    </h4>
-                                                    <i class="ti-info-alt toltip-content tipso_style"
-                                                        data-tipso="Custome"></i>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link active" id="sl-signupprovider" data-toggle="tab"
-                                                    eventKey="second" role="tab" aria-selected="true">
-                                                    <span><i class="fa fa-check"></i></span>
-                                                    <h4><em>التسجيل</em> كمقدم خدمة
-                                                    </h4>
-                                                    <i class="ti-info-alt toltip-content tipso_style"
-                                                        data-tipso="Provider"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
                                         <div class="tab-content sl-signup" id="pills-tabContent">
                                             <div class="tab-pane fade active show" id="signupprovider" role="tabpanel"
                                                 aria-labelledby="sl-signupprovider">
@@ -68,29 +46,20 @@ const SignUp = (props) => {
                                                                     data-tipso="name"></i>
                                                                 <input type="text" name="nickname"
                                                                     class="form-control sl-form-control"
-                                                                    placeholder="اسم مستعار" required="" />
+                                                                    placeholder="الاسم الاول والعائلة" required="" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="text" name="email"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="البريد الالكتروني" required="" onChange={(e) => setEmail(e.target.value)}/>
                                                             </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="text" name="name"
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="الاسم الاول" required="" />
-                                                            </div>
-                                                            <div class="form-group form-group-half">
-                                                                <input type="text" name="name"
-                                                                    class="form-control sl-form-control"
-                                                                    placeholder="اسم العائلة" required="" />
-                                                            </div>
+                                                            
                                                             <div class="form-group form-group-half">
                                                                 <div class="sl-select">
                                                                     <select>
-                                                                        <option hidden="">الجنس</option>
-                                                                        <option value="Male">ذكر</option>
-                                                                        <option value="Female">انثى</option>
+                                                                        <option hidden="">نوع المستخدم</option>
+                                                                        <option value="user">زبون</option>
+                                                                        <option value="seller">مقدم خدمة</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -145,7 +114,7 @@ const SignUp = (props) => {
                                         <img src="images/img-011.jpg" alt="img" />
                                         <figcaption>
                                             <strong class="sl-registerlogo">
-                                                <a href="index.html"><img src="images/loader.png"
+                                                <a href="index.html"><img src="/logo.png"
                                                     alt="Images Description" /></a>
                                             </strong>
                                             <div class="sl-registertitle">

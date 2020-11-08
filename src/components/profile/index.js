@@ -7,6 +7,8 @@ import { Auth } from "../../store/checkAuth";
 import './style.scss';
 
 const Profile = props => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
     return (
         <main class="sl-main">
             <div class="sl-main-section">
@@ -28,7 +30,7 @@ const Profile = props => {
                                                     </figure>
                                                 </div>
                                                 <div class="sl-title">
-                                                    <h3><a eventKey="home" href="javascript:void(0);"> وليد العفيفي</a></h3>
+                                                    <h3><a eventKey="home" href="javascript:void(0);">{user.user.fullname}</a></h3>
                                                 </div>
                                             </div>
                                             <nav id="sl-navdashboard" class="sl-navdashboard">
@@ -65,7 +67,7 @@ const Profile = props => {
                                                 </div>
                                                 <div class="sl-dashboardbox__content">
                                                     <ul>
-                                                    <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
+                                                    {/* <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
                                                             <div class="sl-newAppointments__detail">
                                                                 <div class="sl-newAppointments__userDetail">
                                                                     <div class="sl-newAppointments__userText">
@@ -130,9 +132,9 @@ const Profile = props => {
                                                                     <a href="javascript:void(0);" class="btn sl-btn sl-btn-md">التفاصيل</a>
                                                                 </div>
                                                             </div>
-                                                        </li>
+                                                        </li> */}
                                                         <Auth capability="update">
-                                                          <Reservation/>
+                                                            <Reservation/>
                                                         </Auth>
                                                     </ul>
                                                 </div>

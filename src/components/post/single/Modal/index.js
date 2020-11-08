@@ -17,9 +17,13 @@ function Model(props) {
     // console.log(selectedAddress);
     props.makeReservation(props.post, props.user, startDate.toLocaleDateString(), selectedAddress)
           .then( res => {
-            setSugesstion(res.sugesstion);
-            // renderSuggestion(res.sugesstion);
-            console.log(res.sugesstion);
+            if(res.sugesstion) {
+              setSugesstion(res.sugesstion ? res.sugesstion : []);
+              // renderSuggestion(res.sugesstion);
+              console.log(res.sugesstion);
+            } else {
+              props.onHide();
+            }
           });
   };
 
