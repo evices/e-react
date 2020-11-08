@@ -139,7 +139,7 @@ export const getSinglePost = (post) => {
 };
 
 export const getPostsByUserName = () => (dispatch) => {
-  let username = user.user.username;
+  let username = user ? user.user.username : null;
 
   return axios.get(`${url}/post`).then((data) => {
     console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
