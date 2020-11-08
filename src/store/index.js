@@ -6,9 +6,10 @@ import posts from "./posts"
 import categories  from "./categories";
 import checkAuth from './checkAuth';
 import reservation from './reservation'
+import messages from './messages'
 
 
-let reducers = combineReducers({auth,posts,checkAuth,categories,reservation});
+let reducers = combineReducers({auth,posts,checkAuth,categories,reservation,messages});
 
 const store = () => {
     return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))

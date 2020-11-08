@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Tabs, Tab, Row, Col, Nav } from 'react-bootstrap';
 import Reservation from './reservation'
 import UserPost from './post';
+import Messages from './massges'
 import { Auth } from "../../store/checkAuth";
 import './style.scss';
 
@@ -58,6 +59,7 @@ const Profile = props => {
                         </div>
                             <div class="col-lg-8 col-xl-9">
                                 <Tab.Content>
+                                
                                         <Tab.Pane eventKey="profile">
                                             <div class="sl-dashboardbox sl-newAppointments">
                                                 <div class="sl-dashboardbox__title">
@@ -140,6 +142,9 @@ const Profile = props => {
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="services">
                                             <UserPost />
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="messages">
+                                            <Messages/>
                                         </Tab.Pane>
                                 </Tab.Content>
                             </div>
