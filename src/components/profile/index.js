@@ -4,6 +4,7 @@ import { Tabs, Tab, Row, Col, Nav } from 'react-bootstrap';
 import Reservation from './reservation'
 import UserPost from './post';
 import { Auth } from "../../store/checkAuth";
+import FetchUser from "./fetch-profile"
 import './style.scss';
 
 const Profile = props => {
@@ -141,7 +142,12 @@ const Profile = props => {
                                         <Tab.Pane eventKey="services">
                                             <UserPost />
                                         </Tab.Pane>
+                                        <Tab.Pane eventKey="messages">
+                                            <FetchUser />
+                                        </Tab.Pane>
                                 </Tab.Content>
+                          
+
                             </div>
                         </div>
                     </Tab.Container>
