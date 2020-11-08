@@ -39,7 +39,8 @@ const Single = (props) => {
           <h6>الخدمة المطلوبة</h6>
           <ul>
             <li>
-              <p>{props.reserve.post.title}</p>
+              <p>{props.reserve.post ? props.reserve.post.title : ''}
+              </p>
             </li>
           </ul>
         </div>

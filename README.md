@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# <span style="color:#ff9a76; font-weight:700; font-size:24px">Evices</span>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The main feature of this website clients can contact the service providers, the provider can add services, and the client can comment on the service, add to favorite, and chat with the seller.
 
-## Available Scripts
+***
+## <span style="color:#07689f">Team member</span>
+1. [<span style="color:#84a9ac">Hussein AL Mohamad</span>](https://github.com/Hussein66253) <span style="font-size:24px">🙂</span>
+1. [<span style="color:#3b6978">Nedal Erekat</span>](https://github.com/Nedal-Erekat) <span style="font-size:24px">🧐</span>
+1. [<span style="color:#f09ae9">Sondos Matahen</span>](https://github.com/SondosMatahen) <span style="font-size:24px">🥳</span>
+1. [<span style="color:#204051">Waleed A. Afifi</span>](https://github.com/waleedafifi90) <span style="font-size:24px">😑</span>
 
-In the project directory, you can run:
 
-### `npm start`
+## User stories
+1. As a user, I want to be able to login into the website.
+1. As a user, I want to be able to login using Google.
+1. As a user, I want to see all categories in the main page.
+1. As a user, I want to select the service I need.
+1. As a user, I want to be able to add multiple addresses.
+1. As a user, I want to be able to book a service.
+1. As a provider, I want to be able to add new services.
+1. As a provider, I want to see all of my services as a list.
+1. As a user, I want to send a message to providers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Wireframe
+1. [Home](./wireframe/home.jpg)
+2. [Services list](./wireframe/service-list.jpg)
+3. [Single service page](./wireframe/single-page.jpg)
+4. [Auth page]((./wireframe/auth.jpg))
+5. [Reservation page](./wireframe/reservation.jpg)
+6. [Chat page](./wireframe/chat.jpg)
+7. [Contact us](./wireframe/contact-us.png) 
+8. [About us](./wireframe/about-us.png)
+9. Privacy and policy
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## HTML pages
+1. [Home](https://mr-code.com/evices/index.html)
+2. [Single service page](https://mr-code.com/evices/service-provider-single.html)
+3. [Signup page](https://mr-code.com/evices/register.html)
+4. [Contact us](https://mr-code.com/evices/contact.html) 
+5. [About us](https://mr-code.com/evices/aboutus.html)
 
-### `npm test`
+## npm Package
+- express
+- morgan
+- socket.io
+- mongoose
+- dotenv
+- bcrybt
+- jsonwebtoken
+- jest
+- @code-fellows/supergoose
+- base-64
+- cors
+- superagent
+- fs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## run app
+```
+// Using node
+$ node .
+$ node index.js
 
-### `npm run build`
+// Or using nodemon
+$ nodemon .
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Chat test
+After running th server you can go to the `http://localhost:3001` it will show a simple `HTML` page has an input to enter the username then click `join`, you can chat with others, to chat with specific user click on any username it will show another form to chat with that user.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## run test
+```
+$ npm run test
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We covered more that 90% in the test from 31 test case
 
-### `npm run eject`
+![test](./assets/img/test.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## .env file
+```
+PORT=3000
+MONGOOSE_URL=mongodb://localhost:27017/401midproject
+SECRET=evices
+CLIENT_ID=82394101385-jaqm9i6p3cdu3i374lgg1b9ao6gfnpe3.apps.googleusercontent.com
+CLIENT_SECRET=IBI9MQ0P5MTBZIyINtEQDDY0
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## API Documentation
+[Gitbook link](https://app.gitbook.com/@evices/s/evices-1/start)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Process UML
+![](./assets/img/uml.png)

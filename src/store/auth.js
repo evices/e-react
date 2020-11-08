@@ -1,8 +1,11 @@
 import AuthService from "./server";
 import React from 'react';
 import { If } from 'react-if';
+import axios from 'axios'
+
 
 const user = JSON.parse(localStorage.getItem("user"));
+let url = "https://evices-react.herokuapp.com";
 
 const initialState = user
     ? { isLoggedIn: true, user }
@@ -127,5 +130,27 @@ export const logout = () => (dispatch) => {
         type: "LOGOUT",
     });
 };
+
+export const editeProfile = (userData) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        }
+    };
+    let data = {
+        "fullname": userData.fullname,
+        "phone": userData.phone,
+    }
+    console.log('data>>', data);
+    return axios
+        .put(`${url}/user/${user.user._id}`, data, config)
+        .then(res => {
+            // console.log('>>>>>>>', res.data)
+            return res.data;
+            // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
+        })
+        .catch((error) => console.log(error.response));
+
+}
 
 
