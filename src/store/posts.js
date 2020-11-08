@@ -14,7 +14,7 @@ let initialState = {
   },],
   ActivePosts: [],
   choosedPost: {
-    category: "loading",
+    a: "loading",
     title: "load",
     description: "load",
     username: "load",
@@ -41,6 +41,12 @@ export default (state = initialState, action) => {
       };
 
     case 'getPostsUserName':
+      console.log('action postUserName', action);
+      return {
+        ...state, Posts: action.payload
+      };
+
+    case 'getPostsCategory':
       console.log('action postUserName', action);
       return {
         ...state, Posts: action.payload
@@ -151,8 +157,8 @@ export const getPostsByUserName = () => (dispatch) => {
 }
 
 
-export const addPost = (title, description, category)=>{
-  console.log('inside',title, description, category)
+export const addPost = (title, description, category) => {
+  console.log('inside', title, description, category)
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`
@@ -168,16 +174,37 @@ export const addPost = (title, description, category)=>{
   };
 
   console.log(data);
-  return axios.post(`${url}/post`,data,config).then(res => {
-        console.log('res', res);
-       
-        // dispatch({
-        //   // type: "getPostsUserName",
-        //   // payload: modify,
-        // });
-        return res
+  return axios.post(`${url}/post`, data, config).then(res => {
+    console.log('res', res);
 
-// getAllApiPosts();
-      })
+    // dispatch({
+    //   // type: "getPostsUserName",
+    //   // payload: modify,
+    // });
+    return res
+
+    // getAllApiPosts();
+  })
     .catch(error => console.log(error.response));
+}
+
+
+export const getPostsByCategory = (category) => (dispatch) => {
+  // let username = user.user.username;
+console.log('cat',decodeURI
+(category))
+  return axios.get(`${url}/post`).then((data) => {
+    console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
+
+    let modify = data.data.result.filter(post => {
+      return post.category == decodeURI
+      (category)
+    })
+    console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>");
+    dispatch({
+      type: "getPostsCategory",
+      payload: modify,
+    });
+    // dispatch(getSinglePost(data.data[0]));
+  });
 }
