@@ -153,4 +153,26 @@ export const editeProfile = (userData) => {
 
 }
 
+export const addAddress = (addressData) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    let data = {
+      "$push": {
+        "address": {
+          "address": addressData.addresses,
+          "phone": addressData.phoneAddresses
+        }
+      }
+    };
+  
+    console.log('?????????????',data);
+    return axios
+      .patch(
+       `${url}/user/${user.user._id}`, data, config)
+      .catch(error => console.log(error.response.data));
+  }
+
 

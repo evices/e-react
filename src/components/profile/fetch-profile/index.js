@@ -1,5 +1,7 @@
-import React , { Component } from 'react';
-import {editeProfile} from '../../../store/auth'
+import React, { Component } from 'react';
+import { editeProfile } from '../../../store/auth'
+import { addAddress } from '../../../store/auth'
+
 
 class UpdateUserInfo extends Component {
     constructor() {
@@ -29,16 +31,15 @@ class UpdateUserInfo extends Component {
         event.target.reset();
         if (this.validate()) {
             console.log(this.state);
-
-            // let input = {};
-            // input["name"] = this.user.user.fullName;
-            // input["phone"] = this.user.user.phone;
-            // input["addresses"] = this.user.user.addresses;
-            // this.setState({ input: input });
-            editeProfile(this.state.input).then(res=>{
-                console.log('38 user',res);
+            editeProfile(this.state.input).then(res => {
+                console.log('38 user', res);
             }
-                
+
+            )
+            addAddress(this.state.input).then(res => {
+                console.log('38 user', res);
+            }
+
             )
         }
     }
@@ -83,7 +84,8 @@ class UpdateUserInfo extends Component {
                             onChange={this.handleChange}
                             class="form-control"
                             placeholder={this.user.user.fullname}
-                            id="name" />
+                            id="name"
+                            required />
 
                         <div className="text-danger">{this.state.errors.name}</div>
                     </div>
@@ -91,7 +93,7 @@ class UpdateUserInfo extends Component {
 
                     <div class="form-group">
                         <label className="profileLable" for="phone"> رقم الهاتف:</label>
-                        <br/>
+                        <br />
                         <input type="tel"
                             id="phone"
                             name="phone"
@@ -106,7 +108,7 @@ class UpdateUserInfo extends Component {
                     </div>
 
 
-                    <div class="form-group">
+                    {/* <div class="form-group">
                         <label className="profileLable" for="addresses"> العنواين: </label>
                         <input
                             type="text"
@@ -118,11 +120,52 @@ class UpdateUserInfo extends Component {
                             id="addresses" />
 
                         <div className="text-danger">{this.state.errors.addresses}</div>
+                    </div> */}
+                    <div class="form-group">
+                        <label className="profileLable" for="addresses"> العنواين: </label>
+                        <input
+                            type="text"
+                            name="addresses"
+                            value={this.state.input.address}
+                            onChange={this.handleChange}
+                            class="form-control"
+                            placeholder={this.user.user.address[0].address}
+                            id="addresses" />
+                        <input
+                            type="text"
+                            name="phoneAddresses"
+                            value={this.state.input.phoneAddresses}
+                            onChange={this.handleChange}
+                            class="form-control"
+                            placeholder={this.user.user.address[0].phone}
+                            id="phoneAddresses" />
+
+                        <div className="text-danger">{this.state.errors.addresses}</div>
                     </div>
+                    <br />
+
 
                     <input type="submit" value="ارسال" class="btn btn-success btn-profile" />
                 </form>
+                <ul>
+                    {this.user.user.address.map((address, i) => {
+                        return (
+                            <li key={i}>
+                                <p>
+                                    {address.address}
+                                </p>
+                                <p>
+                                    {address.phone}
+                                </p>
+                            </li>
+
+                            )}
+                    )
+                }
+                </ul>
+
             </div>
+
         );
     }
 }
