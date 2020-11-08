@@ -5,6 +5,7 @@ import Reservation from './reservation'
 import UserPost from './post';
 import Messages from './massges'
 import { Auth } from "../../store/checkAuth";
+import FetchUser from "./fetch-profile"
 import './style.scss';
 
 const Profile = props => {
@@ -145,8 +146,11 @@ const Profile = props => {
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="messages">
                                             <Messages/>
+                                            <FetchUser />
                                         </Tab.Pane>
                                 </Tab.Content>
+                          
+
                             </div>
                         </div>
                     </Tab.Container>
