@@ -9,23 +9,30 @@ function Massges(props) {
   }, []);
 
   return (
-    <>
-      <If condition={props.messages.Messages.length}>
-        <Then>
-          {props.messages.Messages.map((message, i) => {
-            return (
-              <>
-                <h4>{message.sender_name}</h4>
-                <p>{message.message_text}</p>
-              </>
-            );
-          })}
-        </Then>
-        <Else>
-          <h1>There is not messages to show</h1>
-        </Else>
-      </If>
-    </>
+    <div class="sl-dashboardbox sl-newAppointments">
+      <div class="sl-dashboardbox__title">
+        <h2>المراسلات</h2>
+      </div>
+      <div class="sl-dashboardbox__content">
+        <ul>
+          <If condition={props.messages.Messages.length}>
+            <Then>
+              {props.messages.Messages.map((message, i) => {
+                return (
+                  <li key={i} class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
+                    <h4>from: ({message.sender_name})</h4>
+                    <p>{message.message_text}</p>
+                  </li>
+                );
+              })}
+            </Then>
+            <Else>
+              <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">There is not messages to show</li>
+            </Else>
+          </If>
+        </ul>
+      </div>
+    </div>
   );
 }
 const mapStateToProps = (state) => ({
@@ -35,5 +42,3 @@ const mapDispatchToProps = (dispatch) => ({
   getMessages: () => dispatch(getMessages()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Massges);
-
-
