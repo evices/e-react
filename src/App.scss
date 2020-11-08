@@ -1783,7 +1783,7 @@ p,
 }
 
 .sl-footer-section {
-  padding: 50px 0;
+  padding: 50px 0 0;
   text-align: right;
 }
 
@@ -1872,7 +1872,7 @@ header {
 }
 
 .sl-main-header {
-  background-color: #4c4c4c;
+  background-color: rgb(76, 76, 76);
   height: 85px;
 }
 
@@ -4041,9 +4041,45 @@ textarea[name="comment"] {
     }
   }
 }
+
 .sl-newAppointments {
+  .services-list {
+    height: 50px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__items {
     position: relative;
+    text-align: right;
+    // display: flex;
+    // justify-content: space-between;
+    
+    .delete-btn {
+      border: 1px solid #ddd;
+      height: 30px;
+      position: relative;
+      top: -5px;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 6px 9px;
+      border-radius: 5px;
+      color: #ff7043 !important;
+      font-size: 14px !important;
+    
+      &:hover {
+        color: #fff!important;
+        background-color: #ff7043;
+        border: 1px solid #ff7043;
+        cursor: pointer;
+      }
+    
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+      }
+    }
 
     .reservation-btn {
       position: absolute;
@@ -4071,17 +4107,32 @@ textarea[name="comment"] {
       }
     }
   }
-}
+  .sl-dashboardbox {
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px!important;
+      a {
+        color: #fff !important;
+        padding-top: 6px !important;
+        position: absolute;
+        top: 7px;
+        left: 30px;
+        height: 35px;
 
-.sl-dashboardbox {
-  &__title {
-    display: flex;
-    justify-content: space-between;
+      }
 
-    a {
+      p {
+        color: #fff;
+        margin: 0;
+        font-size: 17px!important;
+      }
     }
+
   }
 }
+
+
 .sl-registerfixed {
   right: 0;
   height: 100%;
@@ -4123,6 +4174,139 @@ textarea[name="comment"] {
         right: auto;
         bottom: auto;
       }
+    }
+  }
+}
+
+
+.profile-address-list {
+  clear: both;
+  height: 200px;
+  overflow: auto;
+  margin: 20px auto!important;
+  border: 1px solid #ccc;
+  padding: 0!important;
+  border-radius: 5px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    border-right: 0;
+    border-left: 0;
+
+    &:nth-last-child() {
+      border: none;
+    }
+
+    &:nth-child(1) {
+      background-color: #eeeeee;
+      p {
+        font-weight: 700!important;
+      }
+    }
+
+    p {
+      margin: 0;
+      line-height: 50px!important;
+    }
+  }
+}
+
+.sl-manageServices {
+  &__upload {
+    position: relative;
+    padding: 10px 10px 20px;
+  }
+
+  &__uploadarea {
+    background-color: #f7f7f7;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 186px;
+    padding: 30px;
+    text-align: center;
+    border-radius: 5px;
+
+    & > span {
+      font-size: 60px;
+      color: #ddd;
+      line-height: 73px;
+      padding-bottom: 4px;
+    }
+
+    h5 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.35em;
+      text-align: center
+    }
+
+    p {
+      font-size: 0.8125rem;
+      text-align: center;
+
+      input {
+        display: none;
+      }
+
+      label {
+        cursor: copy;
+      }
+
+      span {
+        color: #55acee;
+      }
+
+      i {
+        font-size: 13px;
+        color: #999;
+      }
+    }
+
+    .tipso_style {
+      border-bottom: 0;
+    }
+
+    svg {
+      position: absolute;
+      fill: transparent;
+      stroke: #ddd;
+      left: 0;
+      right: 0;
+      margin: auto;
+      overflow: visible;
+      z-index: -1;
+      padding: 0 1px;
+      width: 100%;
+      top: 0;
+    }
+
+    rect {
+      stroke-width: 2px;
+      stroke-dasharray: 12, 12;
+      rx: 4px;
+      height: 243px;
+    }
+  }
+}
+
+.sl-form__wrap {
+  display: flex;
+  flex-wrap: wrap;
+
+  .form-group-half {
+    width: 50%;
+  }
+}
+
+.profile-edit-form {
+  .sl-dashboardbox {
+
+    &__content {
+      padding: 30px;
+      border: 1px solid #ddd;
+      border-radius: 0 0 4px 4px;
     }
   }
 }

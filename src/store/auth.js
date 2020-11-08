@@ -131,21 +131,45 @@ export const logout = () => (dispatch) => {
     });
 };
 
-export const editeProfile = (userData) => {
+export const uploadImage = (file) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${user.token}`
+            "Content-Type": "multipart/form-data",
         }
     };
+
+    let data = new FormData();
+
+    data.append('photo', file);
+    return axios
+    .post(`${url}/upload`, data, config)
+    .then(res => {
+        console.log('>>>>>>>', res.data)
+        return res.data;
+        // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
+    })
+    .catch((error) => console.log(error.response));
+
+
+}
+export const editeProfile = (userData, userImage) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${user.token}`,
+        }
+    };
+
     let data = {
         "fullname": userData.fullname,
         "phone": userData.phone,
+        "user_image": `${url}/${userImage}`
     }
+
     console.log('data>>', data);
     return axios
         .put(`${url}/user/${user.user._id}`, data, config)
         .then(res => {
-            // console.log('>>>>>>>', res.data)
+            console.log('>>>>>>>', res.data)
             return res.data;
             // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
         })
@@ -155,24 +179,32 @@ export const editeProfile = (userData) => {
 
 export const addAddress = (addressData) => {
     const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        }
     };
     let data = {
-      "$push": {
-        "address": {
-          "address": addressData.addresses,
-          "phone": addressData.phoneAddresses
+        "$push": {
+            "address": {
+            "address": addressData.addresses,
+            "phone": addressData.phoneAddresses
+            }
         }
-      }
     };
-  
+
     console.log('?????????????',data);
     return axios
-      .patch(
-       `${url}/user/${user.user._id}`, data, config)
-      .catch(error => console.log(error.response.data));
-  }
+    .patch(
+        `${url}/user/${user.user._id}`, data, config)
+    .then(res => {
+        let newData = {
+            "token": user.token,
+            "user": res.data
+        }
+
+        localStorage.setItem("user", JSON.stringify(newData));
+    })
+    .catch(error => console.log(error.response.data));
+}
 
 
