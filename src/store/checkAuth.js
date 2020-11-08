@@ -28,7 +28,7 @@ export default function (state = initialState, action) {
 
 export const Auth = (props) => {
     console.log('insideauth', props)
-    let ok = user.user.capabilities.includes(props.capability) ? true : false
+    let ok = user ? (user.user.capabilities.includes(props.capability) ? true : false) : false
     // let ok = (props.capability ? user.user.capabilities.includes(props.capability) : true);
     console.log('ok', ok)
 
