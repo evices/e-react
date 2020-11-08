@@ -3,6 +3,7 @@ import Login from '../auth/login';
 import { If, Then, Else } from 'react-if';
 import { connect } from 'react-redux';
 import { logout } from "../../store/auth";
+import { Link } from 'react-router-dom';
 
 
 const Header = (props) => {
@@ -82,10 +83,10 @@ const Header = (props) => {
 
                                     <ul className="sl-usermenu">
                                         <li>
-                                            <a href="dashboard-profile-settings.html">
-                                                <i className="ti-user" />
-                                                <span>الملف الشخصي</span>
-                                            </a>
+                                        <Link to='/Profile'>
+                                            <i className="ti-user" />
+                                            <span>الملف الشخصي</span>
+                                        </Link>
                                         </li>
                                         <li>
 

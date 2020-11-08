@@ -15,6 +15,8 @@ function PostDetails(props) {
   const postedBy = props.post.postedBy || [];
     return (
         <div>
+
+            
             <div class="sl-appointment">
                 <div class="sl-appointment__img">
                     <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/carpenter-business-logo-design-template-5632141ba6b9d45705f958c4daf08a26_screen.jpg?ts=1570483249"
