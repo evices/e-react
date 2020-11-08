@@ -56,7 +56,7 @@ const Service = (props) => {
                             <input type="text" class="form-control sl-form-control" placeholder="العنوان" onChange={(e) => {setTitle(e.target.value); setPost(e.target.value)}} />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control sl-form-control" placeholder="الوصف" onChange={(e) => setDescription(e.target.value)} />
+                            <textarea  class="form-control sl-form-control" placeholder="وصف الخدمة" onChange={(e) => setDescription(e.target.value)} />
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control sl-form-control" placeholder="نوع الخدمة" onChange={(e) => setCategory(e.target.value)} />
