@@ -27,7 +27,7 @@ console.log('submit',title,categorey);
 
     return (
         <header>
-                        <div className="sl-main-header">
+            <div className="sl-main-header">
                 <strong className="sl-main-header__logo">
                     <a href="/">
                         <img src="/logo.png" alt="Logo" />
@@ -35,6 +35,21 @@ console.log('submit',title,categorey);
                 </strong>
                 <div className="sl-main-header__content">
                     <div className="sl-main-header__upper">
+                        <nav class="navbar-expand-lg">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="lnr lnr-menu"></i>
+                            </button>
+                            <div class="collapse navbar-collapse sl-navigation" id="slMainNavbar">
+                                <ul class="navbar-nav mr-auto sl-navbar-nav">
+                                    <li class="nav-item menu-item-has-mega-menu">
+                                        <a class="nav-link" href="javascript:void(0);">الرئيسية</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                         <form className="sl-main-form">
                             <div className="sl-form-group sl-main-form__input1">
                                 <input onChange={(e) => setTitle(e.target.value)}

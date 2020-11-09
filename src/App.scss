@@ -2726,9 +2726,7 @@ main {
     display: block;
   }
 
-  .sl-navbar-search .sl-main-form__btn,
-  .sl-navbar-search .sl-topbar-notify,
-  .sl-navbar-search .sl-user {
+  .sl-navbar-search .sl-main-form__btn, .sl-navbar-search > a, .sl-navbar-search nav {
     display: none;
   }
 }
