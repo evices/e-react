@@ -14,7 +14,16 @@ const LogIn = (props) => {
 
     const responseGoogle = (response) => {
         console.log(response);
-      }
+        let obj=response.profileObj
+        let username=obj.email;
+        // let email=obj.email;
+        let password='1234';
+        // let role='user';
+        // let phone='';
+        // let fullname=obj.name
+        console.log('index.log', username, password)
+        props.login(username, password)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -60,15 +69,12 @@ const LogIn = (props) => {
                         {/* <li><a href="javascript:void(0);" class="sl-facebookbox"><i class="fab fa-facebook-f"></i>Via facebook</a></li> */}
                         <li><a href="http://localhost:3002/google" class="sl-googlebox"><i class="fab fa-google"></i>التسجيل بواسطة جوجل</a></li>
 
-                        {/* <GoogleLogin
-                            clientId="82394101385-jaqm9i6p3cdu3i374lgg1b9ao6gfnpe3.apps.googleusercontent.com
-                            "
-                            buttonText="التسجيل بواسطة جوج"
-                            onSuccess={this.responseGoogle}
-                            onFailure={this.responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                            
-                        /> */}
+                        <GoogleLogin
+                            clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
+                            onSuccess={responseGoogle}
+                            isSignedIn={true}
+
+                        />
                     </ul>
                 </div>
             </Modal.Body>

@@ -29,35 +29,35 @@ const Main = withRouter(({ location }) => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/posts'>
-            <Posts />
-          </Route>
-          <Route exact path='/single/:id' >
-            <SinglePost />
-          </Route>
-          <Route exact path='/categories'>
-            <Categories />
-          </Route>
-          <Route exact path='/posts/category/:id' component={PostsCategory} />
-          <Route exact path='/posts/:title/:category' component={PostsSearch} />
-         
-          <Route exact path='/about' component={AboutPage} />
-          <Route exact path='/contact' component={ContactPage} />
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/postsuser' component={PostsUser} />
-          <Route exact path='/profile' component={Profile} />
-          <Route component={PageNotFound} />
+          <Posts />
+        </Route>
+        <Route exact path='/single/:id' >
+          <SinglePost />
+        </Route>
+        <Route exact path='/categories'>
+          <Categories />
+        </Route>
+        <Route exact path='/posts/category/:id' component={PostsCategory} />
+        <Route exact path='/posts/:title/:category' component={PostsSearch} />
+
+        <Route exact path='/about' component={AboutPage} />
+        <Route exact path='/contact' component={ContactPage} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/postsuser' component={PostsUser} />
+        <Route exact path='/profile' component={Profile} />
+        <Route component={PageNotFound} />
       </Switch>
-        {
-          location.pathname !== '/signup' && <Footer />
-        }
+      {
+        location.pathname !== '/signup' && <Footer />
+      }
     </React.Fragment>
   )
 });
 function App() {
   return (
-      <BrowserRouter>
-        <Main />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Main />
+    </BrowserRouter>
   );
 }
 

@@ -46,9 +46,12 @@ console.log('submit',title,categorey);
                                 <div className="sl-select">
                                     <select onChange={(e) => setCategory(e.target.value)}>
                                         <option hidden>التصنيفات</option>
-                                        <option>خدمات الصيانة</option>
+                                        <option>خدمات السباكة</option>
                                         <option>خدمات النجارة</option>
+                                        <option>خدمات السيارات</option>
+                                        <option>خدمات النظافة</option>
                                         <option>خدمات الحدادة</option>
+
                                     </select>
                                 </div>
                             </div>

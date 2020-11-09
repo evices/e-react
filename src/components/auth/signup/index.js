@@ -4,21 +4,43 @@ import { register } from "../../../store/auth";
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 
+import  Redirect from 'react-router-dom';
 
 const SignUp = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState(' ');
+    const [role, setRole] = useState(' ');
+    const [phone, setPhone] = useState(' ');
+    const [fullname, setFullname] = useState(' ');
 
-    const responseGoogle = (response) => {
-        console.log(response);
+    const responseGoogle =async (response) => {
+        console.log(response.profileObj);
+        let obj=response.profileObj
+        let username=obj.email;
+        let email=obj.email;
+        let password='1234';
+        let role='user';
+        let phone='';
+        let fullname=obj.name
+        console.log('index.log', username, email, password, role, phone, fullname)
+
+        props.register(username, email, password, role, phone, fullname).then(res => {
+            console.log(res);
+            return props.history.push('/');
+        })
+
+
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('index.log', username, email, password)
-        props.register(username, email, password)
+        props.register(username, email, password, role, phone, fullname).then(res => {
+            console.log(res);
+            return props.history.push('/');
+        })
     }
 
     return (
@@ -51,7 +73,7 @@ const SignUp = (props) => {
                                                                     data-tipso="name"></i>
                                                                 <input type="text" name="nickname"
                                                                     class="form-control sl-form-control"
-                                                                    placeholder="الاسم الاول والعائلة" required="" />
+                                                                    placeholder="الاسم الاول والعائلة" required="" onChange={(e) => setFullname(e.target.value)}/>
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="text" name="email"
@@ -61,7 +83,7 @@ const SignUp = (props) => {
                                                             
                                                             <div class="form-group form-group-half">
                                                                 <div class="sl-select">
-                                                                    <select>
+                                                                    <select onChange={(e) => setRole(e.target.value)}>
                                                                         <option hidden="">نوع المستخدم</option>
                                                                         <option value="user">زبون</option>
                                                                         <option value="seller">مقدم خدمة</option>
@@ -71,7 +93,7 @@ const SignUp = (props) => {
                                                             <div class="form-group form-group-half">
                                                                 <input type="number" name="Phone"
                                                                     class="form-control sl-form-control"
-                                                                    placeholder="رقم الهاتف" required="" />
+                                                                    placeholder="رقم الهاتف" required="" onChange={(e) => setPhone(e.target.value)}/>
                                                             </div>
                                                             <div class="form-group form-group-half">
                                                                 <input type="password" name="password"
@@ -108,7 +130,7 @@ const SignUp = (props) => {
                                                     
                 <GoogleLogin
                     clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
-                    buttonText="login"
+                    buttonText="التسجيل بواسطة جوجل"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}

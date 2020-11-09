@@ -2,15 +2,13 @@ import axios from "axios";
 
 const API_URL = "https://evices-react.herokuapp.com/";
 
-const register = (username, email, password) => {
-  console.log('user server', username, email, password)
+const register = (username, email, password, role, phone, fullname) => {
+  console.log('user server', username, email, password, role, phone, fullname)
 
   return axios.post(API_URL + "signup", {
-    username,
-    email,
-    password,
+    username, email, password, role, phone, fullname
   }).then((response) => {
-    console.log('signup response', response)
+    return response.data;
   });
 };
 
