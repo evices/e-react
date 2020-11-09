@@ -4,18 +4,27 @@ import { If, Then, Else } from 'react-if';
 import { connect } from 'react-redux';
 import { logout } from "../../store/auth";
 import { Link } from 'react-router-dom';
+import {getPostsBySearch} from '../../store/posts'
 
 
 const Header = (props) => {
     console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
+    const [title,setTitle]=React.useState(null);
+    const [categorey,setCategory]=React.useState(null)
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
         setModalShow(false);
       }, [props.isLoggedIn])
 
-    
+    function handdelSubmit(){
+console.log('submit',title,categorey);
+// props.getPostsBySearch(title,categorey);
+
+    };
+
     return (
         <header>
                         <div className="sl-main-header">
@@ -28,14 +37,14 @@ const Header = (props) => {
                     <div className="sl-main-header__upper">
                         <form className="sl-main-form">
                             <div className="sl-form-group sl-main-form__input1">
-                                <input
+                                <input onChange={(e) => setTitle(e.target.value)}
                                     className="form-control sl-form-control"
                                     type="text"
                                     placeholder="ابحث" />
                             </div>
                             <div className="sl-form-group sl-main-form__input3">
                                 <div className="sl-select">
-                                    <select>
+                                    <select onChange={(e) => setCategory(e.target.value)}>
                                         <option hidden>التصنيفات</option>
                                         <option>خدمات الصيانة</option>
                                         <option>خدمات النجارة</option>
@@ -45,8 +54,8 @@ const Header = (props) => {
                             </div>
                         </form>
                         <div className="sl-input-group">
-                            <a
-                                href="javascript:void(0);"
+                            <a onClick={handdelSubmit}
+                                href={"/posts/"+title+"/"+categorey}
                                 className="btn sl-btn sl-btn-active sl-advance-btn">
                                 <span>بحث</span>
                                 <span>
@@ -134,7 +143,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-    logout
+    logout,
+    getPostsBySearch,
+
 };
 
 
