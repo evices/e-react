@@ -4,6 +4,7 @@ import Modal from '../Modal';
 
 import { connect } from "react-redux";
 import { getSingleApiPost } from "../../../../store/posts";
+import { sendMessage } from "../../../../store/messages";
 import _ from "lodash";
 
 function PostDetails(props) {
@@ -81,6 +82,10 @@ function PostDetails(props) {
                                             </ul>
                                             <a href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
                                                 data-target="#contactpopup">Chat</a>
+                                                <form onSubmit={(e)=>{e.preventDefault();props.sendMessage(props.user, props.post, e.target.msg.value)}}>
+                                                    <input type="text" name="msg" />
+                                                    <button>send</button>
+                                                </form>
                                         </div>
                                     </div>
                                 </div>
@@ -109,9 +114,11 @@ function PostDetails(props) {
 }
 const mapStateToProps = (state) => ({
   post: state.posts.choosedPost,
+  user: state.auth.user,
 });
 const mapDispatchToState = (dispatch) => ({
   getSinglePost: (id) => dispatch(getSingleApiPost(id)),
+  sendMessage: (sender, receiver, msg)=> dispatch(sendMessage(sender, receiver, msg))
 });
 
 export default connect(mapStateToProps, mapDispatchToState)(PostDetails);
