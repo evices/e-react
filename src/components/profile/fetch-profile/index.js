@@ -50,11 +50,12 @@ class UpdateUserInfo extends Component {
             }
 
             )
-            addAddress(this.state.input).then(res => {
-                console.log('38 user', res);
-            }
 
-            )
+            if(this.state.input.address) {
+                addAddress(this.state.input).then(res => {
+                    console.log('38 user', res);
+                })
+            }
         // }
     }
 

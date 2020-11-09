@@ -171,7 +171,6 @@ export const editeProfile = (userData, userImage) => {
         .then(res => {
             console.log('>>>>>>>', res.data)
             return res.data;
-            // if(res.data.message==='This job already booked and approved') dispatch(showsaggestion(res.data.message))
         })
         .catch((error) => console.log(error.response));
 

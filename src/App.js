@@ -10,7 +10,7 @@ import Signup from './components/auth/signup';
 import Posts from './components/post';
 import Categories from './components/category';//////
 import PageNotFound from './components/404';
-import PostsCategory from './components/post/postsByCat'
+import PostsCategory from './components/post/postsByCat';
 
 import Profile from './components/profile';
 
