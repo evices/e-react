@@ -53,7 +53,9 @@ export default function (state = initialState, action) {
 
 
 export const register = (username, email, password, role, phone, fullname) => (dispatch) => {
-    console.log('usernewwwwwwww', username, email, password, role, phone, fullname)
+
+    console.log('user', username, email, password, role, phone, fullname)
+
 
     return AuthService.register(username, email, password, role, phone, fullname).then(
         (response) => {

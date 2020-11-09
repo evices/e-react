@@ -2,9 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { register } from "../../../store/auth";
 import { connect } from 'react-redux';
+
 import { GoogleLogin } from 'react-google-login';
 
-import  Redirect from 'react-router-dom';
+
+import  Redirect from 'react-router-dom'
+
 
 const SignUp = (props) => {
 
@@ -14,6 +17,7 @@ const SignUp = (props) => {
     const [role, setRole] = useState(' ');
     const [phone, setPhone] = useState(' ');
     const [fullname, setFullname] = useState(' ');
+
 
     const responseGoogle =async (response) => {
         console.log(response.profileObj);
@@ -25,6 +29,7 @@ const SignUp = (props) => {
         let phone='';
         let fullname=obj.name
         console.log('index.log', username, email, password, role, phone, fullname)
+
 
         props.register(username, email, password, role, phone, fullname).then(res => {
             console.log(res);
