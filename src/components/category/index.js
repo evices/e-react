@@ -24,12 +24,12 @@ function Categories(props) {
                 <div className="sl-col sl-col-sm-1-of-2 sl-col-md-1-of-3 sl-col-lg-1-of-4 sl-col-xl-1-of-5">
                   <div className="sl-category__service">
                     <img
-                      src={'images/index/category/img-0' + idx++ + '.jpg'}
+                      src={'images/index/category/' + category + '.png'}
                       alt="image Description"
                     />
                     <div className="sl-category__description">
                       <h5>{category}</h5>
-                      <span>4,982 خدمة</span>
+                      {/* <span>4,982 خدمة</span> */}
                     </div>
                     <a  href={"/posts/category/"+category} className="sl-category__icon" >
                       <i className="ti-arrow-right" />

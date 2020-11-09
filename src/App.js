@@ -37,8 +37,8 @@ const Main = withRouter(({ location }) => {
           <Route exact path='/categories'>
             <Categories />
           </Route>
-          <Route exact path='/posts/:title/:category' component={PostsSearch} />
           <Route exact path='/posts/category/:id' component={PostsCategory} />
+          <Route exact path='/posts/:title/:category' component={PostsSearch} />
           <Route exact path='/about' component={AboutPage} />
           <Route exact path='/contact' component={ContactPage} />
           <Route exact path='/signup' component={Signup} />
