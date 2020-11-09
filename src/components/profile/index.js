@@ -9,6 +9,8 @@ import FetchUser from "./fetch-profile"
 import './style.scss';
 
 const Profile = props => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
     return (
         <main class="sl-main">
             <div class="sl-main-section">
@@ -26,11 +28,11 @@ const Profile = props => {
                                             <div class="sl-usersinfo">
                                                 <div class="single-chart">
                                                     <figure class="sl-userprofileimg">
-                                                        <img src="https://www.seekpng.com/png/detail/53-535515_view-original-cool-guy-cartoon-png.png" alt="img description" />
+                                                        <img src={user.user ? user.user.user_image : "https://www.seekpng.com/png/detail/53-535515_view-original-cool-guy-cartoon-png.png"} alt="img description" />
                                                     </figure>
                                                 </div>
                                                 <div class="sl-title">
-                                                    <h3><a eventKey="home" href="javascript:void(0);"> وليد العفيفي</a></h3>
+                                                    <h3><a eventKey="home" href="javascript:void(0);">{user.user.fullname}</a></h3>
                                                 </div>
                                             </div>
                                             <nav id="sl-navdashboard" class="sl-navdashboard">
@@ -41,7 +43,9 @@ const Profile = props => {
                                                     <li>
                                                         <Nav.Link eventKey="services"><i class="ti-shopping-cart"></i><span>خدماتي</span></Nav.Link>
                                                     </li>
-                                                    
+                                                    <li>
+                                                        <Nav.Link eventKey="reservation"><i class="ti-shopping-cart"></i><span>الحجوزات</span></Nav.Link>
+                                                    </li>
                                                     <li>
                                                         <Nav.Link eventKey="messages"><i class="ti-email"></i><span>المراسلات</span></Nav.Link>
                                                     </li>
@@ -61,81 +65,15 @@ const Profile = props => {
                             <div class="col-lg-8 col-xl-9">
                                 <Tab.Content>
                                 
-                                        <Tab.Pane eventKey="profile">
+                                        <Tab.Pane eventKey="reservation">
                                             <div class="sl-dashboardbox sl-newAppointments">
                                                 <div class="sl-dashboardbox__title">
-                                                    <h2>الخدمات المحجوزة</h2>
+                                                    <p>الخدمات المحجوزة</p>
                                                 </div>
                                                 <div class="sl-dashboardbox__content">
                                                     <ul>
-                                                    <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
-                                                            <div class="sl-newAppointments__detail">
-                                                                <div class="sl-newAppointments__userDetail">
-                                                                    <div class="sl-newAppointments__userText">
-                                                                        <div class="sl-slider__tags">
-                                                                            <span class="sl-bg-green">جديد</span>
-                                                                        </div>
-                                                                        <h5><a href="javascript:void(0);">وليد العفيفي</a></h5>
-                                                                        <p>Nov 11, @ 10:30am</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="sl-newAppointments__services">
-                                                                    <div class="sl-newAppointments__services--description">
-                                                                        <h6>الخدمة المطلوبة</h6>
-                                                                        <ul>
-                                                                            <li><p>صيانة التمديدات الصحية</p></li>
-                                                                        </ul>                                            
-                                                                    </div>
-                                                                    <a href="javascript:void(0);" class="btn sl-btn sl-btn-md">التفاصيل</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
-                                                            <div class="sl-newAppointments__detail">
-                                                                <div class="sl-newAppointments__userDetail">
-                                                                    <div class="sl-newAppointments__userText">
-                                                                        <div class="sl-slider__tags">
-                                                                            <span class="sl-bg-green">جديد</span>
-                                                                        </div>
-                                                                        <h5><a href="javascript:void(0);">وليد العفيفي</a></h5>
-                                                                        <p>Nov 11, @ 10:30am</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="sl-newAppointments__services">
-                                                                    <div class="sl-newAppointments__services--description">
-                                                                        <h6>الخدمة المطلوبة</h6>
-                                                                        <ul>
-                                                                            <li><p>صيانة التمديدات الصحية</p></li>
-                                                                        </ul>                                            
-                                                                    </div>
-                                                                    <a href="javascript:void(0);" class="btn sl-btn sl-btn-md">التفاصيل</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
-                                                            <div class="sl-newAppointments__detail">
-                                                                <div class="sl-newAppointments__userDetail">
-                                                                    <div class="sl-newAppointments__userText">
-                                                                        <div class="sl-slider__tags">
-                                                                            <span class="sl-bg-green">جديد</span>
-                                                                        </div>
-                                                                        <h5><a href="javascript:void(0);">وليد العفيفي</a></h5>
-                                                                        <p>Nov 11, @ 10:30am</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="sl-newAppointments__services">
-                                                                    <div class="sl-newAppointments__services--description">
-                                                                        <h6>الخدمة المطلوبة</h6>
-                                                                        <ul>
-                                                                            <li><p>صيانة التمديدات الصحية</p></li>
-                                                                        </ul>                                            
-                                                                    </div>
-                                                                    <a href="javascript:void(0);" class="btn sl-btn sl-btn-md">التفاصيل</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
                                                         <Auth capability="update">
-                                                          <Reservation/>
+                                                            <Reservation/>
                                                         </Auth>
                                                     </ul>
                                                 </div>
@@ -146,11 +84,12 @@ const Profile = props => {
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="messages">
                                             <Messages/>
+                                        </Tab.Pane>
+
+                                        <Tab.Pane eventKey="profile">
                                             <FetchUser />
                                         </Tab.Pane>
                                 </Tab.Content>
-                          
-
                             </div>
                         </div>
                     </Tab.Container>

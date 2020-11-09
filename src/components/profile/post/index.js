@@ -26,27 +26,23 @@ const PostByUser = props => {
     return (
         <div class="sl-dashboardbox sl-newAppointments">
             <div class="sl-dashboardbox__title">
-                <h2>خدماتي</h2>
-                
-           
-                <a href="#" onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" data-target="#loginpopup">
-                                تسجيل خدمة  
-                                                    
-                </a>
-
+                <p>خدماتي</p>
+                <a href="#" onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" className="btn sl-btn sl-btn-md" data-target="#loginpopup">تسجيل خدمة</a>
                 <Service
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                 />
-                                    
-                    
             </div>
             <div class="sl-dashboardbox__content">
                 <ul>
                     {
                         post.map(item => {
                             return (
-                            <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">{item.title}</li>
+                                <li class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread services-list">
+                                    {item.title}
+                                    {/* <a className="delete-btn">حذف</a> */}
+                                    <a className="delete-btn"><i class="fas fa-trash"></i></a>
+                                </li>
                             )
                         })
                     }

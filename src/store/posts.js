@@ -1,6 +1,6 @@
-import {
-  act
-} from "@testing-library/react";
+// import {
+//   act
+// } from "@testing-library/react";
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -47,10 +47,17 @@ export default (state = initialState, action) => {
       };
 
     case 'getPostsCategory':
-      console.log('action postUserName', action);
+      console.log('action getPostsCategory', action);
       return {
         ...state, Posts: action.payload
       };
+
+    case 'getPostsSearch':
+      console.log('action getPostsSearch', action);
+      return {
+        ...state, Posts: action.payload
+      };
+
 
     default:
       return state;
@@ -79,12 +86,12 @@ export const makeReservation = (post, user, date, address) => (dispatch) => {
   };
   let data = {
     "user_id": user.user._id,
-    "provider_id": post.providerId,
+    "provider_id": post.porviderId,
     "post_id": post._id,
     'book_date': date,
     'address': address,
     "client": user.user._id,
-    "provider": post.providerId,
+    "provider": post.porviderId,
     "post": post._id,
   }
   console.log('data>>', data);
@@ -191,14 +198,14 @@ export const addPost = (title, description, category) => {
 
 export const getPostsByCategory = (category) => (dispatch) => {
   // let username = user.user.username;
-console.log('cat',decodeURI
-(category))
+  console.log('cat', decodeURI
+    (category))
   return axios.get(`${url}/post`).then((data) => {
     console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
 
     let modify = data.data.result.filter(post => {
       return post.category == decodeURI
-      (category)
+        (category)
     })
     console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>");
     dispatch({
@@ -207,4 +214,60 @@ console.log('cat',decodeURI
     });
     // dispatch(getSinglePost(data.data[0]));
   });
+}
+
+
+export const getPostsBySearch = (title, category) => (dispatch) => {
+
+console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
+  if (title!='null'  && category !=='null') {
+
+    return axios.get(`${url}/post`).then((data) => {
+      console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>1");
+
+      let modify = data.data.result.filter(post => {
+        return post.category == decodeURI(category) && post.title == decodeURI(title)
+      })
+      console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>1");
+      dispatch({
+        type: "getPostsSearch",
+        payload: modify,
+      });
+      // dispatch(getSinglePost(data.data[0]));
+    });
+
+
+  } else if (title!='null') {
+
+    return axios.get(`${url}/post`).then((data) => {
+      console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>2");
+
+      let modify = data.data.result.filter(post => {
+        return post.title == decodeURI(title)
+      })
+      console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>2");
+      dispatch({
+        type: "getPostsSearch",
+        payload: modify,
+      });
+      // dispatch(getSinglePost(data.data[0]));
+    });
+  } else if (category!='null') {
+
+    return axios.get(`${url}/post`).then((data) => {
+      console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
+
+      let modify = data.data.result.filter(post => {
+        return post.category == decodeURI(category)
+      })
+      console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>3");
+      dispatch({
+        type: "getPostsSearch",
+        payload: modify,
+      });
+      // dispatch(getSinglePost(data.data[0]));
+    });
+
+  }
+
 }

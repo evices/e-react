@@ -11,7 +11,7 @@ import Posts from './components/post';
 import Categories from './components/category';//////
 import PageNotFound from './components/404';
 import PostsCategory from './components/post/postsByCat'
-
+import PostsSearch from './components/postsBySearch'
 import Profile from './components/profile';
 
 import './components/common/assets/Fontawesome-all.css';
@@ -37,6 +37,7 @@ const Main = withRouter(({ location }) => {
           <Route exact path='/categories'>
             <Categories />
           </Route>
+          <Route exact path='/posts/:title/:category' component={PostsSearch} />
           <Route exact path='/posts/category/:id' component={PostsCategory} />
           <Route exact path='/about' component={AboutPage} />
           <Route exact path='/contact' component={ContactPage} />
