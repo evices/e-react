@@ -52,10 +52,10 @@ export default function (state = initialState, action) {
 
 
 
-export const register = (username, email, password) => (dispatch) => {
-    console.log('user', username, email, password)
+export const register = (username, email, password, role, phone, fullname) => (dispatch) => {
+    console.log('user', username, email, password, role, phone, fullname)
 
-    return AuthService.register(username, email, password).then(
+    return AuthService.register(username, email, password, role, phone, fullname).then(
         (response) => {
             dispatch({
                 type: "REGISTER_SUCCESS",
@@ -65,8 +65,8 @@ export const register = (username, email, password) => (dispatch) => {
             //   type: SET_MESSAGE,
             //   payload: response.data.message,0
             // });
-
-            return Promise.resolve();
+            return response;
+            // return Promise.resolve();
         },
         (error) => {
             const message =
