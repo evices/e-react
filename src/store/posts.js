@@ -268,6 +268,22 @@ console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
       // dispatch(getSinglePost(data.data[0]));
     });
 
+  }   else  {
+
+    return axios.get(`${url}/post`).then((data) => {
+      console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
+
+      // let modify = data.data.result.filter(post => {
+      //   return post.category == decodeURI(category)
+      // })
+      // console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>3");
+      dispatch({
+        type: "getPostsSearch",
+        payload: data.data.result,
+      });
+      // dispatch(getSinglePost(data.data[0]));
+    });
+
   }
 
 }
