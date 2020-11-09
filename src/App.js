@@ -29,6 +29,7 @@ const Main = withRouter(({ location }) => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/posts'>
+
             <Posts />
           </Route>
           <Route exact path='/single/:id' >
@@ -45,18 +46,19 @@ const Main = withRouter(({ location }) => {
           <Route exact path='/postsuser' component={PostsUser} />
           <Route exact path='/profile' component={Profile} />
           <Route component={PageNotFound} />
+
       </Switch>
-        {
-          location.pathname !== '/signup' && <Footer />
-        }
+      {
+        location.pathname !== '/signup' && <Footer />
+      }
     </React.Fragment>
   )
 });
 function App() {
   return (
-      <BrowserRouter>
-        <Main />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Main />
+    </BrowserRouter>
   );
 }
 

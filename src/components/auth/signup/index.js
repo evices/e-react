@@ -2,7 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { register } from "../../../store/auth";
 import { connect } from 'react-redux';
+
+import { GoogleLogin } from 'react-google-login';
+
+
 import  Redirect from 'react-router-dom'
+
 
 const SignUp = (props) => {
 
@@ -13,6 +18,26 @@ const SignUp = (props) => {
     const [phone, setPhone] = useState(' ');
     const [fullname, setFullname] = useState(' ');
 
+
+    const responseGoogle =async (response) => {
+        console.log(response.profileObj);
+        let obj=response.profileObj
+        let username=obj.email;
+        let email=obj.email;
+        let password='1234';
+        let role='user';
+        let phone='';
+        let fullname=obj.name
+        console.log('index.log', username, email, password, role, phone, fullname)
+
+
+        props.register(username, email, password, role, phone, fullname).then(res => {
+            console.log(res);
+            return props.history.push('/');
+        })
+
+
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -106,6 +131,16 @@ const SignUp = (props) => {
                                             <ul>
                                                 <li><a href="javascript:void(0);" class="sl-googlebox"><i
                                                     class="fab fa-google"></i>التسجيل جوجل</a></li>
+
+                                                    
+                <GoogleLogin
+                    clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
+                    buttonText="التسجيل بواسطة جوجل"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+
+                />
                                             </ul>
                                         </div>
                                     </div>
