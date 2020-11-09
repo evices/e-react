@@ -63,22 +63,24 @@ const Reservation = (props) => {
             class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread"
           >
             <Single reserve={reserve} key={i} />
-            <button
-              class="btn sl-btn sl-btn-md"
-              onClick={() =>
-                props.respondingToReservation(reserve._id, props.user, "1")
-              }
-            >
-              Approve
-            </button>
-            <button
-              class="btn sl-btn sl-btn-md"
-              onClick={() =>
-                props.respondingToReservation(reserve._id, props.user, "2")
-              }
-            >
-              Refuse
-            </button>
+            <div className="reservation-btn">
+              <button
+                class="btn sl-btn sl-btn-md"
+                onClick={() =>
+                  props.respondingToReservation(reserve._id, props.user, "1")
+                }
+              >
+                تاكيد
+              </button>
+              <button
+                class="btn sl-btn sl-btn-md"
+                onClick={() =>
+                  props.respondingToReservation(reserve._id, props.user, "2")
+                }
+              >
+                رفض
+              </button>
+            </div>
           </li>
         );
       })}

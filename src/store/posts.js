@@ -1,6 +1,6 @@
-import {
-  act
-} from "@testing-library/react";
+// import {
+//   act
+// } from "@testing-library/react";
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -86,12 +86,12 @@ export const makeReservation = (post, user, date, address) => (dispatch) => {
   };
   let data = {
     "user_id": user.user._id,
-    "provider_id": post.providerId,
+    "provider_id": post.porviderId,
     "post_id": post._id,
     'book_date': date,
     'address': address,
     "client": user.user._id,
-    "provider": post.providerId,
+    "provider": post.porviderId,
     "post": post._id,
   }
   console.log('data>>', data);

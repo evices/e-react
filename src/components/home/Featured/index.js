@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import FeaturedServices from './FeaturedItem';
+import { connect } from "react-redux";
+import { getAllApiPosts } from '../../../store/posts';
 
 const Featured = props => {
+
+    useEffect(() => {
+        props.getAllApiPosts();
+    }, []);
+
+    console.log('props from featured',props.posts);
     return (
         <section className="sl-main-section">
             <div className="container">
@@ -20,7 +28,7 @@ const Featured = props => {
                 </div>
             </div>
 
-            <FeaturedServices />
+            <FeaturedServices posts={props.posts.Posts.slice(0, 5)} />
 
         </section>
     );
@@ -30,4 +38,11 @@ Featured.propTypes = {
     
 };
 
-export default Featured;
+const mapStateToProps = (state) => ({
+    posts: state.posts,
+  });
+  const mapDispatchToProps = (dispatch) => ({
+    getAllApiPosts: () => dispatch(getAllApiPosts()),
+  });
+  export default connect(mapStateToProps, mapDispatchToProps)(Featured);
+  

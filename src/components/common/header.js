@@ -92,7 +92,7 @@ console.log('submit',title,categorey);
 
                                     <ul className="sl-usermenu">
                                         <li>
-                                        <Link to='/Profile'>
+                                        <Link to='/profile'>
                                             <i className="ti-user" />
                                             <span>الملف الشخصي</span>
                                         </Link>
