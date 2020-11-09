@@ -31,10 +31,10 @@ const handleSubmit=(e)=>{
       <div>
         {sender.map((ele) => {
           return (
-            <>
-              <h3>{ele.username}</h3>
-              <button onClick={() => props.filterMesseges(ele._id,props.user.user._id,ele.username)}>open</button>
-            </>
+            <div >
+              <h3 >{ele.username}</h3>
+              <button className="btn sl-btn sl-btn-md" onClick={() => props.filterMesseges(ele._id,props.user.user._id,ele.username)}>open</button>
+            </div>
           );
         })}
       </div>
@@ -49,14 +49,14 @@ const handleSubmit=(e)=>{
                     key={i}
                     class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread"
                   >
-                    <span>from: ({message.sender_name})</span>
+                    <span class="checked">from: {message.sender_name}</span>
                     <p>{message.message_text}</p>
                   </li>
                 );
               })}
               <form onSubmit={handleSubmit}>
-                <input type="text" name="msg"/>
-                <button>send</button>
+                <input type="text" name="msg" class=" sl-form-control" placeholder=">>type Here<<"/>
+                <button className="btn sl-btn">send</button>
               </form>
             </Then>
             <Else>
