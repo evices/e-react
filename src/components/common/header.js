@@ -3,7 +3,7 @@ import Login from '../auth/login';
 import { If, Then, Else } from 'react-if';
 import { connect } from 'react-redux';
 import { logout } from "../../store/auth";
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {getPostsBySearch} from '../../store/posts'
 
 
@@ -42,10 +42,34 @@ console.log('submit',title,categorey);
                             <div class="collapse navbar-collapse sl-navigation" id="slMainNavbar">
                                 <ul class="navbar-nav mr-auto sl-navbar-nav">
                                     <li class="nav-item menu-item-has-mega-menu">
-                                        <a class="nav-link" href="javascript:void(0);">الرئيسية</a>
+                                        {/* <a class="nav-link" href="/">الرئيسية</a>
+                                         */}
+                                        <NavLink
+                                            exact
+                                            activeClassName="sl-navactive"
+                                            className="nav-link"
+                                            to="/">
+                                            الرئيسية
+                                        </NavLink>
+
+                                    </li>
+                                    <li class="nav-item sl-navactive">
+                                    <NavLink
+                                            exact
+                                            activeClassName="sl-navactive"
+                                            className="nav-link"
+                                            to="/about">
+                                            من نحن
+                                        </NavLink>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="aboutus.html">من نحن</a>
+                                    <NavLink
+                                            exact
+                                            activeClassName="sl-navactive"
+                                            className="nav-link"
+                                            to="/contact">
+                                            اتصل بنا
+                                        </NavLink>
                                     </li>
                                 </ul>
                             </div>

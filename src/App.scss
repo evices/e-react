@@ -2726,7 +2726,7 @@ main {
     display: block;
   }
 
-  .sl-navbar-search .sl-main-form__btn, .sl-navbar-search > a, .sl-navbar-search nav {
+  .sl-navbar-search .sl-main-form__btn, .sl-navbar-search > a, .sl-navbar-search nav, .sl-navbar-search .sl-user {
     display: none;
   }
 }
@@ -4307,5 +4307,48 @@ textarea[name="comment"] {
       border: 1px solid #ddd;
       border-radius: 0 0 4px 4px;
     }
+  }
+}
+
+.navbar-nav {
+  .nav-item {
+    .nav-link {
+      color: #ddd;
+      min-height: 49px;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      padding-top: 40px;
+      position: relative;
+      line-height: 35px;
+
+      &:hover {
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 2px;
+        border-radius: 3px 3px 0 0;
+        background-color: #ffca28;
+        opacity: 0;
+        visibility: hidden;
+        width: 18px;
+      }
+    }
+  }
+
+  .sl-navactive {
+      &:after {
+        opacity: 1!important;
+        visibility: visible!important;
+      }
   }
 }
