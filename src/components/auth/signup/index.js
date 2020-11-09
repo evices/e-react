@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { register } from "../../../store/auth";
 import { connect } from 'react-redux';
+import { GoogleLogin } from 'react-google-login';
+
 
 const SignUp = (props) => {
 
@@ -9,6 +11,9 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState(' ');
 
+    const responseGoogle = (response) => {
+        console.log(response);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -99,6 +104,16 @@ const SignUp = (props) => {
                                             <ul>
                                                 <li><a href="javascript:void(0);" class="sl-googlebox"><i
                                                     class="fab fa-google"></i>التسجيل جوجل</a></li>
+
+                                                    
+                <GoogleLogin
+                    clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
+                    buttonText="login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+
+                />
                                             </ul>
                                         </div>
                                     </div>
