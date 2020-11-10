@@ -26,6 +26,7 @@
     "react-scripts": "3.4.3",
     "react-scroll-to-bottom": "^4.0.0",
     "react-time-ago": "^6.2.0",
+    "react-timeago": "^5.2.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",

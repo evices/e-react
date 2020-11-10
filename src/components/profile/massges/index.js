@@ -2,10 +2,17 @@ import { connect } from "react-redux";
 import { getMessages,filterMesseges,sendMessage } from "../../../store/messages";
 import React, { useEffect, useRef } from "react";
 import { If, Then, Else } from "react-if";
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/ar';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
+
 import './_inbox.scss';
 
 
 function Massges(props) {
+
+  const formatter = buildFormatter(frenchStrings);
+
   useEffect(() => {
     props.getMessages(props.user.user._id);
     scrollToBottom()
@@ -62,7 +69,7 @@ const scrollToBottom = () => {
                 <If condition={props.messages.filteredMessages.length}>
                   <Then>
                     {props.messages.filteredMessages.map((message, i) => {
-                                              console.log(message.receiver_id.username == props.user.user.username)
+                      console.log(message.receiver_id.username == props.user.user.username)
 
                       return (
                         // <li key={i} class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread">
@@ -72,7 +79,7 @@ const scrollToBottom = () => {
                         
                         <div class={"sl-messageUser__area--" + (message.receiver_id.username == props.user.user.username ? 'right' : 'left')}>
                           <p>{message.message_text}</p>
-                          <span>{new Date(message.created_date).toLocaleDateString()}</span>
+                          <span><TimeAgo date={new Date(message.created_date)} formatter={formatter} /></span>
                       </div>
                       );
                     })}
