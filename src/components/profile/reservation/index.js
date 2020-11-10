@@ -4,6 +4,7 @@ import {
   loadReservationFromApi,
   respondingToReservation,
 } from "../../../store/reservation";
+import { If, Then } from 'react-if';
 
 const Single = (props) => {
   let status = {};
@@ -63,24 +64,29 @@ const Reservation = (props) => {
             class="sl-newAppointments__items sl-allAppointments-notification sl-allAppointments-notification__unread"
           >
             <Single reserve={reserve} key={i} />
-            <div className="reservation-btn">
-              <button
-                class="btn sl-btn sl-btn-md"
-                onClick={() =>
-                  props.respondingToReservation(reserve._id, props.user, "1")
-                }
-              >
-                تاكيد
-              </button>
-              <button
-                class="btn sl-btn sl-btn-md"
-                onClick={() =>
-                  props.respondingToReservation(reserve._id, props.user, "2")
-                }
-              >
-                رفض
-              </button>
-            </div>
+
+            <If condition={props.user.user.role !== 'user'}>
+              <Then>
+                <div className="reservation-btn">
+                  <button
+                    class="btn sl-btn sl-btn-md"
+                    onClick={() =>
+                      props.respondingToReservation(reserve._id, props.user, "1")
+                    }
+                  >
+                    تاكيد
+                  </button>
+                  <button
+                    class="btn sl-btn sl-btn-md"
+                    onClick={() =>
+                      props.respondingToReservation(reserve._id, props.user, "2")
+                    }
+                  >
+                    رفض
+                  </button>
+                </div>
+              </Then>
+            </If>
           </li>
         );
       })}

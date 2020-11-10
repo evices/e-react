@@ -1,5 +1,7 @@
 import Axios from "axios";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 let initialState = {
   Reservations: [
     {
@@ -49,8 +51,9 @@ export const respondingToReservation = (id, user, status) => (dispatch) => {
 
 export const loadReservationFromApi = (user_id) => (dispatch) => {
   return Axios.get(`${url}/reservation`).then((data) => {
+    console.log('from reservationn api',user.user.role)
     let userReservation = data.data.result.filter(
-      (ele) => ele.provider_id === user_id
+      (ele) => (user.user.role === 'user' ? ele.client._id : ele.provider_id) === user_id
     );
 
     dispatch({
