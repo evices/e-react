@@ -6,14 +6,12 @@ import axios from "axios";
 const user = JSON.parse(localStorage.getItem("user"));
 
 let initialState = {
-  Posts: [
-    {
-      category: "loading",
-      title: "load",
-      description: "load",
-      username: "load",
-    },
-  ],
+  Posts: [{
+    category: "loading",
+    title: "load",
+    description: "load",
+    username: "load",
+  }, ],
   ActivePosts: [],
   choosedPost: {
     a: "loading",
@@ -35,9 +33,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ActivePosts: newPagesa,
-        Posts: action.payload.result,
+          Posts: action.payload.result,
       };
-    // assume receives category in the payload when choosing the category in the main page of the app
+      // assume receives category in the payload when choosing the category in the main page of the app
     case "filterPosts":
       return {
         ...state,
@@ -83,6 +81,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ActivePosts: newPages,
+          CurruntPage: num,
       };
 
     default:
@@ -94,6 +93,7 @@ let url = "https://evices-react.herokuapp.com";
 export const getAllApiPosts = () => (dispatch) => {
   return axios.get(`${url}/post`).then((data) => {
     dispatch(getPosts(data.data));
+    return data.data;
   });
 };
 
@@ -299,9 +299,9 @@ export const getPostsBySearch = (title, category) => (dispatch) => {
   }
 };
 
-export const setActivePage = (num) => {
-  return {
+export const setActivePage = (num) => (dispatch) => {
+  dispatch({
     type: "activePage",
     payload: num,
-  };
+  });
 };

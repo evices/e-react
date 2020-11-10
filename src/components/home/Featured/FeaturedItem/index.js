@@ -31,7 +31,7 @@ const FeaturedItem = props => {
     }
 
         return (
-            <OwlCarousel className="owl-carousel owl-theme sl-owl-nav" id="slCategoryOwl" responsive={responsive} items={4} loop margin={20} options nav dots={false} >
+            <OwlCarousel className="owl-carousel owl-theme sl-owl-nav" id="slCategoryOwl" responsive={responsive} items={4} autoplay autoplayTimeout={5000} loop margin={20} options nav dots={false} >
                 {props.posts.map((post, i) => { 
 
                     console.log(post);

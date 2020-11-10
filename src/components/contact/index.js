@@ -82,7 +82,7 @@ export default () => (
                                     <div class="sl-facebook">
                                         <a href="javascript:void(0);" class="fab fa-facebook-f">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على فيسبوك</span>
                                             </div>
                                         </a>
@@ -92,7 +92,7 @@ export default () => (
                                     <div class="sl-youtube">
                                         <a href="javascript:void(0);" class="fab fa-youtube">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على يوتيوب</span>
                                             </div>
                                         </a>
@@ -102,7 +102,7 @@ export default () => (
                                     <div class="sl-twitter">
                                         <a href="javascript:void(0);" class="fab fa-twitter">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على تويتر</span>
                                             </div>
                                         </a>
@@ -112,7 +112,7 @@ export default () => (
                                     <div class="sl-instagram">
                                         <a href="javascript:void(0);" class="fab fa-instagram">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على انسغرام</span>
                                             </div>
                                         </a>

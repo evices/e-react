@@ -3,16 +3,19 @@ import { connect } from "react-redux";
 import { getPostsBySearch } from "../../store/posts";
 import { Link } from "react-router-dom";
 import _ from 'lodash';
+import { If, Then, Else } from "react-if";
 
 function PostsSearch(props) {
+
     useEffect(() => {
         console.log('postCat', window.location.pathname.split("/")[3])
         //   load all posts at loading the page
         let title=window.location.pathname.split("/")[2];
-        let category=window.location.pathname.split("/")[3]
+        let category=window.location.pathname.split("/")[3];
         props.getPostsBySearch(title,category);
 
     }, []);
+
     console.log('props',props.post.Posts);
     return (
         <main class="sl-main">
@@ -21,6 +24,8 @@ function PostsSearch(props) {
                 <div class="sl-serviceProvider">
                     <div class="sl-serviceProvider__content">
                     <div class="row">
+                        <If condetion = {props.post.Posts.length}>
+                            <Then>
                         {props.post.Posts.map((post,i) => {
                         const postedBy = post.postedBy || [];
                         return (
@@ -110,6 +115,17 @@ function PostsSearch(props) {
                         </div>
                         );
                         })}
+                        </Then>
+                        <Else>
+                            <Then>
+                                <div className="no-data">
+                                    <img className="no-data-img" src="/images/no-data.png" />
+                                    <p>لا يوجد بيانات لعرضها!!</p>
+                                </div>
+                                
+                            </Then>
+                        </Else>
+                    </If>
                     </div>
                     </div>
                 </div>

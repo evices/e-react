@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400i|Source+Sans+Pro:400,600,700&display=swap);
+$font-family: "Tajawal";
 
 body {
   color: #363636;
@@ -1100,7 +1101,7 @@ html {
 body {
   color: #4c4c4c;
   box-sizing: border-box;
-  font-family: "Tajawal";
+  font-family: $font-family;
 }
 
 ul {
@@ -1454,7 +1455,7 @@ p,
   line-height: 44px;
   font-size: 12px;
   pointer-events: none;
-  font-family: themify;
+  font-family: $font-family;
 }
 
 .sl-select select {
@@ -1797,7 +1798,7 @@ p,
 }
 
 .sl-featureRating {
-  font-family: "Tajawal";
+  font-family: $font-family;
   color: #767676;
   line-height: 19px;
 }
@@ -2320,7 +2321,7 @@ button.sl-btn:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: "Tajawal";
+  font-family: $font-family;
   color: #767676;
 }
 
@@ -2718,7 +2719,7 @@ main {
   }
 
   .sl-navbar-search .sl-main-form__input1 {
-    width: 75%;
+    width: 75%!important;
   }
 
   .sl-navbar-search .sl-main-form__input2,
@@ -3302,7 +3303,7 @@ textarea.sl-form-control,
 }
 
 .sl-contactsocialadress__description {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: $font-family;
   margin: 0 20px 0 0;
 }
 
@@ -3434,7 +3435,7 @@ textarea.sl-form-control,
   font-size: 0.7rem;
   font-style: normal;
   line-height: 16px;
-  font-family: "Open Sans", sans-serif;
+  font-family: $font-family;
 }
 .sl-registertabs li a > i {
   font-size: 13px;
@@ -4359,9 +4360,9 @@ textarea[name="comment"] {
       min-height: 49px;
       padding-left: 0.5rem !important;
       padding-right: 0.5rem !important;
-      padding-top: 40px;
+      padding-top: 15px;
       position: relative;
-      line-height: 35px;
+      line-height: 60px;
 
       &:hover {
         &:after {
@@ -4555,5 +4556,61 @@ textarea[name="comment"] {
     text-align: center;
     color: #fff!important;
     // font-size: 26px;
+  }
+}
+
+.pagination {
+  justify-content: center;
+  direction: ltr;
+
+  .page-item {
+
+    &.active {
+     
+      .page-link {
+        color: #fff;
+        background-color: #ffa62b!important;
+        border-color: #ffa62b!important;
+      }
+    }
+
+    .page-link {
+      color: #ffa62b;
+    }
+
+    &:nth-child(1) {
+      
+    }
+
+    &:first-child() {
+      .page-link {
+        border-top-left-radius: .25rem!important;
+        border-bottom-left-radius: .25rem!important;
+  
+      }
+    }
+  }
+}
+
+.invalid-feedback {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.no-data {
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+  
+  img{
+    width: 100%;
+    margin: auto;
+    display: block;
+  }
+
+  p {
+    display: block;
+    text-align: center;
+    font-size: 24px!important;
   }
 }
