@@ -70,9 +70,8 @@ const SignUp = (props) => {
             errors.role = 'قم باخيار نوع المستخدم';
             isValid = false;
         }
-
-
         setError(errors);
+        return isValid;
     }
 
     const handleSubmit = (e) => {
@@ -81,10 +80,10 @@ const SignUp = (props) => {
         console.log(error.password);
         if(Validate()) {
             console.log('index.log', username, email, password)
-            // props.register(username, email, password, role, phone, fullname).then(res => {
-            //     console.log(res);
-            //     return props.history.push('/');
-            // })
+            props.register(username, email, password, role, phone, fullname).then(res => {
+                console.log(res);
+                return props.history.push('/');
+            })
         }
     }
 
