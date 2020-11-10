@@ -53,7 +53,7 @@ class UpdateUserInfo extends Component {
             }
             )
 
-            if(this.state.input.address) {
+            if(this.state.input.addresses) {
                 addAddress(this.state.input).then(res => {
                     console.log('38 user', res);
                 })
@@ -176,7 +176,7 @@ class UpdateUserInfo extends Component {
                                 <div class="form-group form-group-half">
                                     <input class="form-control sl-form-control" type="text" 
                                         name="fullname"
-                                        value={this.state.input.fullname}
+                                        defaultValue={this.user.user.fullname}
                                         onChange={this.handleChange}
                                         class="form-control"
                                         placeholder={this.user.user.fullname}
@@ -187,7 +187,7 @@ class UpdateUserInfo extends Component {
                                     <input class="form-control sl-form-control" type="text" 
                                     id="phone"
                                     name="phone"
-                                    value={this.state.input.phone}
+                                    defaultValue={this.user.user.phone}
                                     placeholder={this.user.user.phone}
                                     pattern="[0-9]{10}"
                                     onChange={this.handleChange}
@@ -196,7 +196,13 @@ class UpdateUserInfo extends Component {
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input class="form-control sl-form-control" type="email" placeholder="Email*" />
+                                    <input class="form-control sl-form-control" type="email"
+                                    name="email"
+                                    defaultValue={this.user.user.email}
+                                    onChange={this.handleChange}
+                                    class="form-control"
+                                    placeholder={this.user.user.email}
+                                    />
                                 </div>
                                 
                                 <ul className="form-group profile-address-list">
@@ -215,7 +221,7 @@ class UpdateUserInfo extends Component {
                                     <input
                                         type="text"
                                         name="addresses"
-                                        value={this.state.input.address}
+                                        // defaultValue={this.state.input.address}
                                         onChange={this.handleChange}
                                         class="form-control"
                                         // placeholder={this.user.user.address[0].address}
@@ -223,7 +229,7 @@ class UpdateUserInfo extends Component {
                                     <input
                                         type="text"
                                         name="phoneAddresses"
-                                        value={this.state.input.phoneAddresses}
+                                        // value={this.state.input.phoneAddresses}
                                         onChange={this.handleChange}
                                         class="form-control"
                                         // placeholder={this.user.user.address[0].phone}

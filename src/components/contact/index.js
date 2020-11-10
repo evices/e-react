@@ -6,7 +6,7 @@ export default () => (
             <div class="ourmap">
                 <div class="gm-style">
                     <iframe
-                        src="https://maps.google.com/maps?q=31.4953024,34.3999752&hl=es;z=14&amp;output=embed" ></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.3199142120516!2d35.8663810151157!3d31.897904135593897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca6e3c8e41335%3A0x38b7f4b7f0dc25d0!2sLuminus%20Technical%20University%20College!5e0!3m2!1sen!2s!4v1597747960294!5m2!1sen!2s" ></iframe>
                 </div>
             </div>
             <div class="sl-contactformmap">

@@ -164,6 +164,7 @@ export const editeProfile = (userData, userImage) => {
     let data = {
         "fullname": userData.fullname,
         "phone": userData.phone,
+        "email": userData.email,
         "user_image": `${url}/${userImage}`
     }
 

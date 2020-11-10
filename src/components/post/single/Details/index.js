@@ -7,6 +7,9 @@ import { getSingleApiPost } from "../../../../store/posts";
 import { sendMessage } from "../../../../store/messages";
 import _ from "lodash";
 import { If, Then } from 'react-if';
+import ReactTimeAgo from 'react-time-ago';
+import Chat from '../../chat/Chat/Chat';
+import { Link } from 'react-router-dom';
 
 function PostDetails(props) {
   useEffect(() => {
@@ -48,7 +51,9 @@ function PostDetails(props) {
                     </div>
                     <div class="sl-detail">
                         <div class="sl-detail__date">
-                            <em><i class="ti-calendar"></i> تاريخ الانشاء: {props.post.created_at}</em>
+                            <em><i class="ti-calendar"></i> تاريخ الانشاء: 
+                            {/* <ReactTimeAgo date={new Date(props.post.created_at)} locale="en-US" timeStyle="round"/> */}
+                            </em>
                         </div>
                         <div class="sl-detail__view">
                             <em><i class="ti-eye"></i> شاهدها 15,063</em>
@@ -104,6 +109,8 @@ function PostDetails(props) {
                                                         <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" rows="3"></textarea>
                                                         <button class="btn btn-warning">ارسال</button>
                                                     </form>
+
+                                                    <a onClick={() => {console.log('Chat')}} href="javascript:void(0);" class="btn btn-custom chat-open sl-btn">Chat</a>
                                                 </Then>
                                             </If>
                                         </div>
@@ -133,6 +140,10 @@ function PostDetails(props) {
                     </div>
                 </div>
             </div>
+            {/* <div className = "chat-btn">
+                <a onClick={() => {console.log('change chat')}}>+</a>
+            </div> */}
+            <Chat location = {{name: props.user.user.fullname, room: props.post.username}}/>
         </div>
     );
 }
