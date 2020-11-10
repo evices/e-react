@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Pagination from "react-bootstrap/Pagination";
 import { getAllApiPosts, setActivePage } from "../../store/posts";
+import { If, Then, Else } from "react-if";
 
 import { Link } from "react-router-dom";
 
@@ -11,8 +12,11 @@ function Post(props) {
   let numPer = props.posts.numPer;
   const numOfPaginationPages = Math.ceil(props.posts.Posts.length / numPer);
 
+  const [html, setHtml] = useState('');
+
   const paginate = () => {
     let items = [];
+    console.log(props);
     for (let i = 1; i <= numOfPaginationPages; i++) {
       items.push(
         <Pagination.Item
@@ -27,13 +31,21 @@ function Post(props) {
     }
     return items;
   };
+
   const changePage = (num) => {
+    console.log('sss',num)
     props.setActivePage(num);
   };
   useEffect(() => {
     //   load all posts at loading the page
+    props.getAllApiPosts().then( res => {
+      if(res.count > 0) {
+        setHtml(<img className="no-data-img" src="/images/no-data.png" />);
+      }
+    });
+    
+    console.log(html);
 
-    props.getAllApiPosts();
   }, []);
   console.log(props.posts.Posts);
   return (
@@ -43,6 +55,8 @@ function Post(props) {
           <div class="sl-serviceProvider">
             <div class="sl-serviceProvider__content">
               <div class="row">
+                <If condition={props.posts.ActivePosts.length}>
+                  <Then>
                 {props.posts.ActivePosts.map((post, i) => {
                   const postedBy = post.postedBy || [];
                   return (
@@ -140,16 +154,26 @@ function Post(props) {
                     </div>
                   );
                 })}
+                </Then>
+                <Else>
+                  <Then>
+                  {html}
+                  </Then>
+                </Else>
+                </If>
+                
               </div>
             </div>
           </div>
         </div>
       </section>
-      <Pagination>
-        {/* <Pagination.Prev /> */}
-        {paginate()}
-        {/* <Pagination.Next /> */}
-      </Pagination>
+      <div class="sl-pagination">
+        <div class="sl-pagination__button-num">
+          <Pagination>
+            {paginate()}
+          </Pagination>
+        </div>
+      </div>
     </main>
   );
 }

@@ -161,17 +161,26 @@ export const editeProfile = (userData, userImage) => {
         }
     };
 
+    let user_image = userImage ? `${url}/${userImage}` : user.user.user_image;
+
     let data = {
         "fullname": userData.fullname,
         "phone": userData.phone,
-        "user_image": `${url}/${userImage}`
+        "email": userData.email,
+        "user_image": user_image
     }
 
     console.log('data>>', data);
     return axios
         .put(`${url}/user/${user.user._id}`, data, config)
         .then(res => {
-            console.log('>>>>>>>', res.data)
+            // console.log('>>>>>>>', res.data)
+            let newData = {
+                "token": user.token,
+                "user": res.data
+            }
+
+            localStorage.setItem("user", JSON.stringify(newData));
             return res.data;
         })
         .catch((error) => console.log(error.response));
@@ -198,12 +207,12 @@ export const addAddress = (addressData) => {
     .patch(
         `${url}/user/${user.user._id}`, data, config)
     .then(res => {
-        let newData = {
-            "token": user.token,
-            "user": res.data
-        }
+        // let newData = {
+        //     "token": user.token,
+        //     "user": res.data
+        // }
 
-        localStorage.setItem("user", JSON.stringify(newData));
+        // localStorage.setItem("user", JSON.stringify(newData));
     })
     .catch(error => console.log(error.response.data));
 }

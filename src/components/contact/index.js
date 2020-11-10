@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Alert from 'react-bootstrap/Alert';
+import { Button } from 'react-bootstrap';
 
-export default () => (
-    <main>
+const Contact = props => {
+
+    const [show, setShow] = useState(false);
+
+    return (
+        <div>
+                <main>
         <section class="sl-contact-page">
             <div class="ourmap">
                 <div class="gm-style">
                     <iframe
-                        src="https://maps.google.com/maps?q=31.4953024,34.3999752&hl=es;z=14&amp;output=embed" ></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.3199142120516!2d35.8663810151157!3d31.897904135593897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca6e3c8e41335%3A0x38b7f4b7f0dc25d0!2sLuminus%20Technical%20University%20College!5e0!3m2!1sen!2s!4v1597747960294!5m2!1sen!2s" ></iframe>
                 </div>
             </div>
             <div class="sl-contactformmap">
@@ -23,29 +31,34 @@ export default () => (
                                 </div>
                                 <div class="col-12 col-xl-7">
                                     <div class="sl-contactform row">
+                                    <Alert style={{width: '100%'}} show={show} variant="success">
+                                        <p>
+                                            شكرا لتواصلك معنا وسيتم الاتصال بك عما قريبا
+                                        </p>
+                                        </Alert>
                                         <div class="sl-contactform__details">
                                             <h5>نحن سعداء جدا بخدمتكم</h5>
                                             <h2>شاركنا رأيك</h2>
                                         </div>
-                                        <form class="sl-formtheme sl-formcontactus">
+                                        <form class="sl-formtheme sl-formcontactus" onSubmit={(e) => {e.preventDefault(); setShow(true); e.target.reset()}}>
                                             <fieldset>
                                                 <div class="sl-formhalf">
                                                     <div class="form-group form-group-half">
                                                         <input type="text" name="Your Name" class="form-control"
-                                                            placeholder="الاسم الاول" />
+                                                            placeholder="الاسم الاول" required/>
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <input type="text" name="Your Email" class="form-control"
-                                                            placeholder="اسم العائلة" />
+                                                            placeholder="اسم العائلة" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="email" name="Subject" class="form-control"
-                                                        placeholder="البريد الالكتروني" />
+                                                        placeholder="البريد الالكتروني" required/>
                                                 </div>
                                                 <div class="form-group">
                                                     <textarea class="form-control" placeholder="الرسالة"
-                                                        required=""></textarea>
+                                                        required="" required></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn sl-btn">ارسال</button>
@@ -82,7 +95,7 @@ export default () => (
                                     <div class="sl-facebook">
                                         <a href="javascript:void(0);" class="fab fa-facebook-f">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على فيسبوك</span>
                                             </div>
                                         </a>
@@ -92,7 +105,7 @@ export default () => (
                                     <div class="sl-youtube">
                                         <a href="javascript:void(0);" class="fab fa-youtube">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على يوتيوب</span>
                                             </div>
                                         </a>
@@ -102,7 +115,7 @@ export default () => (
                                     <div class="sl-twitter">
                                         <a href="javascript:void(0);" class="fab fa-twitter">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على تويتر</span>
                                             </div>
                                         </a>
@@ -112,7 +125,7 @@ export default () => (
                                     <div class="sl-instagram">
                                         <a href="javascript:void(0);" class="fab fa-instagram">
                                             <div class="sl-contactsocialadress__description">
-                                                <p>/evices</p>
+                                                <p>evices</p>
                                                 <span>تابعونا على انسغرام</span>
                                             </div>
                                         </a>
@@ -125,4 +138,13 @@ export default () => (
             </div>
         </section>
     </main>
-)
+
+        </div>
+    );
+};
+
+Contact.propTypes = {
+    
+};
+
+export default Contact;

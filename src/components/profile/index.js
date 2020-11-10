@@ -5,8 +5,9 @@ import Reservation from './reservation'
 import UserPost from './post';
 import Messages from './massges'
 import { Auth } from "../../store/checkAuth";
-import FetchUser from "./fetch-profile"
+import FetchUser from "./fetch-profile";
 import './style.scss';
+import { If, Then } from 'react-if';
 
 const Profile = props => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -40,9 +41,13 @@ const Profile = props => {
                                                     <li class="sl-active">
                                                         <Nav.Link eventKey="profile"><i class="ti-user"></i><span>الملف الشخصي</span></Nav.Link>
                                                     </li>
-                                                    <li>
-                                                        <Nav.Link eventKey="services"><i class="ti-shopping-cart"></i><span>خدماتي</span></Nav.Link>
-                                                    </li>
+                                                    <If condition= {user.user.role != 'user'}>
+                                                        <Then>
+                                                            <li>
+                                                                <Nav.Link eventKey="services"><i class="ti-shopping-cart"></i><span>خدماتي</span></Nav.Link>
+                                                            </li>
+                                                        </Then>
+                                                    </If>
                                                     <li>
                                                         <Nav.Link eventKey="reservation"><i class="ti-shopping-cart"></i><span>الحجوزات</span></Nav.Link>
                                                     </li>
@@ -79,9 +84,13 @@ const Profile = props => {
                                                 </div>
                                             </div>
                                         </Tab.Pane>
-                                        <Tab.Pane eventKey="services">
-                                            <UserPost />
-                                        </Tab.Pane>
+                                        <If condition= {user.user.role != 'user'}>
+                                            <Then>
+                                                <Tab.Pane eventKey="services">
+                                                    <UserPost />
+                                                </Tab.Pane>
+                                            </Then>
+                                        </If>
                                         <Tab.Pane eventKey="messages">
                                             <Messages/>
                                         </Tab.Pane>

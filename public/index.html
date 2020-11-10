@@ -64,6 +64,11 @@
             jQuery('body').toggleClass('sl-scrollY-none')
             jQuery(this).find('i').toggleClass('lnr lnr-layers lnr lnr-cross')
           })
+
+          $(document).on('click', '.chat-open', function(e){
+            jQuery('.real-time-chat').toggleClass('show-chat')
+            // jQuery(this).find('i').toggleClass('lnr lnr-layers lnr lnr-cross')
+          })
         });
         
       </script>

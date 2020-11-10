@@ -13,11 +13,11 @@ const SignUp = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState(' ');
-    const [role, setRole] = useState(' ');
-    const [phone, setPhone] = useState(' ');
-    const [fullname, setFullname] = useState(' ');
-
+    const [email, setEmail] = useState('');
+    const [role, setRole] = useState('');
+    const [phone, setPhone] = useState('');
+    const [fullname, setFullname] = useState('');
+    const [error, setError] = useState({});
 
     const responseGoogle =async (response) => {
         console.log(response.profileObj);
@@ -39,13 +39,53 @@ const SignUp = (props) => {
 
     }
 
+    const Validate = () => {
+
+        let errors = {};
+        let isValid = true;
+
+        if(!(username)) {
+            errors.username = 'اسم المستخدم مطلوب';  
+            isValid = false;
+        }
+
+        if(!(email)) {
+            errors.email = 'البريد الالكتروني مطلوب';
+            isValid = false;
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            errors.email = 'Email address is invalid';
+        }
+
+        if(!(fullname)) {
+            errors.fullname = 'الاسم مطلوب';
+            isValid = false;
+        }
+
+        if(!password) { 
+            errors.password = 'يجب ادخال كلمة المرور';
+            isValid = false;
+        }
+
+        if(!role) {
+            errors.role = 'قم باخيار نوع المستخدم';
+            isValid = false;
+        }
+
+
+        setError(errors);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('index.log', username, email, password)
-        props.register(username, email, password, role, phone, fullname).then(res => {
-            console.log(res);
-            return props.history.push('/');
-        })
+
+        console.log(error.password);
+        if(Validate()) {
+            console.log('index.log', username, email, password)
+            // props.register(username, email, password, role, phone, fullname).then(res => {
+            //     console.log(res);
+            //     return props.history.push('/');
+            // })
+        }
     }
 
     return (
@@ -72,6 +112,11 @@ const SignUp = (props) => {
                                                                 <input type="text" name="name"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="اسم المستخدم" required="" onChange={(e) => setUsername(e.target.value)} />
+                                                                    {error.username && (
+                                                                        <div style={{display: 'block'}} class="invalid-feedback">
+                                                                            {error.username}
+                                                                        </div>
+                                                                    )}                                                                    
                                                             </div>
                                                             <div class="form-group form-group-half form-group-icon">
                                                                 <i class="ti-info-alt toltip-content tipso_style"
@@ -79,11 +124,21 @@ const SignUp = (props) => {
                                                                 <input type="text" name="nickname"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="الاسم الاول والعائلة" required="" onChange={(e) => setFullname(e.target.value)}/>
+                                                                    {error.fullname && (
+                                                                        <div style={{display: 'block'}} class="invalid-feedback">
+                                                                            {error.fullname}
+                                                                        </div>
+                                                                    )}  
                                                             </div>
                                                             <div class="form-group">
                                                                 <input type="text" name="email"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="البريد الالكتروني" required="" onChange={(e) => setEmail(e.target.value)}/>
+                                                                    {error.email && (
+                                                                        <div style={{display: 'block'}} class="invalid-feedback">
+                                                                            {error.email}
+                                                                        </div>
+                                                                    )}  
                                                             </div>
                                                             
                                                             <div class="form-group form-group-half">
@@ -93,6 +148,11 @@ const SignUp = (props) => {
                                                                         <option value="user">زبون</option>
                                                                         <option value="seller">مقدم خدمة</option>
                                                                     </select>
+                                                                    {error.role && (
+                                                                        <div style={{display: 'block'}} class="invalid-feedback">
+                                                                            {error.role}
+                                                                        </div>
+                                                                    )}  
                                                                 </div>
                                                             </div>
                                                             <div class="form-group form-group-half">
@@ -104,6 +164,11 @@ const SignUp = (props) => {
                                                                 <input type="password" name="password"
                                                                     class="form-control sl-form-control"
                                                                     placeholder="كلمة المرور" required="" onChange={(e) => setPassword(e.target.value)}/>
+                                                                    {error.password && (
+                                                                        <div style={{display: 'block'}} class="invalid-feedback">
+                                                                            {error.password}
+                                                                        </div>
+                                                                    )}  
                                                             </div>
                                                             <div class="form-group form-group-half">
                                                                 <input type="password" name="password"
