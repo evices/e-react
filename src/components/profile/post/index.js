@@ -4,13 +4,15 @@ import Service from '../../service'
 import { connect } from "react-redux";
 import { getPostsByUserName } from "../../../store/posts";
 import PropTypes from 'prop-types';
+import { If, Then } from 'react-if';
+
 
 const PostByUser = props => {
 
     console.log(props)
     useEffect(() => {
         props.getPostsByUserName();
-    }, []);
+    });
 
     console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
@@ -27,11 +29,15 @@ const PostByUser = props => {
         <div class="sl-dashboardbox sl-newAppointments">
             <div class="sl-dashboardbox__title">
                 <p>خدماتي</p>
-                <a href="#" onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" className="btn sl-btn sl-btn-md" data-target="#loginpopup">تسجيل خدمة</a>
-                <Service
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                />
+                <If condition={user.user.role !== 'user'}>
+                    <Then>
+                    <a href="#" onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" className="btn sl-btn sl-btn-md" data-target="#loginpopup">تسجيل خدمة</a>
+                    <Service
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
+                    </Then>
+                </If>
             </div>
             <div class="sl-dashboardbox__content">
                 <ul>

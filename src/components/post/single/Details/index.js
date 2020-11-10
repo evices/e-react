@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { getSingleApiPost } from "../../../../store/posts";
 import { sendMessage } from "../../../../store/messages";
 import _ from "lodash";
+import { If, Then } from 'react-if';
 
 function PostDetails(props) {
   useEffect(() => {
@@ -13,7 +14,11 @@ function PostDetails(props) {
   }, []);
 
   const [modalShow, setModalShow] = React.useState(false);
+  const [active, setActive] = useState('');
+
   const postedBy = props.post.postedBy || [];
+
+  console.log(props.user.user.username, props.post.username)
     return (
         <div>
 
@@ -51,14 +56,17 @@ function PostDetails(props) {
                     </div>
                 </div>
                 <div class="sl-appointment__note">
-
+                <If condition={props.user.user.username != props.post.username}>
+                    <Then>
                     <a onClick={() => {setModalShow(true); console.log(modalShow)}} class="btn sl-btn" data-toggle="modal"
                         data-target="#appointmentPopup">حجز</a>
                         <Modal
                             post={props.post}
                             show={modalShow}
                             onHide={() => setModalShow(false)}
-                        />                        
+                        />
+                    </Then>
+                </If>                        
                 </div>
             </div>
             <div class="sl-main-section">
@@ -80,12 +88,24 @@ function PostDetails(props) {
                                                 <li><i class="ti-mobile sl-mobile-icon"></i><a
                                                         href="javascript:void(0);">{postedBy.phone}</a></li>
                                             </ul>
-                                            <a href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
-                                                data-target="#contactpopup">Chat</a>
-                                                <form onSubmit={(e)=>{e.preventDefault();props.sendMessage(props.user, props.post, e.target.msg.value)}}>
-                                                    <input type="text" name="msg" />
-                                                    <button>send</button>
-                                                </form>
+                                            
+                                            <If condition={props.user.user.username != props.post.username}>
+                                                <Then>
+                                                    <a onClick={() => {setActive('___active')}} href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
+                                                        data-target="#contactpopup">مراسلة</a>
+                                                    <form className={"send-msg-form"+active}
+                                                        onSubmit = {
+                                                            (e) => {
+                                                                e.preventDefault();
+                                                                props.sendMessage(props.user, props.post, e.target.msg.value);
+                                                                setActive('');
+                                                            }
+                                                        }>
+                                                        <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                        <button class="btn btn-warning">ارسال</button>
+                                                    </form>
+                                                </Then>
+                                            </If>
                                         </div>
                                     </div>
                                 </div>
@@ -102,9 +122,13 @@ function PostDetails(props) {
                             </div>
                         </div>
 
-                        <hr></hr>
-                        {console.log(props.post)}
-                        <Review postId={props.post._id} comments={props.post.comments}/>
+                        <If condition={props.user.user.username != props.post.username}>
+                            <Then>
+                                <hr></hr>
+                                {console.log(props.post)}
+                                <Review postId={props.post._id} comments={props.post.comments}/>
+                            </Then>
+                        </If>
 
                     </div>
                 </div>

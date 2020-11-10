@@ -14,11 +14,16 @@ import PostsCategory from "./components/post/postsByCat";
 import PostsSearch from "./components/postsBySearch";
 import Profile from "./components/profile";
 
-import "./components/common/assets/Fontawesome-all.css";
-import "./components/common/assets/themify-icons.css";
-import "./components/common/assets/linearicons.css";
-import "./App.scss";
-import PostsUser from "./components/profile/post";
+
+import './components/common/assets/Fontawesome-all.css';
+import './components/common/assets/themify-icons.css';
+import './components/common/assets/linearicons.css';
+
+import './App.scss';
+import './_responsive.scss';
+
+import PostsUser from './components/profile/post';
+
 
 const Main = withRouter(({ location }) => {
   return (

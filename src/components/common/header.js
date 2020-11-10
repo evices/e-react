@@ -3,7 +3,7 @@ import Login from '../auth/login';
 import { If, Then, Else } from 'react-if';
 import { connect } from 'react-redux';
 import { logout } from "../../store/auth";
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {getPostsBySearch} from '../../store/posts'
 
 
@@ -27,7 +27,7 @@ console.log('submit',title,categorey);
 
     return (
         <header>
-                        <div className="sl-main-header">
+            <div className="sl-main-header">
                 <strong className="sl-main-header__logo">
                     <a href="/">
                         <img src="/logo.png" alt="Logo" />
@@ -35,6 +35,45 @@ console.log('submit',title,categorey);
                 </strong>
                 <div className="sl-main-header__content">
                     <div className="sl-main-header__upper">
+                        <nav class="navbar-expand-lg">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-controls="slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="lnr lnr-menu"></i>
+                            </button>
+                            <div class="collapse navbar-collapse sl-navigation" id="slMainNavbar">
+                                <ul class="navbar-nav mr-auto sl-navbar-nav">
+                                    <li class="nav-item">
+                                        {/* <a class="nav-link" href="/">الرئيسية</a>
+                                         */}
+                                        <NavLink
+                                            exact
+                                            activeClassName="sl-navactive"
+                                            className="nav-link"
+                                            to="/">
+                                            الرئيسية
+                                        </NavLink>
+
+                                    </li>
+                                    <li class="nav-item sl-navactive">
+                                    <NavLink
+                                            exact
+                                            activeClassName="sl-navactive"
+                                            className="nav-link"
+                                            to="/about">
+                                            من نحن
+                                        </NavLink>
+                                    </li>
+                                    <li class="nav-item">
+                                    <NavLink
+                                            exact
+                                            activeClassName="sl-navactive"
+                                            className="nav-link"
+                                            to="/contact">
+                                            اتصل بنا
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                         <form className="sl-main-form">
                             <div className="sl-form-group sl-main-form__input1">
                                 <input onChange={(e) => setTitle(e.target.value)}
@@ -87,7 +126,7 @@ console.log('submit',title,categorey);
                                         alt="Image Description"
                                     /> */}
                                     <span className="sl-user__description">
-                                        <em className="d-block">مرحبا!</em>{props.user ? props.user.user.username : ''}
+                                        <em className="d-block">مرحبا!</em>{props.user ? props.user.user.fullname : ''}
                                 </span>
                                     <i className="ti-angle-down" />
                                     

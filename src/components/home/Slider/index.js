@@ -7,7 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 const MainSlider = props => (
 
     <div className="sl-main-banner">
-        <OwlCarousel className="owl-theme owl-carousel" id="slBannerOwl" loop margin={0} items={1} nav >
+        <OwlCarousel className="owl-theme owl-carousel" id="slBannerOwl" loop autoplay margin={0} items={1} nav >
             <div className="item"> <img src="images/index/main-banner/img-01.jpg" alt="Image Description"/> </div>
             <div className="item"> <img src="images/index/main-banner/img-02.jpg" alt="Image Description"/> </div>
             <div className="item"> <img src="images/index/main-banner/img-03.jpg" alt="Image Description"/> </div>

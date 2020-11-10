@@ -129,18 +129,22 @@ const SignUp = (props) => {
                                         </div>
                                         <div class="sl-loginicon">
                                             <ul>
-                                                <li><a href="javascript:void(0);" class="sl-googlebox"><i
-                                                    class="fab fa-google"></i>التسجيل جوجل</a></li>
+                                                <li>
+                                                    {/* <a href="javascript:void(0);" class="sl-googlebox"><i
+                                                    class="fab fa-google"></i>التسجيل جوجل</a>
+                                                     */}
+                                                <GoogleLogin
+                                                    clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
+                                                    buttonText="التسجيل بواسطة جوجل"
+                                                    onSuccess={responseGoogle}
+                                                    onFailure={responseGoogle}
+                                                    cookiePolicy={'single_host_origin'}
+
+                                                />
+
+                                                    </li>
 
                                                     
-                <GoogleLogin
-                    clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
-                    buttonText="التسجيل بواسطة جوجل"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-
-                />
                                             </ul>
                                         </div>
                                     </div>
@@ -148,7 +152,7 @@ const SignUp = (props) => {
                                         <p>من خلال التسجيل في الموقع فانت توافق على <a href="javascript:void(0);">الشروط</a></p>
                                     </div>
                                     <div class="sl-registerarea__footer">
-                                        <p> لديك عضوية قم <a href="index.html"> بتسجيل الدخول</a></p>
+                                        <p> لديك عضوية قم <a href="/"> بتسجيل الدخول</a></p>
                                     </div>
                                 </div>
                                 <div class="sl-registercontent">
