@@ -1,0 +1,177 @@
+.sl-dashboardbox__title {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px !important;
+
+    p {
+        color: #fff;
+        margin: 0;
+        font-size: 17px !important;
+    }
+}
+
+.sl-inbox{
+    .sl-dashboardbox__content{
+        display: flex;
+        border-radius: 0 0 5px 5px;
+        padding: 0;
+    }
+    &__user{
+        flex: 0 0 35%;
+        border-left: 1px solid #ccc;
+        .sl-input-group{
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        &--list{
+            max-height: 730px;
+            li{
+                min-height: 73px;
+                padding: 10px 20px;
+                border-top: 1px solid #ccc;
+                &:first-child{border-top: 0;}
+            }
+            img{border-radius: 50%;}
+        }
+        &--text{
+            padding-left: 10px;
+            padding-top: 20px;
+            h5{
+                font-size: rem(14);
+                line-height: em(22,14);
+            }
+            h6{
+                font-size: rem(13);
+                line-height: em(24,13);
+                color: #000;
+                margin-top: -2px;
+            }
+        }
+    }
+    &__unread{
+        background-color: #efefef;
+    }
+    .mCSB_inside>.mCSB_container{margin-right: 0;}
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    .mCSB_scrollTools .mCSB_draggerRail{margin-right: 0;}
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background-color: #e6e6e6;}
+    .mCSB_scrollTools .mCSB_draggerRail{background-color: #9d9d9d;}
+    .mCSB_scrollTools{width: 3px;}
+}
+.sl-user-active{
+    position: relative;
+    :before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0; 
+        width: 3px;
+        min-height: 100%;
+        background-color: #222;
+    }
+}
+.sl-messageUser{
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    .mCSB_scrollTools{visibility: hidden;}
+    &__heading{
+        flex-wrap: wrap;
+        padding: 10px 30px;
+        img{border-radius: 50%;}
+        border-bottom: 1px solid #ccc;
+        min-height: 101px;
+        &--logo{
+        }
+    }
+    &__back{
+        padding-right: 30px;
+        font-size: 20px;
+        color: #000;
+        cursor: pointer;
+        &:hover{color: #000;}
+    }
+    &__delete{
+        font-size: 18px;
+        color: #b4b4b4;
+        transform: rotate(90deg);
+        margin-left: auto;
+        padding-left: 10px;
+        cursor: pointer;
+        &:hover{color: #b4b4b4;}
+    }
+    &--text{
+        padding-left: 15px;
+        h5{
+            font-size: rem(18);
+            line-height: em(26,18);
+        }
+        h6{
+            font-size: rem(14);
+            line-height: em(22,14);
+            color: #000;
+            margin-top: -2px;
+        }
+    }
+    &__area{
+        margin-top: 29px;
+        // padding: 30px;
+        text-align: center;
+        max-height: 610px;
+        overflow: scroll;
+        padding-bottom: 20px;
+        p{
+            padding: 12px 20px;
+            background-color: #fcfcfc;
+            border: 1px solid #ccc2;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 0.5rem!important;
+        }
+        span{
+            font: 400 0.6875rem/1.0909090909em "Open Sans", sans-serif;
+            color: #999;
+            padding-top: 0px;
+        } 
+        img{
+            margin-top: 10px;
+            border: 1px solid #ccc2;
+            border-radius: 4px;
+            background-color: #fcfcfc;
+        }
+        &--right,
+        &--left{
+            display: flex;
+            flex-direction: column;
+        }
+        &--right{
+            align-items: flex-end;
+            margin: 5px 0 0 21px;
+        }
+        &--left{
+            align-items: flex-start;
+            margin: 5px 21px 0 0;
+        }
+    }
+}
+.sl-emoji{
+    border-top: 1px solid #ccc;
+    .sl-input-group{
+        padding: 19px;
+        .btn{
+            min-width: 44px;
+            border: 1px solid #ddd;
+            padding-top: 8px!important;
+
+            &:hover{
+                background-color: #fff!important;
+            }
+        }
+    }
+    .sl-form-control{
+        border-radius: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-left: 0;
+    }
+}

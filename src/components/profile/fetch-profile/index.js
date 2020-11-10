@@ -10,6 +10,7 @@ class UpdateUserInfo extends Component {
             input: {},
             errors: {},
             selectedFiles: '',
+            uploading: '',
         };
         this.user = JSON.parse(localStorage.getItem("user"));
         this.handleChange = this.handleChange.bind(this);
@@ -21,11 +22,13 @@ class UpdateUserInfo extends Component {
     selectFile(event) {
         console.log(event.target.files[0]);
 
+        this.setState({uploading: 'uploading-active'});
         uploadImage(event.target.files[0]).then( res => {
             this.setState({
                 selectedFiles: res.path,
-            });    
-        })
+                uploading: '',
+            });
+        });
 
     }
 
@@ -48,7 +51,6 @@ class UpdateUserInfo extends Component {
             editeProfile(this.state.input,this.state.selectedFiles).then(res => {
                 console.log('38 user', res);
             }
-
             )
 
             if(this.state.input.address) {
@@ -209,9 +211,28 @@ class UpdateUserInfo extends Component {
                                             )
                                         })
                                     }
+                                    <li>
+                                    <input
+                                        type="text"
+                                        name="addresses"
+                                        value={this.state.input.address}
+                                        onChange={this.handleChange}
+                                        class="form-control"
+                                        // placeholder={this.user.user.address[0].address}
+                                        id="addresses" />
+                                    <input
+                                        type="text"
+                                        name="phoneAddresses"
+                                        value={this.state.input.phoneAddresses}
+                                        onChange={this.handleChange}
+                                        class="form-control"
+                                        // placeholder={this.user.user.address[0].phone}
+                                        id="phoneAddresses" />
+                                    </li>
                                 </ul>
 
-                                <div class="form-group">
+                                <div class="form-group image-upload">
+                                    <div class={"loader " + this.state.uploading}></div>
                                     <div class="sl-manageServices__upload">
                                         <div class="sl-manageServices__uploadarea">
                                             <span><i class="fas fa-cloud-upload-alt"></i></span>
