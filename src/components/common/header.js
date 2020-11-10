@@ -10,8 +10,8 @@ import {getPostsBySearch} from '../../store/posts'
 const Header = (props) => {
     console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
-    const [title,setTitle]=React.useState(null);
-    const [categorey,setCategory]=React.useState(null)
+    const [title,setTitle]=React.useState('title');
+    const [categorey,setCategory]=React.useState('categories')
 
     const user = JSON.parse(localStorage.getItem("user"));
 
