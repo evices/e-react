@@ -30,14 +30,19 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "serve": "^11.3.2",
     "socket.io-client": "^3.0.1",
+    "terser": "^5.3.8",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +63,6 @@
     ]
   },
   "engines": {
-    "node": "10.17.0",
-    "npm": "6.11.3"
+    "node": "12.11.1"
   }
 }
