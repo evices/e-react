@@ -15,18 +15,17 @@ import Chat from '../../chat/Chat/Chat';
 
 
 function PostDetails(props) {
-  useEffect(() => {
-    props.getSinglePost(window.location.pathname.split("/")[2]);
-  }, []);
+    useEffect(() => {
+        props.getSinglePost(window.location.pathname.split("/")[2]);
+    }, []);
 
-  const formatter = buildFormatter(frenchStrings);
+    const formatter = buildFormatter(frenchStrings);
 
-  const [modalShow, setModalShow] = React.useState(false);
-  const [active, setActive] = useState('');
+    const [modalShow, setModalShow] = React.useState(false);
+    const [active, setActive] = useState('');
 
-  const postedBy = props.post.postedBy || [];
+    const postedBy = props.post.postedBy || [];
 
-  console.log(props.user.user.username, props.post.username)
     return (
         <div>
 
@@ -67,7 +66,7 @@ function PostDetails(props) {
                     </div>
                 </div>
                 <div class="sl-appointment__note">
-                <If condition={props.user.user.username != props.post.username}>
+                <If condition={props.user ? props.user.user.username : props.post.username != props.post.username}>
                     <Then>
                     <a onClick={() => {setModalShow(true); console.log(modalShow)}} class="btn sl-btn" data-toggle="modal"
                         data-target="#appointmentPopup">حجز</a>
@@ -100,7 +99,7 @@ function PostDetails(props) {
                                                         href="javascript:void(0);">{postedBy.phone}</a></li>
                                             </ul>
                                             
-                                            <If condition={props.user.user.username != props.post.username}>
+                                            <If condition={props.user ? props.user.user.username : props.post.username != props.post.username}>
                                                 <Then>
                                                     <a onClick={() => {setActive('___active')}} href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
                                                         data-target="#contactpopup">مراسلة</a>
@@ -135,7 +134,7 @@ function PostDetails(props) {
                             </div>
                         </div>
 
-                        <If condition={props.user.user.username != props.post.username}>
+                        <If condition={props.user ? props.user.user.username : props.post.username != props.post.username}>
                             <Then>
                                 <hr></hr>
                                 {console.log(props.post)}
@@ -149,7 +148,7 @@ function PostDetails(props) {
             {/* <div className = "chat-btn">
                 <a onClick={() => {console.log('change chat')}}>+</a>
             </div> */}
-            <Chat location = {{name: props.user.user.fullname, room: props.post.username}}/>
+            <Chat location = {{name: props.user ? props.user.user.fullname : props.post.username, room: props.post.username}}/>
         </div>
     );
 }
