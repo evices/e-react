@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Pagination from "react-bootstrap/Pagination";
 import { getAllApiPosts, setActivePage } from "../../store/posts";
@@ -11,6 +11,8 @@ import _ from "lodash";
 function Post(props) {
   let numPer = props.posts.numPer;
   const numOfPaginationPages = Math.ceil(props.posts.Posts.length / numPer);
+
+  const [html, setHtml] = useState('');
 
   const paginate = () => {
     let items = [];
@@ -29,13 +31,21 @@ function Post(props) {
     }
     return items;
   };
+
   const changePage = (num) => {
     console.log('sss',num)
     props.setActivePage(num);
   };
   useEffect(() => {
     //   load all posts at loading the page
-    props.getAllApiPosts();
+    props.getAllApiPosts().then( res => {
+      if(res.count > 0) {
+        setHtml(<img className="no-data-img" src="/images/no-data.png" />);
+      }
+    });
+    
+    console.log(html);
+
   }, []);
   console.log(props.posts.Posts);
   return (
@@ -45,8 +55,8 @@ function Post(props) {
           <div class="sl-serviceProvider">
             <div class="sl-serviceProvider__content">
               <div class="row">
-                {/* <If condition={props.posts.ActivePosts.length}>
-                  <Then> */}
+                <If condition={props.posts.ActivePosts.length}>
+                  <Then>
                 {props.posts.ActivePosts.map((post, i) => {
                   const postedBy = post.postedBy || [];
                   return (
@@ -144,13 +154,13 @@ function Post(props) {
                     </div>
                   );
                 })}
-                {/* </Then>
+                </Then>
                 <Else>
                   <Then>
-                    <img className="no-data-img" src="/images/no-data.png" />
+                  {html}
                   </Then>
                 </Else>
-                </If> */}
+                </If>
                 
               </div>
             </div>

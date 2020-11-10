@@ -240,6 +240,9 @@ export const getPostsBySearch = (title, category) => (dispatch) => {
 
 
 console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
+
+  let itemCount = 0;
+
   if (title!='title'  && category !=='categories') {
 
 
@@ -248,11 +251,11 @@ console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
 
       let modify = data.data.result.filter((post) => {
         return (
-          post.category == decodeURI(category) && post.title == decodeURI(title)
+          post.category == decodeURI(category) && (post.title.indexOf(decodeURI(title)) >= 0)
         );
       });
       console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>1");
-      dispatch({
+      return dispatch({
         type: "getPostsSearch",
         payload: modify,
       });
@@ -268,10 +271,10 @@ console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
       console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>2");
 
       let modify = data.data.result.filter((post) => {
-        return post.title == decodeURI(title);
+        return post.title.indexOf(decodeURI(title)) >= 0;
       });
       console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>2");
-      dispatch({
+      return dispatch({
         type: "getPostsSearch",
         payload: modify,
       });
@@ -288,7 +291,7 @@ console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
         return post.category == decodeURI(category);
       });
       console.log(modify, ">>>>>>>>>>>>>>>>>>>>>>>>3");
-      dispatch({
+      return dispatch({
         type: "getPostsSearch",
         payload: modify,
       });

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getPostsBySearch } from "../../store/posts";
 import { Link } from "react-router-dom";
@@ -7,12 +7,22 @@ import { If, Then, Else } from "react-if";
 
 function PostsSearch(props) {
 
+    const [html, setHtml] = useState('');
+
     useEffect(() => {
         console.log('postCat', window.location.pathname.split("/")[3])
         //   load all posts at loading the page
         let title=window.location.pathname.split("/")[2];
         let category=window.location.pathname.split("/")[3];
-        props.getPostsBySearch(title,category);
+        props.getPostsBySearch(title,category).then( res => {
+            console.log(res);
+            if(res.payload.length == 0) {
+              setHtml(<div className="no-data">
+                    <img className="no-data-img" src="/images/no-data.png" />
+                    <p>لا يوجد بيانات لعرضها!!</p>
+                </div>);
+            }
+          });
 
     }, []);
 
@@ -24,7 +34,7 @@ function PostsSearch(props) {
                 <div class="sl-serviceProvider">
                     <div class="sl-serviceProvider__content">
                     <div class="row">
-                        <If condetion = {props.post.Posts.length}>
+                        <If condition = {props.post.Posts.length}>
                             <Then>
                         {props.post.Posts.map((post,i) => {
                         const postedBy = post.postedBy || [];
@@ -118,11 +128,7 @@ function PostsSearch(props) {
                         </Then>
                         <Else>
                             <Then>
-                                <div className="no-data">
-                                    <img className="no-data-img" src="/images/no-data.png" />
-                                    <p>لا يوجد بيانات لعرضها!!</p>
-                                </div>
-                                
+                                {html}
                             </Then>
                         </Else>
                     </If>

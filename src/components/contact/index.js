@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Alert from 'react-bootstrap/Alert';
+import { Button } from 'react-bootstrap';
 
-export default () => (
-    <main>
+const Contact = props => {
+
+    const [show, setShow] = useState(false);
+
+    return (
+        <div>
+                <main>
         <section class="sl-contact-page">
             <div class="ourmap">
                 <div class="gm-style">
@@ -23,29 +31,34 @@ export default () => (
                                 </div>
                                 <div class="col-12 col-xl-7">
                                     <div class="sl-contactform row">
+                                    <Alert style={{width: '100%'}} show={show} variant="success">
+                                        <p>
+                                            شكرا لتواصلك معنا وسيتم الاتصال بك عما قريبا
+                                        </p>
+                                        </Alert>
                                         <div class="sl-contactform__details">
                                             <h5>نحن سعداء جدا بخدمتكم</h5>
                                             <h2>شاركنا رأيك</h2>
                                         </div>
-                                        <form class="sl-formtheme sl-formcontactus">
+                                        <form class="sl-formtheme sl-formcontactus" onSubmit={(e) => {e.preventDefault(); setShow(true); e.target.reset()}}>
                                             <fieldset>
                                                 <div class="sl-formhalf">
                                                     <div class="form-group form-group-half">
                                                         <input type="text" name="Your Name" class="form-control"
-                                                            placeholder="الاسم الاول" />
+                                                            placeholder="الاسم الاول" required/>
                                                     </div>
                                                     <div class="form-group form-group-half">
                                                         <input type="text" name="Your Email" class="form-control"
-                                                            placeholder="اسم العائلة" />
+                                                            placeholder="اسم العائلة" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="email" name="Subject" class="form-control"
-                                                        placeholder="البريد الالكتروني" />
+                                                        placeholder="البريد الالكتروني" required/>
                                                 </div>
                                                 <div class="form-group">
                                                     <textarea class="form-control" placeholder="الرسالة"
-                                                        required=""></textarea>
+                                                        required="" required></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn sl-btn">ارسال</button>
@@ -125,4 +138,13 @@ export default () => (
             </div>
         </section>
     </main>
-)
+
+        </div>
+    );
+};
+
+Contact.propTypes = {
+    
+};
+
+export default Contact;
