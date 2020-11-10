@@ -237,8 +237,12 @@ export const getPostsByCategory = (category) => (dispatch) => {
 };
 
 export const getPostsBySearch = (title, category) => (dispatch) => {
-  console.log("getPostsBySearch", decodeURI(title), decodeURI(category));
-  if (title != "null" && category !== "null") {
+
+
+console.log('getPostsBySearch',decodeURI(title), decodeURI(category))
+  if (title!='title'  && category !=='categories') {
+
+
     return axios.get(`${url}/post`).then((data) => {
       console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>1");
 
@@ -254,7 +258,12 @@ export const getPostsBySearch = (title, category) => (dispatch) => {
       });
       // dispatch(getSinglePost(data.data[0]));
     });
-  } else if (title != "null") {
+
+
+
+  } else if (title!='title') {
+
+
     return axios.get(`${url}/post`).then((data) => {
       console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>2");
 
@@ -268,7 +277,10 @@ export const getPostsBySearch = (title, category) => (dispatch) => {
       });
       // dispatch(getSinglePost(data.data[0]));
     });
-  } else if (category != "null") {
+
+  } else if (category!='categories') {
+
+
     return axios.get(`${url}/post`).then((data) => {
       console.log(data.data, ">>>>>>>>>>>>>>>>>>>>>>>>");
 
