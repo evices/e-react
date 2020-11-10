@@ -126,7 +126,7 @@ console.log('submit',title,categorey);
                                         alt="Image Description"
                                     /> */}
                                     <span className="sl-user__description">
-                                        <em className="d-block">مرحبا!</em>{props.user ? props.user.user.username : ''}
+                                        <em className="d-block">مرحبا!</em>{props.user ? props.user.user.fullname : ''}
                                 </span>
                                     <i className="ti-angle-down" />
                                     
