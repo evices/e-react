@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getAllApiPosts } from '../../../../store/posts';
 import PropTypes from 'prop-types';
-import OwlCarousel from 'react-owl-carousel';
+import OwlCarousel, { Options } from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import _ from "lodash";
@@ -15,13 +15,28 @@ const FeaturedItem = props => {
 
     }, []);
 
+    const  responsive = {
+            0: {
+                items: 1,
+            },
+            450: {
+                items: 2,
+            },
+            600: {
+                items: 3,
+            },
+            1000: {
+                items: 4,
+            },
+    }
+
         return (
-            <OwlCarousel className="owl-carousel owl-theme sl-owl-nav" id="slCategoryOwl" loop margin={20} items={4} nav dots={false} >
+            <OwlCarousel className="owl-carousel owl-theme sl-owl-nav" id="slCategoryOwl" responsive={responsive} items={4} loop margin={20} options nav dots={false} >
                 {props.posts.map((post, i) => { 
 
                     console.log(post);
                     return (
-                        <div className="item">
+                        <div key={i} className="item">
                             <div className="sl-slider">
                                 <figure>
                                 <a href="javascript:void(0);">
@@ -55,7 +70,7 @@ const FeaturedItem = props => {
                                     </div>
                                     <a href="javascript:void(0);">{post.category}</a>
                                     <h5>
-                                    <a href="/single/23123">{post.title}</a>
+                                    <a href={"/single/"+post._id}>{post.title}</a>
                                     </h5>
                                     <div class="sl-featureRating">
                                         {_.times(post.rateAVG, (i) => (

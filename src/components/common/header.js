@@ -36,12 +36,12 @@ console.log('submit',title,categorey);
                 <div className="sl-main-header__content">
                     <div className="sl-main-header__upper">
                         <nav class="navbar-expand-lg">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#slMainNavbar" aria-controls="slMainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="lnr lnr-menu"></i>
                             </button>
                             <div class="collapse navbar-collapse sl-navigation" id="slMainNavbar">
                                 <ul class="navbar-nav mr-auto sl-navbar-nav">
-                                    <li class="nav-item menu-item-has-mega-menu">
+                                    <li class="nav-item">
                                         {/* <a class="nav-link" href="/">الرئيسية</a>
                                          */}
                                         <NavLink
