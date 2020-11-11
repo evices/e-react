@@ -14,6 +14,7 @@ class UpdateUserInfo extends Component {
         };
         this.user = JSON.parse(localStorage.getItem("user"));
         this.state.input = this.user.user;
+        this.userData = this.user;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.selectFile = this.selectFile.bind(this);
@@ -54,9 +55,10 @@ class UpdateUserInfo extends Component {
             });
         }
 
-        editeProfile(this.state.input,this.state.selectedFiles).then(res => {
+        editeProfile(this.state.input, this.userData, this.state.selectedFiles).then(res => {
             console.log('38 user', res);
             this.state.input = this.user;
+            document.getElementById('userImage').src = res.user_image;
         });
     }
 
@@ -111,7 +113,7 @@ class UpdateUserInfo extends Component {
                                     id="phone"
                                     name="phone"
                                     defaultValue={this.state.input.phone}
-                                    placeholder={this.state.input.phone}
+                                    placeholder='ادخل رقم الهاتف'
                                     pattern="[0-9]{10}"
                                     onChange={this.handleChange}
                                     class="form-control"

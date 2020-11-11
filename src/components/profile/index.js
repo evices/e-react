@@ -29,7 +29,7 @@ const Profile = props => {
                                             <div class="sl-usersinfo">
                                                 <div class="single-chart">
                                                     <figure class="sl-userprofileimg">
-                                                        <img src={user.user ? user.user.user_image : "https://www.seekpng.com/png/detail/53-535515_view-original-cool-guy-cartoon-png.png"} alt="img description" />
+                                                        <img id="userImage" src={user.user ? user.user.user_image : "https://www.seekpng.com/png/detail/53-535515_view-original-cool-guy-cartoon-png.png"} alt="img description" />
                                                     </figure>
                                                 </div>
                                                 <div class="sl-title">
@@ -54,9 +54,9 @@ const Profile = props => {
                                                     <li>
                                                         <Nav.Link eventKey="messages"><i class="ti-email"></i><span>المراسلات</span></Nav.Link>
                                                     </li>
-                                                    <li>
+                                                    {/* <li>
                                                         <Nav.Link eventKey="favorit"><i class="ti-heart"></i><span>المفضلة</span></Nav.Link>
-                                                    </li>
+                                                    </li> */}
                                                     <li>
                                                         <Nav.Link><i class="ti-key"></i><span>تسجييل الخروج</span></Nav.Link>
                                                     </li>

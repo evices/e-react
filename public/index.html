@@ -31,6 +31,18 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="preloader-outer">
+      <div class="divider" aria-hidden="true"></div>
+  <p class="loading-text" aria-label="Loading">
+    <span class="letter" aria-hidden="true">L</span>
+    <span class="letter" aria-hidden="true">o</span>
+    <span class="letter" aria-hidden="true">a</span>
+    <span class="letter" aria-hidden="true">d</span>
+    <span class="letter" aria-hidden="true">i</span>
+    <span class="letter" aria-hidden="true">n</span>
+    <span class="letter" aria-hidden="true">g</span>
+  </p>
+  </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -69,6 +81,10 @@
             jQuery('.real-time-chat').toggleClass('show-chat')
             // jQuery(this).find('i').toggleClass('lnr lnr-layers lnr lnr-cross')
           })
+
+          jQuery(window).on('load', function() {
+            jQuery(".preloader-outer").delay(1000).fadeOut();
+          });
         });
         
       </script>
