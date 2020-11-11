@@ -16,11 +16,13 @@ function PostsSearch(props) {
         let category=window.location.pathname.split("/")[3];
         props.getPostsBySearch(title,category).then( res => {
             console.log(res);
-            if(res.payload.length == 0) {
-              setHtml(<div className="no-data">
-                    <img className="no-data-img" src="/images/no-data.png" />
-                    <p>لا يوجد بيانات لعرضها!!</p>
-                </div>);
+            if(res) {
+                if(res.payload.length == 0) {
+                setHtml(<div className="no-data">
+                        <img className="no-data-img" src="/images/no-data.png" />
+                        <p>لا يوجد بيانات لعرضها!!</p>
+                    </div>);
+                }
             }
           });
 

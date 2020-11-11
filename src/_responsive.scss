@@ -121,7 +121,7 @@
     }
     .sl-navbar-search .sl-main-form__input2 input{border-radius: $radius 0 0 $radius;}
     .sl-navbar-search .sl-main-form__input2, .sl-navbar-search .sl-main-form__input3 {
-        flex: 0 0 50%;
+        flex: 0 0 100%;
         margin-bottom: 10px;
     }
     .sl-appointment{
@@ -709,7 +709,7 @@
         margin-right: 0;
     }
     .sl-topbar-notify{display: none;}
-    .sl-main-form__btn{margin-left: 0;}
+    .sl-main-form__btn{margin-right: 0;}
     .sl-main-header__upper{
         padding: 10px 20px;
         min-height: 0;

@@ -87,7 +87,7 @@ const LogIn = (props) => {
                                     clientId="608083262418-ap6mi6c6kfv279kcekpdal7d4e8gk8ai.apps.googleusercontent.com"
                                     buttonText="التسجيل بواسطة جوجل"
                                     onSuccess={responseGoogle}
-                                    isSignedIn={true}
+                                    isSignedIn={false}
                                     class="sl-googlebox"
                                 />
                         </li>
