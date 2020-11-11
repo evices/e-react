@@ -185,20 +185,20 @@ export const getPostsByUserName = () => (dispatch) => {
   });
 };
 
-export const addPost = (title, description, category) => {
-  console.log("inside", title, description, category);
+export const addPost = (title, description, category, currentUser) => {
+  console.log("inside", title, description, category, currentUser);
   const config = {
     headers: {
-      Authorization: `Bearer ${user.token}`,
+      Authorization: `Bearer ${currentUser.token}`,
     },
   };
   let data = {
-    username: user.user.username,
-    porviderId: user.user._id,
+    username: currentUser.user.username,
+    porviderId: currentUser.user._id,
     title: title,
     description: description,
     category: category,
-    postedBy: user.user._id,
+    postedBy: currentUser.user._id,
   };
 
   console.log(data);

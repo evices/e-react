@@ -21,7 +21,7 @@ class UpdateUserInfo extends Component {
     }
 
     selectFile(event) {
-        console.log(event.target.files[0]);
+        // console.log(event.target.files[0]);
 
         this.setState({uploading: 'uploading-active'});
         uploadImage(event.target.files[0]).then( res => {
@@ -30,14 +30,13 @@ class UpdateUserInfo extends Component {
                 uploading: '',
             });
         });
-
     }
 
     handleChange(event) {
         let input = this.state.input;
         input[event.target.name] = event.target.value;
 
-        console.log(input);
+        // console.log(input);
         this.setState({
             input
         });
@@ -46,18 +45,22 @@ class UpdateUserInfo extends Component {
     handleSubmit(event) {
         event.preventDefault();
         event.target.reset();
-        console.log(11);
+        // console.log(11);
         // if (this.validate()) {
 
         if(this.state.input.addresses) {
-            addAddress(this.state.input).then(res => {
-                console.log('38 user', res);
+            addAddress(this.state.input, this.userData).then(res => {
+                // console.log('38 user', res);
+                this.state.input = res;
             });
         }
 
         editeProfile(this.state.input, this.userData, this.state.selectedFiles).then(res => {
-            console.log('38 user', res);
+            // console.log('38 user', res);
+            // console.log('this.user', this.user);
             this.state.input = this.user;
+            // console.log('this.user', this.user);
+
             document.getElementById('userImage').src = res.user_image;
         });
     }

@@ -188,10 +188,10 @@ export const editeProfile = (userData, userForm, userImage) => {
 
 }
 
-export const addAddress = (addressData) => {
+export const addAddress = (addressData, userForm) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${user.token}`
+            Authorization: `Bearer ${userForm.token}`
         }
     };
     let data = {
@@ -206,14 +206,21 @@ export const addAddress = (addressData) => {
     console.log('?????????????',data);
     return axios
     .patch(
-        `${url}/user/${user.user._id}`, data, config)
+        `${url}/user/${userForm.user._id}`, data, config)
     .then(res => {
+        let newData = {
+            "token": userForm.token,
+            "user": res.data
+        }
+
+        localStorage.setItem("user", JSON.stringify(newData));
         // let newData = {
         //     "token": user.token,
         //     "user": res.data
         // }
 
         // localStorage.setItem("user", JSON.stringify(newData));
+        return res.data;
     })
     .catch(error => console.log(error.response.data));
 }

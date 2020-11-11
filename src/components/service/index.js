@@ -25,7 +25,7 @@ const Service = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('service.log', title, description, category)
-        props.addPost(title, description, category).then(res => {
+        props.addPost(title, description, category, user).then(res => {
             setPost(res.data)
             console.log('setpost',post)
             props.onHide()

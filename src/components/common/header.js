@@ -96,7 +96,7 @@ console.log('submit',title,categorey);
                             </div>
                         </form>
                         <div className="sl-input-group">
-                            <a onClick={handdelSubmit}
+                            <a onKeyPress={(e) => e.key === 'Enter' && handdelSubmit} onClick={handdelSubmit}
                                 href={"/posts/"+title+"/"+categorey}
                                 className="btn sl-btn sl-btn-active sl-advance-btn">
                                 <span>بحث</span>

@@ -23,6 +23,8 @@ function PostDetails(props) {
 
     const [modalShow, setModalShow] = React.useState(false);
     const [active, setActive] = useState('');
+    const [sendButton, setSendButton] = useState({value: 'مراسلة', class: ''});
+    const [sendReserve, setSendReserve] = useState({value: 'حجز', class: ''});
 
     const postedBy = props.post.postedBy || [];
 
@@ -60,20 +62,26 @@ function PostDetails(props) {
                             {/* <ReactTimeAgo date={new Date(props.post.created_at)} locale="en-US" timeStyle="round"/> */}
                             </em>
                         </div>
-                        <div class="sl-detail__view">
+                        {/* <div class="sl-detail__view">
                             <em><i class="ti-eye"></i> شاهدها 15,063</em>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div class="sl-appointment__note">
                 <If condition={props.user ? props.user.user.username : props.post.username != props.post.username}>
                     <Then>
-                    <a onClick={() => {setModalShow(true); console.log(modalShow)}} class="btn sl-btn" data-toggle="modal"
-                        data-target="#appointmentPopup">حجز</a>
+                    <a onClick={() => {setModalShow(true); console.log(modalShow)}} class={"btn sl-btn " + sendReserve.class} data-toggle="modal"
+                        data-target="#appointmentPopup">{sendReserve.value}</a>
                         <Modal
                             post={props.post}
                             show={modalShow}
-                            onHide={() => setModalShow(false)}
+                            onHide={() =>  {
+                                setSendReserve({value: 'تم الحجز بنجاح', class: 'btn-bg-green'});
+                                setModalShow(false);
+                                setInterval(() => {
+                                    setSendReserve({value: 'حجز', class: ''});
+                                }, 10000);
+                            }}
                         />
                     </Then>
                 </If>                        
@@ -101,14 +109,19 @@ function PostDetails(props) {
                                             
                                             <If condition={props.user ? props.user.user.username : props.post.username != props.post.username}>
                                                 <Then>
-                                                    <a onClick={() => {setActive('___active')}} href="javascript:void(0);" class="btn btn-custom sl-btn" data-toggle="modal"
-                                                        data-target="#contactpopup">مراسلة</a>
+                                                    <a onClick={() => {setActive('___active')}} href="javascript:void(0);" class={"btn btn-custom sl-btn "+ sendButton.class} data-toggle="modal"
+                                                        data-target="#contactpopup">{sendButton.value}</a>
                                                     <form className={"send-msg-form"+active}
                                                         onSubmit = {
                                                             (e) => {
                                                                 e.preventDefault();
+                                                                setSendButton({value: 'تم الارسال', class: 'btn-bg-green'});
                                                                 props.sendMessage(props.user, props.post, e.target.msg.value);
                                                                 setActive('');
+                                                                e.target.reset();
+                                                                setInterval(() => {
+                                                                    setSendButton({value: 'مراسلة', class: ''});
+                                                                }, 3000);
                                                             }
                                                         }>
                                                         <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" rows="3"></textarea>
