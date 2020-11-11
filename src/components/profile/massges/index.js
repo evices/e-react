@@ -15,7 +15,7 @@ function Massges(props) {
 
   useEffect(() => {
     props.getMessages(props.user.user._id);
-    scrollToBottom()
+    // scrollToBottom()
   }, []);
 
   const messagesEndRef = useRef(null);
