@@ -27,7 +27,7 @@ const Reviewe = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let rData = {
-            "username": props.user.username,
+            "username": props.user.fullname || props.user.username,
             "comments": e.target['comment'].value,
             "rate": rate
         };
