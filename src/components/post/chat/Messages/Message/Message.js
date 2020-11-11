@@ -18,7 +18,7 @@ export const Message = ({message: { user, text }, name}) => {
         <div class="direct-chat-msg right">
             <div class="direct-chat-info clearfix">
                 <span class="direct-chat-name pull-right">{trimmedName}</span>
-                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                {/* <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span> */}
             </div>
             <div class="direct-chat-text">
             {ReactEmoji.emojify(text)}
@@ -29,7 +29,7 @@ export const Message = ({message: { user, text }, name}) => {
             <div class="direct-chat-msg">
                 <div class="direct-chat-info clearfix">
                 <span class="direct-chat-name pull-left">{user}</span>
-                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                {/* <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span> */}
                 </div>
                 <div class="direct-chat-text">
                 {text}

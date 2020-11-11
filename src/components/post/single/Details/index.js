@@ -13,7 +13,6 @@ import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 
 import Chat from '../../chat/Chat/Chat';
 
-
 function PostDetails(props) {
     useEffect(() => {
         props.getSinglePost(window.location.pathname.split("/")[2]);
@@ -58,13 +57,9 @@ function PostDetails(props) {
                     <div class="sl-detail">
                         <div class="sl-detail__date">
                             <em><i class="ti-calendar"></i> تاريخ الانشاء: 
-                            <TimeAgo date={new Date(props.post.created_at)} formatter={formatter} />
-                            {/* <ReactTimeAgo date={new Date(props.post.created_at)} locale="en-US" timeStyle="round"/> */}
+                                <TimeAgo date={new Date(props.post.created_at)} formatter={formatter} />
                             </em>
                         </div>
-                        {/* <div class="sl-detail__view">
-                            <em><i class="ti-eye"></i> شاهدها 15,063</em>
-                        </div> */}
                     </div>
                 </div>
                 <div class="sl-appointment__note">
@@ -121,7 +116,7 @@ function PostDetails(props) {
                                                                 e.target.reset();
                                                                 setInterval(() => {
                                                                     setSendButton({value: 'مراسلة', class: ''});
-                                                                }, 3000);
+                                                                }, 4000);
                                                             }
                                                         }>
                                                         <textarea class="form-control" name="msg" id="exampleFormControlTextarea1" rows="3"></textarea>
