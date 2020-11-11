@@ -11,6 +11,7 @@ const LogIn = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
 
     const responseGoogle = (response) => {
         console.log(response);
@@ -27,8 +28,16 @@ const LogIn = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoginError('')
         console.log('index.log', username, password)
-        props.login(username, password)
+        props.login(username, password).then(res => {
+            if(res) {
+                if(res.status === 500) {
+                    setLoginError(res.data.err);
+                }
+            }
+            console.log(loginError);
+        });
     }
 
     return (
@@ -44,6 +53,7 @@ const LogIn = (props) => {
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                {loginError && <p className="sl-alert-color">{loginError}</p>}
                 <form class="sl-formtheme sl-formlogin" onSubmit={handleSubmit}>
                     <fieldset>
                         <div class="form-group">

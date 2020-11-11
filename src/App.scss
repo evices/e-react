@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400i|Source+Sans+Pro:400,600,700&display=swap);
+
 $font-family: "Tajawal";
 
 body {
@@ -26,7 +27,7 @@ h6 {
 }
 
 address {
-  font: 600 1rem/1.3333333333em "Tajawal";
+  font: 600 1rem/1.3333333333em $font-family;
 }
 
 .sl-signupform fieldset .form-group {
@@ -358,7 +359,10 @@ figure,
 } */
 
 .sl-alert-color {
-  color: #e74c3c;
+  // color: #e74c3c;
+  padding: 10px;
+  background-color: #f05454;
+  color: white;
 }
 
 .sl-closeasidebar {
@@ -4623,3 +4627,4 @@ textarea[name="comment"] {
     font-size: 24px !important;
   }
 }
+

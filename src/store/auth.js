@@ -87,7 +87,7 @@ export const register = (username, email, password, role, phone, fullname) => (d
             //   payload: message,
             // });
 
-            return Promise.reject();
+            return error.response;
         }
     );
 };
@@ -104,12 +104,12 @@ export const login = (username, password) => (dispatch) => {
             return Promise.resolve();
         },
         (error) => {
-            // const message =
-            //     (error.response &&
-            //         error.response.data &&
-            //         error.response.data.message) ||
-            //     error.message ||
-            //     error.toString();
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
 
             dispatch({
                 type: "LOGIN_FAIL",
@@ -120,7 +120,7 @@ export const login = (username, password) => (dispatch) => {
             //   payload: message,
             // });
 
-            return Promise.reject();
+            return error.response;
         }
     );
 };
@@ -154,14 +154,15 @@ export const uploadImage = (file) => {
 
 
 }
-export const editeProfile = (userData, userImage) => {
+export const editeProfile = (userData, userForm, userImage) => {
+    console.log('userData:',userForm)
     const config = {
         headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${userForm.token}`,
         }
     };
 
-    let user_image = userImage ? `${url}/${userImage}` : user.user.user_image;
+    let user_image = userImage ? `${url}/${userImage}` : userForm.user.user_image;
 
     let data = {
         "fullname": userData.fullname,
@@ -172,11 +173,11 @@ export const editeProfile = (userData, userImage) => {
 
     console.log('data>>', data);
     return axios
-        .put(`${url}/user/${user.user._id}`, data, config)
+        .put(`${url}/user/${userForm.user._id}`, data, config)
         .then(res => {
-            // console.log('>>>>>>>', res.data)
+            console.log('>>>>>>>', res.data)
             let newData = {
-                "token": user.token,
+                "token": userForm.token,
                 "user": res.data
             }
 

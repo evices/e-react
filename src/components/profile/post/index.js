@@ -10,9 +10,10 @@ import { If, Then } from 'react-if';
 const PostByUser = props => {
 
     console.log(props)
+    const [newPost, setNewPost] = useState(false);
     useEffect(() => {
         props.getPostsByUserName();
-    });
+    }, [newPost]);
 
     console.log('loggedin', props)
     const [modalShow, setModalShow] = React.useState(false);
@@ -34,7 +35,7 @@ const PostByUser = props => {
                     <a href="#" onClick={() => { setModalShow(true); console.log(modalShow) }} data-toggle="modal" className="btn sl-btn sl-btn-md" data-target="#loginpopup">تسجيل خدمة</a>
                     <Service
                         show={modalShow}
-                        onHide={() => setModalShow(false)}
+                        onHide={() => {setModalShow(false); setNewPost(true)}}
                     />
                     </Then>
                 </If>

@@ -8,10 +8,10 @@ const Service = (props) => {
     const [post, setPost] = useState('')
     // const post = props.post || [];
 
-    // useEffect(() => {
-    //     console.log('test');
-    //     props.getPostsByUserName();
-    // }, [post]);
+    useEffect(() => {
+        console.log('test');
+        props.getPostsByUserName();
+    }, [post]);
 
     console.log('props',props.onHide)
 
@@ -26,8 +26,7 @@ const Service = (props) => {
         e.preventDefault();
         console.log('service.log', title, description, category)
         props.addPost(title, description, category).then(res => {
-            
-            setPost('')
+            setPost(res.data)
             console.log('setpost',post)
             props.onHide()
 
@@ -43,7 +42,7 @@ const Service = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    تسجيل الدخول
+                    خدمة جديدة
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -53,13 +52,21 @@ const Service = (props) => {
                             <input type="text" name="email" class="form-control sl-form-control" placeholder="اسم المستخدم" onChange={(e) => setUsername(e.target.value)} value={user.user.username} />
                         </div> */}
                         <div class="form-group">
-                            <input type="text" class="form-control sl-form-control" placeholder="العنوان" onChange={(e) => {setTitle(e.target.value); setPost(e.target.value)}} />
+                            <input required type="text" class="form-control sl-form-control" placeholder="العنوان" onChange={(e) => {setTitle(e.target.value); setPost(e.target.value)}} />
                         </div>
                         <div class="form-group">
-                            <textarea  class="form-control sl-form-control" placeholder="وصف الخدمة" onChange={(e) => setDescription(e.target.value)} />
+                            <textarea required class="form-control sl-form-control" placeholder="وصف الخدمة" onChange={(e) => setDescription(e.target.value)} />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control sl-form-control" placeholder="نوع الخدمة" onChange={(e) => setCategory(e.target.value)} />
+                        <select required class="form-control sl-form-control" onChange={(e) => setCategory(e.target.value)}>
+                                        <option hidden>التصنيفات</option>
+                                        <option>خدمات السباكة</option>
+                                        <option>خدمات النجارة</option>
+                                        <option>خدمات السيارات</option>
+                                        <option>خدمات النظافة</option>
+                                        <option>خدمات الحدادة</option>
+
+                                    </select>
                         </div>
                  
                         <div class="form-group sl-btnarea">
