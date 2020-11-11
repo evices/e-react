@@ -5,8 +5,12 @@ import {
   respondingToReservation,
 } from "../../../store/reservation";
 import { If, Then } from 'react-if';
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/ar';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 
 const Single = (props) => {
+  const formatter = buildFormatter(frenchStrings);
   let status = {};
   switch (props.reserve.is_approved) {
     case 1:
@@ -32,7 +36,7 @@ const Single = (props) => {
           <h5>
             <a href="javascript:void(0);">{props.reserve.client.fullname}</a>
           </h5>
-          <p>{props.reserve.book_date.toLocaleString()}</p>
+          <p><TimeAgo date={new Date(props.reserve.book_date)} formatter={formatter} /></p>
         </div>
       </div>
       <div class="sl-newAppointments__services">
