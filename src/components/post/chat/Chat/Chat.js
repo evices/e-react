@@ -18,11 +18,11 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'https://fiodw.sse.codesandbox.io';
+  const ENDPOINT = 'https://hom4m.sse.codesandbox.io/';
 
-  // console.log(location);
+  console.log(location);
   useEffect(() => {
-    const { name, room } = {name: location.name, room: location.room};
+    const { name, room } = {name: location.name, room: "evices"};
 
     socket = io(ENDPOINT);
 

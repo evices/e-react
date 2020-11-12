@@ -5,10 +5,14 @@ import { Auth } from '../../../../store/checkAuth'
 import Button from 'react-bootstrap/Button';
 import { If, Then, Else } from 'react-if';
 import { getSingleApiPost } from "../../../../store/posts";
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/ar';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 
 import _ from "lodash";
 
 const Reviewe = (props) => {
+    const formatter = buildFormatter(frenchStrings);
 
     const [comment, setComment] = useState('');
     const comments = props.comments || [];
@@ -64,7 +68,7 @@ const Reviewe = (props) => {
                                         <span class="fa fa-star"></span>
                                     ))}
                                     <h5>{post.username}</h5>
-                                    <p>{d.toLocaleDateString()}</p>
+                                    <p><TimeAgo date={new Date(d)} formatter={formatter} /></p>
                                 </div>
                             </div>
                             <div class="sl-post__description">
